@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/news/news",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#0094ff",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#4585F5",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "icon/index.png",
+      "selectedIconPath": "icon/index-selected.png"
+    },
+    {
+      "pagePath": "pages/news/news",
+      "text": "校园热点",
+      "iconPath": "icon/new.png",
+      "selectedIconPath": "icon/new-selected.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath": "icon/my.png",
+      "selectedIconPath": "icon/my-selected.png"
+    }]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
