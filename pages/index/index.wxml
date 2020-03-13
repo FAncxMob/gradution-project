@@ -1,3 +1,9 @@
 <view class="container">
-  首页
+	首页
+	<form bindsubmit="formSubmit" bindreset="formReset">
+		<input name="userId" type="number" placeholder="输入userId查询帖子" />
+		<button formType="submit">Submit</button>
+		<button formType="reset">Reset</button>
+	</form>
 </view>
+

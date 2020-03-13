@@ -10,16 +10,6 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
-  onTabItemTap(item){
-    // 必须是在用户已经授权的情况下调用
-    wx.getUserInfo({
-      success: function (res) {
-        console.log(res.userInfo)
-      }
-    })
-    //console.log(item)
-  },
-
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
@@ -55,7 +45,6 @@ Page({
     }
   },
   getUserInfo: function (e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

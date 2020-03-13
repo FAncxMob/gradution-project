@@ -1,6 +1,7 @@
-//app.js
+const util = require('./utils/util')
+
 App({
-  onLaunch: function () {
+  onLaunch: async function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -8,10 +9,23 @@ App({
 
     // 登录
     wx.login({
-      success: res => {
+      success: async (res) => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        // 1. res.code是获取用户登录的临时凭证，和用户是否授权没有直接关系
+        let data = {
+          code: res.code
+        }
+        // 2. 发送code给服务端
+        let token = await util.request('/getOpenId', data)
+        // 3. 将自定义登录状态缓存到storage中
+        wx.setStorageSync('token', token)
       }
     })
+
+    // 测试token
+    let result = await util.request('/testToken')
+    console.log('token验证结果:', result)
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
