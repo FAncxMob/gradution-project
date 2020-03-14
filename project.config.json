@@ -58,8 +58,22 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
+					"name": "pages/my/my/my",
+					"pathName": "pages/my/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/history/history",
+					"pathName": "pages/my/history/history",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/follow/follow",
+					"pathName": "pages/my/follow/follow",
 					"scene": null
 				}
 			]

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "SwitchTab": "./components/switchTab/switchTab"
+  },
+  "navigationBarTitleText": "关注"
+}

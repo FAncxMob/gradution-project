@@ -22,10 +22,6 @@ App({
       }
     })
 
-    // 测试token
-    let result = await util.request('/testToken')
-    console.log('token验证结果:', result)
-
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -48,6 +44,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: ''
   }
 })

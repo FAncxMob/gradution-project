@@ -1,0 +1,86 @@
+<!-- <view class="my-container">
+	<view class="userInfo">
+		<button class="loginBtn" type="primary" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo"
+			bindgetuserinfo="getUserInfo"> 登录
+		</button>
+		<block wx:else>
+			<image bindtap="bindViewTap" class="userInfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" />
+			<text class="userInfo-nickname">{{userInfo.nickName}}</text>
+		</block>
+	</view>
+
+</view> -->
+<view id="person-container">
+	<view class="header">
+		<image src="{{userInfo.avatarUrl||'../../../icon/avatar.png'}}" mode="cover" />
+		<view class="login-container">
+			<button plain="{{true}}" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo"
+				bindgetuserinfo="getUserInfo"> 立即登录
+			</button>
+			<block wx:else>
+				<text bind class="nickname">{{userInfo.nickName}}</text>
+			</block>
+			<text>来享受最好的校园服务吧~</text>
+			<!-- <image src="../../icon/right-arrow.png" mode="cover" /> -->
+		</view>
+	</view>
+	<view class="card-horizontal">
+		<view class="title">
+			<text class="iconfont icon-badge- fz40 mr10"></text>
+			我的名片</view>
+		<view class="item-container">
+			<view bindtap="bindToPage" data-page="../history/history">
+				<text class="iconfont icon-bianzu fz70 mr10 mb10" style="color:#FFC600"></text>
+				历史记录</view>
+			<view bindtap="bindToPage" data-page="../like/like">
+				<text class="iconfont icon-dianzan1 fz70 mr10 mb10" style="color:#FFC600"></text>
+				我的赞</view>
+			<view bindtap="bindToPage" data-page="../comment/comment">
+				<text class="iconfont icon-icon_huifu-xian fz70 mr10 mb10" style="color:#FFC600"></text>
+				我的回复</view>
+			<view bindtap="bindToPage" data-page="../follow/follow">
+				<text class="iconfont icon-guanzhu1 fz70 mr10 mb10" style="color:#FFC600"></text>
+				我的关注</view>
+		</view>
+	</view>
+	<view class="card-vertical">
+		<view>
+			<text class="iconfont icon-tiezi1 fz60 mr20" style="color:#328EEA"></text>
+			<text>我的帖子</text>
+			<text class="iconfont icon-youjiantou1 fz50  fr"></text>
+		</view>
+		<view>
+			<text class="iconfont icon-saoma6 fz60 mr20" style="color:#328EEA"></text>
+			<text>扫码核销</text>
+			<text class="iconfont icon-youjiantou1 fz50  fr"></text>
+		</view>
+		<view>
+			<text class="iconfont icon-tongzhi2 fz60 mr20" style="color:#328EEA"></text>
+			<text>通知消息</text>
+			<text class="iconfont icon-youjiantou1 fz50  fr"></text>
+		</view>
+		<view>
+			<text class="iconfont icon-goumai fz60 mr20" style="color:#328EEA"></text>
+			<text>我购买的</text>
+			<text class="iconfont icon-youjiantou1 fz50  fr"></text>
+		</view>
+		<view>
+			<text class="iconfont icon-shoucang1 fz60 mr20" style="color:#328EEA"></text>
+			<text>我的收藏</text>
+			<text class="iconfont icon-youjiantou1 fz50  fr"></text>
+		</view>
+	</view>
+	<view class="card-vertical">
+		<view>
+			<text class="iconfont icon-tubiaozhizuomoban fz60 mr20" style="color:#DF66B6"></text>
+			<text>设置</text>
+			<text class="iconfont icon-youjiantou1 fz50  fr"></text>
+		</view>
+		<view>
+			<text class="iconfont icon-bangzhu1 fz60 mr20" style="color:#DF66B6"></text>
+			<text>帮助</text>
+			<text class="iconfont icon-youjiantou1 fz50  fr"></text>
+		</view>
+
+	</view>
+</view>

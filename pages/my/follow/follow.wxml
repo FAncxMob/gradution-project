@@ -1,0 +1,9 @@
+<view class='follow'>
+    <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    <view wx:if="{{currentSelect===0}}">
+        1
+    </view>
+    <view wx:else>
+        2
+    </view>
+</view>

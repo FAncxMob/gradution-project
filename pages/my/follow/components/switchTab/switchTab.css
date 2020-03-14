@@ -1,0 +1,45 @@
+#switchTab {
+  display: flex;
+}
+#switchTab .tab {
+  flex: 1;
+  text-align: center;
+  line-height: 80rpx;
+}
+#switchTab .selected {
+  color: #4585F5;
+  padding-bottom: 10rpx;
+  border-bottom: 4rpx solid #4585F5;
+}
+.switchTab {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  background-color: #fff;
+  padding-left: 30rpx;
+  z-index: 1;
+}
+.switchTab .switcher {
+  padding-right: 60rpx;
+}
+.switchTab .switcher .bottomLine {
+  opacity: 0;
+  width: 100%;
+  height: 8rpx;
+  border-radius: 10rpx;
+}
+.switchTab .switcher text {
+  padding: 10rpx 10rpx 15rpx;
+  text-align: center;
+  display: block;
+}
+.switchTab .selected .bottomLine {
+  opacity: 1;
+}
+.switchTab .selected text {
+  color: #000;
+}

@@ -1,0 +1,97 @@
+@import '../../../common/variables.less';
+
+#person-container {
+  padding-bottom: 20rpx;
+
+  .header {
+    display: flex;
+    padding: 20rpx 30rpx;
+    align-items: center;
+
+    image {
+      margin-right: 30rpx;
+      width: 150rpx;
+      height: 150rpx;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .login-container {
+      display: flex;
+      flex-direction: column;
+
+      .nickname {
+        font-size: 45rpx;
+        font-weight: bold;
+        color: rgb(51, 48, 48);
+      }
+
+      button {
+        width: 200rpx;
+        line-height: 70rpx;
+        margin: 0;
+        padding: 0;
+      }
+
+      text {
+        margin-top: 5rpx;
+        color: #999999;
+        font-size: 28rpx;
+      }
+
+      // button[plain] {
+      //   border: none;
+      // }
+
+    }
+
+
+  }
+
+  .card-horizontal {
+    margin: 20rpx;
+    padding: 20rpx;
+    border: 2rpx solid rgb(194, 190, 190);
+    border-radius: 20rpx;
+
+    .title {
+      display: flex;
+      align-items: center;
+      font-size: 30rpx;
+      margin-bottom: 10rpx;
+    }
+
+    .item-container {
+      display: flex;
+      margin: 10rpx 20rpx;
+      justify-content: space-between;
+
+      view {
+        font-size: 26rpx;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  .card-vertical {
+    margin: 20rpx;
+    padding: 20rpx;
+    padding-bottom: 50rpx;
+    border: 2rpx solid @borderColor-deep;
+    border-radius: 20rpx;
+
+    view {
+      padding: 15rpx 0;
+      border-bottom: 2rpx solid @borderColor-easy;
+
+      text {
+        vertical-align: middle;
+      }
+    }
+  }
+
+
+
+}

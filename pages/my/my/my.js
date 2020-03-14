@@ -1,4 +1,9 @@
+const util = require('../../../utils/util')
+
 const app = getApp()
+let {
+  globalData
+} = app
 
 Page({
   /**
@@ -7,7 +12,16 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+  },
+  bindToPage: function (event) {
+    if (!globalData.userInfo) {
+      return
+    }
+    let page = event.currentTarget.dataset.page
+    wx.navigateTo({
+      url: page
+    })
   },
 
   //事件处理函数
@@ -44,11 +58,30 @@ Page({
       })
     }
   },
-  getUserInfo: function (e) {
-    app.globalData.userInfo = e.detail.userInfo
+  async getUserInfo(e) {
+    let userInfo = e.detail.userInfo
+    app.globalData.userInfo = userInfo
+    if (!userInfo) {
+      return
+    }
+    // 授权获取userInfo
+    // 发送token（openId）和和userInfo到数据库
+    // let token = wx.getStorageSync('token')
+    let data = {
+      userInfo
+    }
+    let result = await util.request('/saveOpenId', data)
+    if (result !== 'error') {
+      globalData.login = true
+    }
+    console.log('登录结果:', result)
+
     this.setData({
-      userInfo: e.detail.userInfo,
+      userInfo,
       hasUserInfo: true
     })
+
+
+
   }
 })

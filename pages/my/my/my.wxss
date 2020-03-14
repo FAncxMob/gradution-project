@@ -1,0 +1,72 @@
+#person-container {
+  padding-bottom: 20rpx;
+}
+#person-container .header {
+  display: flex;
+  padding: 20rpx 30rpx;
+  align-items: center;
+}
+#person-container .header image {
+  margin-right: 30rpx;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+#person-container .header .login-container {
+  display: flex;
+  flex-direction: column;
+}
+#person-container .header .login-container .nickname {
+  font-size: 45rpx;
+  font-weight: bold;
+  color: #333030;
+}
+#person-container .header .login-container button {
+  width: 200rpx;
+  line-height: 70rpx;
+  margin: 0;
+  padding: 0;
+}
+#person-container .header .login-container text {
+  margin-top: 5rpx;
+  color: #999999;
+  font-size: 28rpx;
+}
+#person-container .card-horizontal {
+  margin: 20rpx;
+  padding: 20rpx;
+  border: 2rpx solid #c2bebe;
+  border-radius: 20rpx;
+}
+#person-container .card-horizontal .title {
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+#person-container .card-horizontal .item-container {
+  display: flex;
+  margin: 10rpx 20rpx;
+  justify-content: space-between;
+}
+#person-container .card-horizontal .item-container view {
+  font-size: 26rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#person-container .card-vertical {
+  margin: 20rpx;
+  padding: 20rpx;
+  padding-bottom: 50rpx;
+  border: 2rpx solid #c2bebe;
+  border-radius: 20rpx;
+}
+#person-container .card-vertical view {
+  padding: 15rpx 0;
+  border-bottom: 2rpx solid #e4dcdc;
+}
+#person-container .card-vertical view text {
+  vertical-align: middle;
+}
