@@ -1,4 +1,6 @@
 const util = require('../../../utils/util')
+let app = getApp()
+
 
 Page({
 
@@ -19,12 +21,13 @@ Page({
       facultyIndex
     } = this.data
 
+
     let data = {
       ...e.detail.value,
       school: schoolArray[schoolIndex],
       faculty: facultyArray[facultyIndex]
     }
-    // let result = await util.request('/login', data)
+
     wx.showLoading({
       title: '登陆中...',
     })
@@ -46,7 +49,6 @@ Page({
         duration: 3000
       })
     }
-
     console.log('form发生了submit事件，携带数据为：', data)
   },
   bindPickerChange(e) {
@@ -60,7 +62,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    console.log('load()-login')
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

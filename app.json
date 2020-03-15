@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/login/index/index",
-    "pages/index/index",
-    "pages/news/news",
+    
     "pages/my/my/my",
+    "pages/index/index",
+    "pages/login/index/index",
+    "pages/news/news",
+    
     "pages/my/history/history",
     "pages/my/like/like",
     "pages/my/comment/comment",
@@ -11,8 +13,8 @@
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
   "tabBar": {

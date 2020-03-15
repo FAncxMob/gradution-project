@@ -2,48 +2,106 @@
 
 #person-container {
   padding-bottom: 20rpx;
+  position: relative;
+  overflow: hidden;
+
+  .header-bg {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 400rpx;
+    background: @orange;
+    z-index: -1;
+  }
 
   .header {
     display: flex;
-    padding: 20rpx 30rpx;
-    align-items: center;
+    flex-direction: column;
+    height: 300rpx;
+    margin: 30rpx 20rpx;
+    padding: 30rpx;
+    background: rgba(255, 255, 255, .25);
+    border: 1rpx solid #E0CFBB;
+    border-radius: 10px;
+    box-sizing: border-box;
 
-    image {
+
+
+    .image {
       margin-right: 30rpx;
       width: 150rpx;
       height: 150rpx;
       border-radius: 50%;
       flex-shrink: 0;
+      overflow: hidden;
+      border: 4rpx solid #E0CFBB;
+      box-shadow: -2px 2px 2px rgba(0, 0, 0, .6);
     }
 
-    .login-container {
-      display: flex;
-      flex-direction: column;
-
-      .nickname {
-        font-size: 45rpx;
-        font-weight: bold;
-        color: rgb(51, 48, 48);
-      }
-
-      button {
-        width: 200rpx;
-        line-height: 70rpx;
-        margin: 0;
-        padding: 0;
-      }
-
-      text {
-        margin-top: 5rpx;
-        color: #999999;
-        font-size: 28rpx;
-      }
-
-      // button[plain] {
-      //   border: none;
-      // }
-
+    .hbue {
+      border: none;
+      width: 60rpx;
+      height: 60rpx;
+      border-radius: 50%;
+      border: 2rpx solid @borderColor-deep;
+      margin-right: 10rpx;
     }
+
+    .school {
+      color: white;
+      font-size: 26rpx;
+    }
+
+    .nickname {
+      font-size: 40rpx;
+      font-weight: bold;
+      color: rgb(51, 48, 48);
+    }
+
+    .hint {
+      margin-top: 5rpx;
+      color: rgb(88, 78, 78);
+      font-size: 28rpx;
+    }
+
+
+
+    // image {
+    //   margin-right: 30rpx;
+    //   width: 150rpx;
+    //   height: 150rpx;
+    //   border-radius: 50%;
+    //   flex-shrink: 0;
+    // }
+
+    // .login-container {
+    //   display: flex;
+    //   flex-direction: column;
+
+    //   .nickname {
+    //     font-size: 45rpx;
+    //     font-weight: bold;
+    //     color: rgb(51, 48, 48);
+    //   }
+
+    //   button {
+    //     width: 200rpx;
+    //     line-height: 70rpx;
+    //     margin: 0;
+    //     padding: 0;
+    //   }
+
+    //   text {
+    //     margin-top: 5rpx;
+    //     color: #999999;
+    //     font-size: 28rpx;
+    //   }
+
+    //   // button[plain] {
+    //   //   border: none;
+    //   // }
+
+    // }
 
 
   }
@@ -53,24 +111,28 @@
     padding: 20rpx;
     border: 2rpx solid rgb(194, 190, 190);
     border-radius: 20rpx;
+    background: #ffffff;
 
     .title {
       display: flex;
       align-items: center;
       font-size: 30rpx;
-      margin-bottom: 10rpx;
+      padding-bottom: 20rpx;
+      margin-bottom: 20rpx;
+      border-bottom: 2rpx solid @borderColor-easy;
     }
 
     .item-container {
       display: flex;
-      margin: 10rpx 20rpx;
-      justify-content: space-between;
+      flex-wrap: wrap;
 
       view {
         font-size: 26rpx;
         display: flex;
+        width: 25%;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 20rpx;
       }
     }
   }

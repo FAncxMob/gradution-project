@@ -18,3 +18,8 @@
   border-radius: 10rpx;
   margin-right: 10rpx;
 }
+
+.moreInfo {
+  color: rgb(88, 78, 78);
+  font-size: 28rpx;
+}
