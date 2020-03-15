@@ -1,0 +1,47 @@
+#loginIndex {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(102, 182, 223, 0.6);
+  background: linear-gradient(to bottom, #b6fbff, #83a4d4);
+}
+#loginIndex .login-container {
+  width: 80vw;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 20px 0 20px -20px #061161, -20px 0 20px -20px #061161;
+  border-radius: 10px;
+}
+#loginIndex .login-container .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#loginIndex .login-container .login-form .section {
+  color: #cccccc;
+  margin-bottom: 20rpx;
+  padding-bottom: 5rpx;
+  border-bottom: 2rpx solid #cccccc;
+}
+#loginIndex .login-container .login-form .section input {
+  width: 60vw;
+}
+#loginIndex .login-container .login-form .section .input {
+  color: #cccccc;
+}
+#loginIndex .login-container .login-form .section .section-title {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+#loginIndex .login-container .login-form .btn-area {
+  margin: 50rpx 0;
+}
+#loginIndex .login-container .login-form .title {
+  margin: 30rpx 0;
+  color: #F6E662;
+  font-size: 35rpx;
+  font-weight: bold;
+  text-align: center;
+}

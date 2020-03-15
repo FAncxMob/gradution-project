@@ -1,0 +1,44 @@
+<view id="loginIndex">
+    <view class='login-container'>
+        <form class="login-form" bindsubmit="formSubmit">
+            <view class="title">请填写资料</view>
+            <view class="section">
+                <view class="section-title">学校</view>
+                <picker bindchange="bindPickerChange" data-picker="school" value="{{schoolIndex}}"
+                    range="{{schoolArray}}">
+                    <view class="picker">
+                        {{schoolArray[schoolIndex]}}
+                    </view>
+                </picker>
+            </view>
+            <!-- <view class="section">
+                <view class="section-title">学院</view>
+                <picker bindchange="bindPickerChange" data-picker="faculty" value="{{facultyIndex}}"
+                    range="{{facultyArray}}">
+                    <view class="picker">
+                        {{facultyArray[facultyIndex]}}
+                    </view>
+                </picker>
+            </view> -->
+            <view class="section">
+                <view class="section-title">学号</view>
+                <input placeholder-class="input" name="sno" placeholder="请输入学号" type="number" />
+            </view>
+            <view class="section">
+                <view class="section-title">姓名</view>
+                <input placeholder-class="input" name="name" placeholder="请输入姓名" />
+            </view>
+            <view class="section">
+                <view class="section-title">身份证</view>
+                <input placeholder-class="input" name="idCard" placeholder="请输入身份证号" maxlength="18" />
+            </view>
+            <view class="section">
+                <view class="section-title">手机号</view>
+                <input placeholder-class="input" name="tel" placeholder="请输入手机号" />
+            </view>
+            <view class="btn-area">
+                <button type="primary" formType="submit">登录</button>
+            </view>
+        </form>
+    </view>
+</view>
