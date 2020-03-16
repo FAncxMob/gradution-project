@@ -1,4 +1,5 @@
-// pages/my/follow/follow.js
+const util = require('../../../utils/util')
+
 Page({
 
   /**
@@ -25,8 +26,8 @@ Page({
 
   },
 
-  _load() {
-    console.log('load')
+  async _load() {
+    // let data = await util.request('')
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

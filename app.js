@@ -37,15 +37,18 @@ App({
       // 判断新老用户
       if (haveUser) {
         console.log('老用户，直接进入')
+        // wx.navigateTo({
+        //   url: '/pages/my/userInfo/userInfo'
+        // })
         wx.switchTab({
           url: '/pages/my/my/my'
         })
       } else {
         // 老用户，跳过登录界面直接进入我的页面，新用户跳转到登录页面
         console.log('新用户，滚去登陆')
-        wx.navigateTo({
-          url: '/pages/login/index/index'
-        })
+        // wx.navigateTo({
+        //   url: '/pages/login/index/index'
+        // })
       }
     }
 

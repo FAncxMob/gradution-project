@@ -1,6 +1,4 @@
 const util = require('../../../utils/util')
-let app = getApp()
-
 
 Page({
 
@@ -8,63 +6,45 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
     schoolArray: ['湖北经济学院'],
     schoolIndex: 0,
     facultyArray: ['经济与贸易学院', '金融学院', '财政与公共管理学院', '工商管理学院', '会计学院', '旅游与酒店管理学院', '信息管理与统计学院', '法学院', '艺术设计学院', '新闻与传播学院', '外国语学院', '信息与通信工程学院', '体育经济与管理学院', '低碳经济学院', '财经高等研究院', '继续教育学院'],
     facultyIndex: 0,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    userInfo: '',
-    formValue: {}
   },
-  async saveFormValue(e) {
-    console.log('saveFormValue')
-
-    this.setData({
-      formValue: e.detail.value
-    })
-  },
-  async login() {
-    console.log('login')
+  async formSubmit(e) {
     let {
       schoolArray,
       schoolIndex,
       facultyArray,
-      facultyIndex,
-      formValue,
-      userInfo
+      facultyIndex
     } = this.data
-    formValue.idCard = formValue.idCard.toUpperCase()
 
 
     let data = {
-      ...formValue,
+      ...e.detail.value,
       school: schoolArray[schoolIndex],
-      faculty: facultyArray[facultyIndex],
-      avatar: userInfo.avatarUrl,
-      nickName: userInfo.nickName
+      faculty: facultyArray[facultyIndex]
     }
 
     wx.showLoading({
-      title: '登陆中...',
+      title: '保存信息中...',
     })
-    let result = await util.request('/login', data)
+    let result = await util.request('/updateUserInfo', data)
     wx.hideLoading()
     if (result.code) {
-      // 登陆成功之后修改本地的newUser
-
-      wx.setStorageSync('haveUser', 1)
-      console.log('修改haveUser为1')
       wx.showToast({
-        title: '登陆成功',
+        title: '保存成功啦~',
         icon: 'success',
         duration: 2000
       })
-      wx.switchTab({
-        url: '../../my/my/my'
-      })
+      // wx.startPullDownRefresh()
+      // wx.switchTab({
+      //   url: '../../my/my/my'
+      // })
     } else {
       wx.showToast({
-        title: `认证失败\r\n，请仔细确认学号，姓名和身份证是否输入正确`,
+        title: `保存失败了！请重试`,
         icon: 'none',
         duration: 3000
       })
@@ -78,23 +58,29 @@ Page({
       facultyIndex: e.detail.value
     })
   },
-  async bindGetUserInfo(e) {
-    console.log('bindGetUserInfo')
-    let userInfo = e.detail.userInfo
-    // console.log(userInfo, 'GetUserInfo')
-    await this.setData({
-      userInfo
-    })
-    if (userInfo) {
-      this.login()
-    }
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log('load()-login')
+  async onLoad(options) {
+    this._load()
+  },
+
+  async _load() {
+    let {
+      schoolArray,
+      facultyArray
+    } = this.data
+    if (wx.getStorageSync('token') && wx.getStorageSync('haveUser') === 1) {
+      let data = await util.request('/getUserInfo')
+      console.log('/getUserInfo-userInfo')
+      let oldSchoolIndex = schoolArray.findIndex(item => item === data.userInfo.school)
+      let oldFacultyIndex = facultyArray.findIndex(item => item === data.userInfo.faculty)
+      this.setData({
+        userInfo: data.userInfo,
+        schoolIndex: oldSchoolIndex,
+        facultyIndex: oldFacultyIndex
+      })
+    }
   },
 
   /**

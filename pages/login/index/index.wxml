@@ -1,6 +1,6 @@
 <view id="loginIndex">
     <view class='login-container'>
-        <form class="login-form" bindsubmit="formSubmit">
+        <form class="login-form" bindsubmit="saveFormValue">
             <view class="title">请填写资料</view>
             <view class="section">
                 <view class="section-title">学校</view>
@@ -37,7 +37,11 @@
                 <input placeholder-class="input" name="tel" placeholder="请输入手机号" />
             </view>
             <view class="btn-area">
-                <button type="primary" formType="submit">登录</button>
+                <button type="primary" formType="submit" wx:if="{{canIUse}}" type="primary" open-type="getUserInfo"
+                    bindgetuserinfo="bindGetUserInfo"> 登录
+                </button>
+                <view wx:else>请升级微信版本</view>
+                <!-- <button >登录</button> -->
             </view>
         </form>
     </view>

@@ -81,6 +81,20 @@
 					"id": -1,
 					"name": "pages/login/index/index",
 					"pathName": "pages/login/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/userInfo/userInfo",
+					"pathName": "pages/my/userInfo/userInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/follow/follow",
+					"pathName": "pages/my/follow/follow",
 					"scene": null
 				}
 			]
