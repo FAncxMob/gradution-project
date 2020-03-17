@@ -1,5 +1,32 @@
-/* utils/index.wxss */
-.switchBar {
+@import '../../../../../common/variables.less';
+
+#switchTab {
+    display: flex;
+    // border-bottom: 2rpx solid #5D5D5D;
+    background: #ffffff;
+    box-shadow: 0 2rpx 5rpx #9D9D9B;
+
+    .tab {
+        flex: 1;
+        text-align: center;
+        line-height: 80rpx;
+        font-weight: bold;
+        color: #5D5D5D;
+    }
+
+    .selected {
+        transition: all .2s;
+
+        color: @color-blue;
+        padding-bottom: 6rpx;
+        border-bottom: 4rpx solid @color-blue;
+    }
+}
+
+
+
+
+.switchTab {
     position: fixed;
     top: 0;
     width: 100%;

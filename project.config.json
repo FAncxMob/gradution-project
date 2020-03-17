@@ -95,6 +95,20 @@
 					"id": -1,
 					"name": "pages/my/follow/follow",
 					"pathName": "pages/my/follow/follow",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/follow/follow",
+					"pathName": "pages/my/follow/follow",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/like/like",
+					"pathName": "pages/my/like/like",
 					"scene": null
 				}
 			]

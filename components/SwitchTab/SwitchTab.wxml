@@ -1,18 +1,5 @@
-<view class="switchBar">
-    <view catchtap="handleSelect" data-selectStatus='0' class="switcher {{currentSelect == 0 ? 'selected':''}}">
-        <text>全部</text>
-        <view class="bottomLine"></view>
-    </view>
-    <view catchtap="handleSelect" data-selectStatus='1' class="switcher {{currentSelect == 1 ? 'selected':''}}">
-        <text>待付款</text>
-        <view class="bottomLine"></view>
-    </view>
-    <view catchtap="handleSelect" data-selectStatus='2' class="switcher {{currentSelect == 2 ? 'selected':''}}">
-        <text>待发货</text>
-        <view class="bottomLine"></view>
-    </view>
-    <view catchtap="handleSelect" data-selectStatus='3' class="switcher {{currentSelect == 3 ? 'selected':''}}">
-        <text>已发货</text>
-        <view class="bottomLine"></view>
+<view id="switchTab">
+    <view catchtap="handleSelect" data-selectStatus="{{index}}" class="tab " wx:for="{{arr}}" wx:key="{{index}}">
+        <text class="{{currentSelect === index ? 'selected':''}}">{{item}}</text>
     </view>
 </view>

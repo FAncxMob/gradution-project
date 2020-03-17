@@ -1,20 +1,37 @@
-// pages/my/like/like.js
+const util = require('../../../utils/util')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    currentSelect: 0,
+    data: []
   },
+
+  handleSelect(data) {
+    this.setData({
+      currentSelect: data.detail,
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this._load()
 
   },
 
+  async _load() {
+
+    let result = await util.request('/getLikeByOpenId')
+    this.setData({
+      data: result.data
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

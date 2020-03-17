@@ -2042,3 +2042,21 @@
 .tipColor {
   color: #c2bebe;
 }
+.gray-1 {
+  color: #5D5D5D;
+}
+.gray-2 {
+  color: #9D9D9B;
+}
+.gray-3 {
+  color: #ACA27D;
+}
+.blue-1 {
+  color: #4585F5;
+}
+.borderBottom {
+  border-bottom: 2rpx solid #c2bebe;
+}
+.bg-gray-1 {
+  background: #f5f5f5;
+}

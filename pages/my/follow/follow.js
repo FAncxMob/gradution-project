@@ -8,14 +8,51 @@ Page({
   data: {
     tabArr: ["我的关注", "我的粉丝"],
     currentSelect: 0,
-    follows: [],
-    fans: []
+    following: [],
+    follower: []
   },
 
   handleSelect(data) {
     this.setData({
       currentSelect: data.detail,
     })
+  },
+
+  cancelFollowing(e) {
+    let that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消关注吗？',
+      async success(res) {
+        if (res.confirm) {
+
+          let cancelOpenId = e.currentTarget.dataset.openid
+          wx.showLoading({
+            title: ''
+          })
+          let result = await util.request('/cancelFollowing', {
+            cancelOpenId
+          })
+          wx.hideLoading()
+          if (result.code) {
+            that._load()
+          }
+        }
+      }
+    })
+
+
+
+  },
+  async followingTa(e) {
+    let followId = e.currentTarget.dataset.openid
+    let result = await util.request('/followingTa', {
+      followId
+    })
+    if (result.code) {
+      this._load()
+    }
+
   },
 
   /**
@@ -27,7 +64,12 @@ Page({
   },
 
   async _load() {
-    // let data = await util.request('')
+
+    let result = await util.request('/getFollowingAndFollowerByOpenId')
+    this.setData({
+      following: result.data.following,
+      follower: result.data.follower,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

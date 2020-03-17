@@ -1,0 +1,4 @@
+<view id="noData" style="height:{{height}};">
+    <text class="iconfont icon-icon-test fz70 gray-3"></text>
+    <view class="fz40 gray-2">{{title}}</view>
+</view>

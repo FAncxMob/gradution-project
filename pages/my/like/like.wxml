@@ -1,2 +1,18 @@
-<!--pages/my/like/like.wxml-->
-<text>pages/my/like/like.wxml</text>
+<view id='like' class="bg-gray-1">
+    <block wx:if="{{data.length===0}}">
+        <NoData height="100vh" title="还没有被任何人点赞..." />
+    </block>
+    <block wx:else>
+        <view class="borderBottom p30 df align-center justify-between" wx:for="{{data}}" wx:key="{{index}}">
+            <view class="df align-start">
+                <image class="avatar mr20" src="{{item.avatar}}"></image>
+                <view class="mr20">
+                    <view class="text-ellipsis-row1 fz30 fwb mb10 gray-1">{{item.nickName}}</view>
+                    <view class="text-ellipsis-row2 fz26 gray-2">这里显示点赞时间</view>
+                </view>
+            </view>
+            <view>评论内容
+            </view>
+        </view>
+    </block>
+</view>

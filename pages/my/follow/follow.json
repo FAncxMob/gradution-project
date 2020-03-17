@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "SwitchTab": "./components/switchTab/switchTab"
+    "SwitchTab": "../../../components/switchTab/switchTab",
+    "NoData": "../../../components/NoData/NoData"
   },
   "navigationBarTitleText": "关注"
 }

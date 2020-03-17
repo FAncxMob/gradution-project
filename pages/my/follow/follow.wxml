@@ -1,9 +1,44 @@
-<view class='follow'>
+<view id='follow' class="bg-gray-1">
     <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
-    <view wx:if="{{currentSelect===0}}">
-        1
-    </view>
-    <view wx:else>
-        2
-    </view>
+    <block wx:if="{{currentSelect===0}}">
+        <block wx:if="{{following.length===0}}">
+            <NoData height="700rpx" title="还没有关注任何人..." />
+        </block>
+        <block wx:else>
+            <view class="borderBottom p30 df align-center justify-between" wx:for="{{following}}" wx:key="{{index}}">
+                <view class="df align-start">
+                    <image class="avatar mr20" src="{{item.avatar}}"></image>
+                    <view class="mr20">
+                        <view class="text-ellipsis-row1 fz30 fwb mb10 gray-1">{{item.nickName}}</view>
+                        <view class="text-ellipsis-row2 fz26 gray-2">{{item.desc}}</view>
+                    </view>
+                </view>
+                <view bindtap="cancelFollowing" data-openid="{{item.openId}}" class="small-btn">
+                    <text class="iconfont icon-Tick fz30"></text>
+                    已关注</view>
+            </view>
+        </block>
+
+    </block>
+    <block wx:else>
+        <view class="borderBottom p30 df align-center justify-between" wx:for="{{follower}}" wx:key="{{index}}">
+            <view class="df align-start">
+                <image class="avatar mr20" src="{{item.avatar}}"></image>
+                <view class="mr20">
+                    <view class="text-ellipsis-row1 fz30 fwb mb10 gray-1">{{item.nickName}}</view>
+                    <view class="text-ellipsis-row2 fz26 gray-2">{{item.desc}}</view>
+                </view>
+            </view>
+            <block wx:if="{{item.isFollowing}}">
+
+                <view bindtap="cancelFollowing" data-openid="{{item.openId}}" class="small-btn">
+                    <text class="iconfont icon-Tick fz30"></text>
+                    已互相关注</view>
+            </block>
+            <block wx:else>
+                <view bindtap="followingTa" data-openid="{{item.openId}}" class="small-btn follow-btn">
+                    关注ta</view>
+            </block>
+        </view>
+    </block>
 </view>

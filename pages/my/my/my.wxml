@@ -19,17 +19,6 @@
 				<text class="hint">{{userInfo.desc}}</text>
 			</view>
 		</view>
-		<!-- 调用需要wx授权的接口获取用户信息 -->
-		<!-- <image src="{{userInfo.avatarUrl||'../../../icon/avatar.png'}}" mode="cover" /> -->
-		<!-- <view class="login-container">
-				<button plain="{{true}}" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo"
-					bindgetuserinfo="getUserInfo"> 立即登录
-				</button>
-				<block wx:else>
-					<text bind class="nickname">{{userInfo.nickName}}</text>
-				</block>
-				<text>来享受最好的校园服务吧~</text>
-			</view> -->
 	</view>
 	<view class="card-horizontal">
 		<view class="title df justify-between">

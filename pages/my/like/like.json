@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "我的赞"
+  "usingComponents": {
+    "NoData": "../../../components/NoData/NoData"
+  },
+  "navigationBarTitleText": "收到的点赞"
 }

@@ -23,3 +23,28 @@
   color: rgb(88, 78, 78);
   font-size: 28rpx;
 }
+
+.avatar {
+  flex-shrink: 0;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid #e0cfbb;
+}
+
+.small-btn {
+  flex-shrink: 0;
+  display: inline;
+  font-size: 26rpx;
+  padding: 10rpx 20rpx 10rpx 10rpx;
+  background: #cbcbcb;
+  border-radius: 10rpx;
+  font-weight: bold;
+  color: #766d6d;
+}
+
+.follow-btn {
+  background: #ffa440;
+  padding: 10rpx 30rpx;
+  color: white;
+}
