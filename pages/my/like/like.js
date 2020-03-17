@@ -6,8 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    tabArr: ['评论的赞', '帖子的赞'],
     currentSelect: 0,
-    data: []
+    comment: [],
+    post: []
   },
 
   handleSelect(data) {
@@ -28,9 +30,15 @@ Page({
   async _load() {
 
     let result = await util.request('/getLikeByOpenId')
-    this.setData({
-      data: result.data
-    })
+    if (result.code) {
+      this.setData({
+        comment: result.data.comment,
+        post: result.data.post
+      })
+    } else {
+      console.log('获取失败了')
+    }
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

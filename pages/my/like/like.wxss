@@ -1,1 +1,6 @@
-/* pages/my/like/like.wxss */
+#follow {
+  margin-top: 80rpx;
+}
+#follow .comment-area {
+  width: 30vw;
+}

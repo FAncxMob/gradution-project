@@ -1,6 +1,7 @@
 {
   "usingComponents": {
+    "SwitchTab": "../../../components/switchTab/switchTab",
     "NoData": "../../../components/NoData/NoData"
   },
-  "navigationBarTitleText": "收到的点赞"
+  "navigationBarTitleText": "收到的赞"
 }
