@@ -1,4 +1,4 @@
-<view id="switchTab">
+<view class="switchTab">
     <view catchtap="handleSelect" data-selectStatus="{{index}}" class="tab " wx:for="{{arr}}" wx:key="{{index}}">
         <text class="{{currentSelect === index ? 'selected':''}}">{{item}}</text>
     </view>

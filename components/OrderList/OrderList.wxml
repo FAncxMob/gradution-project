@@ -1,0 +1,50 @@
+<view class="orderList">
+    <block wx:if="{{data.length===0}}">
+        <NoData height="700rpx" title="{{title}}" />
+    </block>
+    <block wx:else>
+        <view class="list twoSideShadow borderBottom" wx:for="{{data}}" wx:key="{{index}}">
+            <block wx:if="{{item.pic.length!==0}}">
+                <!-- 有图片的排版 -->
+                <view class="df gray-1">
+                    <!-- 有图片的排版 -->
+                    <image class="pic mr20" src="{{item.pic[0]}}" mode="widthFix"></image>
+                    <view class="df flex-column justify-between fz30 gray-1">
+                        <view class=" fwb text-ellipsis-row1">{{item.title}}</view>
+                        <view class="text-ellipsis-row3">{{item.desc}}</view>
+                        <view class="df fz26">
+                            <view class="mr10">点赞:{{item.like}}</view>
+                            <view class="mr10">浏览:{{item.watch}}</view>
+                            <view class="mr10">收藏:{{item.collect}}</view>
+                            <view>留言:{{item.comments}}</view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <block wx:else>
+                <!-- 没有图片的排版 -->
+                <view class="gray-1">
+                    <view class="mb20 text-ellipsis-row1 fwb gray-1">
+                        {{item.title}}
+                    </view>
+                    <view class="mb20 text-ellipsis-row3">
+                        {{item.desc}}
+                    </view>
+                    <view class="df fz26">
+                        <view class="mr10">点赞:{{item.like}}</view>
+                        <view class="mr10">浏览:{{item.watch}}</view>
+                        <view class="mr10">收藏:{{item.collect}}</view>
+                        <view>留言:{{item.comments}}</view>
+                    </view>
+                </view>
+            </block>
+            <view class="bottom-box borderTop   df justify-between align-center">
+                <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd hh:mm')}}</text>
+                <view>
+                    <button class="mr20 pl20 small-btn">编辑</button>
+                    <button class="pl20 small-btn">删除</button>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

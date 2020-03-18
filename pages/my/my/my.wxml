@@ -64,10 +64,10 @@
 				<text class="iconfont icon-guanzhu1 fz70 mr10 mb10" style="color:#4585F5"></text>
 				我的关注
 			</view>
-			<view bindtap="bindToPage" data-page="../history/history">
+			<!-- <view bindtap="bindToPage" data-page="../history/history">
 				<text class="iconfont icon-tongzhi2 fz70 mr10 mb10" style="color:#4585F5"></text>
 				通知消息
-			</view>
+			</view> -->
 			<view bindtap="bindToPage" data-page="../collect/collect">
 				<text class="iconfont icon-shoucang1 fz70 mr10 mb10" style="color:#4585F5"></text>
 				我的收藏

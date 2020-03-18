@@ -1,36 +1,58 @@
 #person-container {
   padding-bottom: 20rpx;
+  position: relative;
+  overflow: hidden;
+}
+#person-container .header-bg {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 400rpx;
+  background: #FF8600;
+  z-index: -1;
 }
 #person-container .header {
   display: flex;
-  padding: 20rpx 30rpx;
-  align-items: center;
+  flex-direction: column;
+  height: 300rpx;
+  margin: 30rpx 20rpx;
+  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1rpx solid #E0CFBB;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 20rpx 0 20rpx -20rpx #9B856C, -20rpx 0 20rpx -20rpx #9B856C;
 }
-#person-container .header image {
+#person-container .header .image {
   margin-right: 30rpx;
   width: 150rpx;
   height: 150rpx;
   border-radius: 50%;
   flex-shrink: 0;
+  overflow: hidden;
+  border: 4rpx solid #E0CFBB;
+  box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.6);
 }
-#person-container .header .login-container {
-  display: flex;
-  flex-direction: column;
+#person-container .header .hbue {
+  border: none;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  border: 2rpx solid #e4dcdc;
+  margin-right: 10rpx;
 }
-#person-container .header .login-container .nickname {
-  font-size: 45rpx;
+#person-container .header .school {
+  color: white;
+  font-size: 26rpx;
+}
+#person-container .header .nickname {
+  font-size: 40rpx;
   font-weight: bold;
   color: #333030;
 }
-#person-container .header .login-container button {
-  width: 200rpx;
-  line-height: 70rpx;
-  margin: 0;
-  padding: 0;
-}
-#person-container .header .login-container text {
+#person-container .header .hint {
   margin-top: 5rpx;
-  color: #999999;
+  color: #584e4e;
   font-size: 28rpx;
 }
 #person-container .card-horizontal {
@@ -38,34 +60,38 @@
   padding: 20rpx;
   border: 2rpx solid #c2bebe;
   border-radius: 20rpx;
+  background: #ffffff;
 }
 #person-container .card-horizontal .title {
   display: flex;
   align-items: center;
   font-size: 30rpx;
-  margin-bottom: 10rpx;
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 2rpx solid #c2bebe;
 }
 #person-container .card-horizontal .item-container {
   display: flex;
-  margin: 10rpx 20rpx;
-  justify-content: space-between;
+  flex-wrap: wrap;
 }
 #person-container .card-horizontal .item-container view {
   font-size: 26rpx;
   display: flex;
+  width: 25%;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20rpx;
 }
 #person-container .card-vertical {
   margin: 20rpx;
   padding: 20rpx;
   padding-bottom: 50rpx;
-  border: 2rpx solid #c2bebe;
+  border: 2rpx solid #e4dcdc;
   border-radius: 20rpx;
 }
 #person-container .card-vertical view {
   padding: 15rpx 0;
-  border-bottom: 2rpx solid #e4dcdc;
+  border-bottom: 2rpx solid #c2bebe;
 }
 #person-container .card-vertical view text {
   vertical-align: middle;

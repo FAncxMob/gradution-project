@@ -10,7 +10,8 @@
     "pages/my/comment/comment",
     "pages/my/follow/follow",
     "pages/my/collect/collect",
-    "pages/my/allOrder/allOrder"
+    "pages/my/allOrder/allOrder",
+    "pages/my/addressManager/allOrder"
   ],
   "window": {
     "backgroundTextStyle": "dark",
