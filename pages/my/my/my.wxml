@@ -80,7 +80,7 @@
 			必备工具
 		</view>
 		<view class="item-container">
-			<view bindtap="bindToPage" data-page="../comment/comment">
+			<view bindtap="bindToPage" data-page="../addressManager/addressManager">
 				<text class="iconfont icon-tubiao201 fz70 mr10 mb10" style="color:#D75EB2"></text>
 				地址管理
 			</view>

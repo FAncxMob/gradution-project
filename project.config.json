@@ -123,6 +123,20 @@
 					"id": -1,
 					"name": "全部订单",
 					"pathName": "pages/my/allOrder/allOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地址管理",
+					"pathName": "pages/my/addressManager/addressManager",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加新地址",
+					"pathName": "pages/my/addressManager/addAddress/addAddress",
 					"scene": null
 				}
 			]

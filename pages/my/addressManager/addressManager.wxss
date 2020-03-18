@@ -1,0 +1,17 @@
+#addressManager {
+    padding: 20rpx;
+}
+
+#addressManager .edit {
+    flex-shrink: 0;
+    text-shadow: 2rpx 2rpx greenyellow;
+}
+
+#addressManager .addAddress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    line-height: 60rpx;
+
+}
