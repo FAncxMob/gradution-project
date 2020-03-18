@@ -5,7 +5,8 @@
             <NoData height="700rpx" title="还没有关注任何人..." />
         </block>
         <block wx:else>
-            <view class="borderBottom p30 df align-center justify-between" wx:for="{{following}}" wx:key="{{index}}">
+            <view class="twoSideShadow borderBottom p30 df align-center justify-between" wx:for="{{following}}"
+                wx:key="{{index}}">
                 <view class="df align-start">
                     <image class="avatar mr20" src="{{item.avatar}}"></image>
                     <view class="mr20">
@@ -25,7 +26,8 @@
             <NoData height="700rpx" title="还没有被任何人关注......" />
         </block>
         <block>
-            <view class="borderBottom p30 df align-center justify-between" wx:for="{{follower}}" wx:key="{{index}}">
+            <view class="twoSideShadow borderBottom p30 df align-center justify-between" wx:for="{{follower}}"
+                wx:key="{{index}}">
                 <view class="df align-start">
                     <image class="avatar mr20" src="{{item.avatar}}"></image>
                     <view class="mr20">

@@ -1,1 +1,8 @@
-/* pages/my/comment/comment.wxss */
+#comment {
+    /* margin-top: 80rpx; */
+    margin: 0 10rpx;
+}
+
+#comment .comment-area {
+    width: 20vw;
+}

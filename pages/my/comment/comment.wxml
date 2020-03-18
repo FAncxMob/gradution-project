@@ -1,2 +1,32 @@
-<!--pages/my/comment/comment.wxml-->
-<text>pages/my/comment/comment.wxml</text>
+<wxs src="../../../wxs/util.wxs" module="utils"></wxs>
+<!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
+
+<view id='comment' class="bg-gray-1">
+    <block wx:if="{{reply.length===0}}">
+        <NoData height="100vh" title="还没有收到任何回复..." />
+    </block>
+    <block wx:else>
+        <view class="twoSideShadow borderBottom p30 df align-start justify-between" wx:for="{{reply}}"
+            wx:key="{{index}}">
+            <view class="df align-start">
+                <image class="avatar mr20" src="{{item.userDetail.avatar}}"></image>
+                <view class="mr20">
+                    <view class="text-ellipsis-row2 fz26  mb10 gray-4">
+                        <text class="fwb gray-1">{{item.userDetail.nickName}}</text> 回复了我的评论
+                    </view>
+                    <view class="text-ellipsis-row2 fz26  mb10 gray-1">
+                        回复: {{item.content}}
+                    </view>
+                    <view class="text-ellipsis-row2 fz26 gray-2">
+                        {{utils.formatTime(item.createTime,'yyyy-MM-dd hh:mm')}}</view>
+                </view>
+            </view>
+            <view class="df flex-column justify-end">
+                <view class="text-ellipsis-row4 fz26   gray-4 comment-area">
+                    {{item.myCommentDetail.content}}
+                </view>
+            </view>
+        </view>
+    </block>
+
+</view>

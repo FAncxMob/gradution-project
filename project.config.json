@@ -104,6 +104,19 @@
 					"pathName": "pages/my/like/like",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/comment/comment",
+					"pathName": "pages/my/comment/comment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/collect/collect",
+					"pathName": "pages/my/collect/collect",
+					"scene": null
 				}
 			]
 		}

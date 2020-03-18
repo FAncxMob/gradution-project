@@ -1,43 +1,20 @@
-const util = require('../../../utils/util')
-
+// pages/my/allOrder/allOrder.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabArr: ['评论的赞', '帖子的赞'],
-    currentSelect: 0,
-    reply: []
-  },
 
-  handleSelect(data) {
-    this.setData({
-      currentSelect: data.detail,
-    })
   },
-
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._load()
 
   },
 
-  async _load() {
-
-    let result = await util.request('/getMyCommentReply')
-    if (result.code) {
-      this.setData({
-        reply: result.data
-      })
-    } else {
-      console.log('获取失败了')
-    }
-
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

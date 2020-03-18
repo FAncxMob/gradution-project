@@ -231,6 +231,10 @@ function skuShowStock(skuItems = [], stockConfig, current = 0) {
     return skuItems.length <= 1 && (!stockConfig || (items && items.stock <= stockConfig))
 }
 
+function haveYuan(price) {
+    return price.indexOf('元')
+}
+
 module.exports = {
     formatTime: formatTime,
     equalDate: equalDate,
@@ -247,5 +251,6 @@ module.exports = {
     getLength: getLength,
     formatPrice2KorW: formatPrice2KorW,
     formatPriceNew: formatPriceNew,
-    skuShowStock: skuShowStock
+    skuShowStock: skuShowStock,
+    haveYuan: haveYuan
 }

@@ -1,0 +1,14 @@
+#collect {
+  padding: 20rpx;
+  font-size: 26rpx;
+}
+#collect .collect-list {
+  padding: 20rpx;
+  border: 2rpx solid #c2bebe;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+#collect .collect-list .cancel-collect {
+  margin: 0 -20rpx -5px;
+  padding: 10rpx 20rpx 0;
+}

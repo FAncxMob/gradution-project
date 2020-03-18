@@ -1,4 +1,5 @@
 #follow {
+  margin: 0 10rpx;
   margin-top: 80rpx;
 }
 #follow .comment-area {

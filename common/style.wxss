@@ -2058,11 +2058,23 @@
 .gray-3 {
   color: #ACA27D;
 }
+.gray-4 {
+  color: #AAAAA7;
+}
 .blue-1 {
   color: #4585F5;
 }
+.black-1 {
+  color: #534747;
+}
+.red-1 {
+  color: #E64E4E;
+}
 .borderBottom {
   border-bottom: 2rpx solid #c2bebe;
+}
+.borderTop {
+  border-top: 2rpx solid #c2bebe;
 }
 .bg-gray-1 {
   background: #f5f5f5;

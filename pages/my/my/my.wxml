@@ -1,6 +1,6 @@
 <view id="person-container">
 	<view class="header-bg"></view>
-	<view class="header">
+	<view class="header twoSideShadow">
 		<view class="mb20 df align-center justify-between">
 			<view bindtap="moreUserInfo" class="df align-center">
 				<image class="hbue" src="../../../icon/hbue.png" mode="cover" />
@@ -20,7 +20,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="card-horizontal">
+	<view class="card-horizontal twoSideShadow">
 		<view class="title df justify-between">
 			<!-- <text class="iconfont icon-badge- fz40 mr10"></text> -->
 			我的订单
@@ -41,7 +41,7 @@
 				取消订单</view>
 		</view>
 	</view>
-	<view class="card-horizontal">
+	<view class="card-horizontal twoSideShadow">
 		<view class="title">
 			<!-- <text class="iconfont icon-badge- fz40 mr10"></text> -->
 			我的互动
@@ -53,11 +53,11 @@
 			</view>
 			<view bindtap="bindToPage" data-page="../like/like">
 				<text class="iconfont icon-dianzan1 fz70 mr10 mb10" style="color:#4585F5"></text>
-				我的点赞
+				收到的赞
 			</view>
 			<view bindtap="bindToPage" data-page="../comment/comment">
 				<text class="iconfont icon-icon_huifu-xian fz70 mr10 mb10" style="color:#4585F5"></text>
-				我的回复
+				回复我的
 			</view>
 			<view bindtap="bindToPage" data-page="../follow/follow">
 				<text class="iconfont icon-guanzhu1 fz70 mr10 mb10" style="color:#4585F5"></text>
@@ -67,13 +67,13 @@
 				<text class="iconfont icon-tongzhi2 fz70 mr10 mb10" style="color:#4585F5"></text>
 				通知消息
 			</view>
-			<view bindtap="bindToPage" data-page="../like/like">
+			<view bindtap="bindToPage" data-page="../collect/collect">
 				<text class="iconfont icon-shoucang1 fz70 mr10 mb10" style="color:#4585F5"></text>
 				我的收藏
 			</view>
 		</view>
 	</view>
-	<view class="card-horizontal">
+	<view class="card-horizontal twoSideShadow">
 		<view class="title">
 			<!-- <text class="iconfont icon-badge- fz40 mr10"></text> -->
 			必备工具

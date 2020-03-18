@@ -3,14 +3,14 @@
     "pages/login/index/index",
     "pages/my/my/my",
     "pages/index/index",
-    
     "pages/news/news",
-
     "pages/my/userInfo/userInfo",
     "pages/my/history/history",
     "pages/my/like/like",
     "pages/my/comment/comment",
-    "pages/my/follow/follow"
+    "pages/my/follow/follow",
+    "pages/my/collect/collect",
+    "pages/my/allOrder/allOrder"
   ],
   "window": {
     "backgroundTextStyle": "dark",

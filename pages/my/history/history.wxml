@@ -1,7 +1,7 @@
 <wxs src="../../../wxs/util.wxs" module="utils"></wxs>
 
 <view id="history" class="bg-gray-1">
-    <view class="list" wx:for="{{history}}" wx:key="{{index}}">
+    <view class="list twoSideShadow" wx:for="{{history}}" wx:key="{{index}}">
         <view class="post-info">
             <image src="{{item.pic}}" mode="cover"></image>
             <view class="right-box">

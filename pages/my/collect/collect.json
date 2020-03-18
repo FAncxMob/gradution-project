@@ -3,5 +3,5 @@
     "SwitchTab": "../../../components/SwitchTab/SwitchTab",
     "NoData": "../../../components/NoData/NoData"
   },
-  "navigationBarTitleText": "回复我的"
+  "navigationBarTitleText": "我的收藏"
 }
