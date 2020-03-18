@@ -1,13 +1,9 @@
-#history {
-  padding: 10rpx;
-}
 #history .list {
   display: flex;
   flex-direction: column;
   padding: 10rpx;
-  border-bottom: 2rpx solid #c2bebe;
+  border-bottom: 2rpx solid #e4dcdc;
   margin-bottom: 10rpx;
-  border: 2rpx solid #c2bebe;
 }
 #history .list .post-info {
   display: flex;

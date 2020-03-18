@@ -72,14 +72,16 @@ Page({
     } = this.data
     if (wx.getStorageSync('token') && wx.getStorageSync('haveUser') === 1) {
       let data = await util.request('/getUserInfo')
-      console.log('/getUserInfo-userInfo')
-      let oldSchoolIndex = schoolArray.findIndex(item => item === data.userInfo.school)
-      let oldFacultyIndex = facultyArray.findIndex(item => item === data.userInfo.faculty)
-      this.setData({
-        userInfo: data.userInfo,
-        schoolIndex: oldSchoolIndex,
-        facultyIndex: oldFacultyIndex
-      })
+      if (data.code) {
+        console.log('/getUserInfo-userInfo')
+        let oldSchoolIndex = schoolArray.findIndex(item => item === data.userInfo.school)
+        let oldFacultyIndex = facultyArray.findIndex(item => item === data.userInfo.faculty)
+        this.setData({
+          userInfo: data.userInfo,
+          schoolIndex: oldSchoolIndex,
+          facultyIndex: oldFacultyIndex
+        })
+      }
     }
   },
 

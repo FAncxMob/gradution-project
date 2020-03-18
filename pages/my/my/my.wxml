@@ -24,10 +24,11 @@
 		<view class="title df justify-between">
 			<!-- <text class="iconfont icon-badge- fz40 mr10"></text> -->
 			我的订单
-			<view class="moreInfo">全部订单 <text class="iconfont icon-youjiantou1 fz30"></text> </view>
+			<view bindtap="bindToPage" data-page="../allOrder/allOrder" class="moreInfo">全部订单 <text
+					class="iconfont icon-youjiantou1 fz30"></text> </view>
 		</view>
 		<view class="item-container">
-			<view bindtap="bindToPage" data-page="../history/history">
+			<view bindtap="bindToPage" data-page="../allOrder/allOrder">
 				<text class="iconfont icon-ziyuan fz70 mr10 mb10" style="color:#EA5A25"></text>
 				待核销</view>
 			<view bindtap="bindToPage" data-page="../like/like">

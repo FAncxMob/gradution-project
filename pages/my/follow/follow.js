@@ -66,10 +66,13 @@ Page({
   async _load() {
 
     let result = await util.request('/getFollowingAndFollowerByOpenId')
-    this.setData({
-      following: result.data.following,
-      follower: result.data.follower,
-    })
+    if (result.code) {
+      this.setData({
+        following: result.data.following,
+        follower: result.data.follower,
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

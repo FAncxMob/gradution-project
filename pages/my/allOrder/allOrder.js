@@ -1,20 +1,44 @@
-// pages/my/allOrder/allOrder.js
+const util = require('../../../utils/util')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    tabArr: ["校园跑腿", "二手交易", "兼职招聘", "失物招领"],
+    currentSelect: 0,
+    legWork: [],
+    secondHand: [],
+    partTimeJob: [],
+    lostAndFound: [],
   },
 
+  handleSelect(data) {
+    this.setData({
+      currentSelect: data.detail,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this._load()
 
   },
 
+  async _load() {
+
+    let result = await util.request('/getAllOrder')
+    if (result.code) {
+      this.setData({
+        legWork: result.data.legWork,
+        secondHand: result.data.secondHand,
+        partTimeJob: result.data.partTimeJob,
+        lostAndFound: result.data.lostAndFound
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

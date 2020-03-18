@@ -1,1 +1,16 @@
-/* pages/my/allOrder/allOrder.wxss */
+#allOrder {
+    margin-top: 80rpx;
+    padding: 20rpx;
+}
+
+#allOrder .list {
+    padding: 20rpx;
+    border: 2rpx solid #c2bebe;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+}
+
+#allOrder .bottom-box {
+    margin: 10rpx -20rpx -5px;
+    padding: 20rpx 20rpx 10rpx;
+}

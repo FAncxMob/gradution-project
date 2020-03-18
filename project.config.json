@@ -116,6 +116,13 @@
 					"id": -1,
 					"name": "pages/my/collect/collect",
 					"pathName": "pages/my/collect/collect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "全部订单",
+					"pathName": "pages/my/allOrder/allOrder",
 					"scene": null
 				}
 			]

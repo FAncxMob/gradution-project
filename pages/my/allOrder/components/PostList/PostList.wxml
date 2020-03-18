@@ -1,0 +1,47 @@
+<view id="postList">
+    <block wx:if="{{data.length===0}}">
+        <NoData height="700rpx" title="{{title}}" />
+    </block>
+    <block wx:else>
+        <view class="list twoSideShadow" wx:for="{{myCollect}}" wx:key="{{index}}">
+            <view class="df align-start mb20">
+                <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
+                <view class="df h80 flex-column fx1 justify-between">
+                    <text class="fwb">{{item.userDetail.nickName}}</text>
+                    <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd hh:mm')}}</text>
+                </view>
+                <view class="red-1 fz30 fwb">
+                    <block wx:if="{{utils.haveYuan(item.price)!==-1}}">
+                        {{item.price}}
+                    </block>
+                    <block wx:else>
+                        {{item.price}}元
+                    </block>
+                </view>
+            </view>
+            <view class="mt20 mb10 @black-1 fwb">
+                {{item.title}}
+            </view>
+            <block wx:if="{{item.pic.length!==0}}">
+                <view class="pic-box">
+                    <block wx:for="{{item.pic}}" wx:key="{{picIndex}}" wx:for-item="picItem" wx:for-index="picIndex">
+                        <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image>
+                    </block>
+                </view>
+                <view class="mt10 gray-1 text-ellipsis-row1">
+                    {{item.desc}}
+                </view>
+            </block>
+            <block wx:else>
+                <view class=" mt10 gray-1 text-ellipsis-row3">
+                    {{item.desc}}
+                </view>
+            </block>
+            <view catchtap="cancelCollectPost" data-invitationsid="{{item.invitationsId}}"
+                class="cancel-collect df mt10 borderTop align-center justify-between">
+                <view class="gray-2">收藏于{{utils.formatTime(item.collectDetail.createTime,'yyyy-MM-dd hh:mm')}}</view>
+                <text class="small-btn pl20">取消收藏</text>
+            </view>
+        </view>
+    </block>
+</view>

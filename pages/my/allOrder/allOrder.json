@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "SwitchTab": "../../../components/SwitchTab/SwitchTab",
+
+    "PostList": "./components/PostList/PostList"
+  },
+  "navigationBarTitleText": "全部订单"
 }
