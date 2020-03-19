@@ -9,6 +9,14 @@ Page({
     address: []
   },
 
+  bindToPage: function (event) {
+    let addressData = event.currentTarget.dataset.addressdata
+    console.log(addressData._id)
+    wx.navigateTo({
+      url: '../addressManager/editAddress/editAddress?addressId=' + addressData._id,
+    })
+  },
+
   addAddress() {
     wx.navigateTo({
       url: '/pages/my/addressManager/addAddress/addAddress'

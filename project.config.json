@@ -137,6 +137,13 @@
 					"id": -1,
 					"name": "添加新地址",
 					"pathName": "pages/my/addressManager/addAddress/addAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "编辑地址",
+					"pathName": "pages/my/addressManager/editAddress/editAddress",
 					"scene": null
 				}
 			]

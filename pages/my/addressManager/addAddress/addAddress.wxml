@@ -7,7 +7,7 @@
             </view>
             <view class="section">
                 <view class="section-title">手机号码</view>
-                <input value="{{userInfo.tel}}" placeholder-class="input" name="tel" placeholder="请输入手机号码" />
+                <input value="{{userInfo.tel}}" type="number" placeholder-class="input" name="tel" placeholder="请输入手机号码" />
             </view>
             <view class="section">
                 <view class="section-title">详细地址</view>

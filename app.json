@@ -12,7 +12,8 @@
     "pages/my/collect/collect",
     "pages/my/allOrder/allOrder",
     "pages/my/addressManager/addressManager",
-    "pages/my/addressManager/addAddress/addAddress"
+    "pages/my/addressManager/addAddress/addAddress",
+    "pages/my/addressManager/editAddress/editAddress"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -6,30 +6,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: [{
-        name: '1',
-        value: '是'
-      },
-      {
-        name: '0',
-        value: '否',
-        checked: 'true'
-      },
-    ]
+    addressData: []
   },
   async formSubmit(e) {
     let data = {
-      ...e.detail.value
+      ...e.detail.value,
+      _id: this.data.addressData._id
     }
+    console.log(data)
 
     wx.showLoading({
       title: '保存信息中...',
     })
-    let result = await util.request('/addAddress', data)
+    let result = await util.request('/editAddress', data)
     wx.hideLoading()
     if (result.code) {
       wx.showToast({
-        title: '添加成功啦~',
+        title: '修改成功啦~',
         icon: 'success',
         duration: 2000,
         success: function () {
@@ -40,21 +33,32 @@ Page({
       })
     } else {
       wx.showToast({
-        title: `添加失败了！请重试`,
+        title: `修改失败了！请重试`,
         icon: 'none',
         duration: 3000
       })
     }
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
-  async onLoad(options) {
-    this._load()
+  onLoad: function (options) {
+    if (options.addressId) {
+      this._load(options.addressId)
+    }
   },
+  async _load(addressId) {
+    let result = await util.request('/getAddressByAddressId', {
+      addressId
+    })
+    if (result.code) {
+      this.setData({
+        addressData: result.data
+      })
 
-  async _load() {
+
+    }
+
 
   },
 
