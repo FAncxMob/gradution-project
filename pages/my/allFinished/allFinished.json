@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "SwitchTab": "../../../components/SwitchTab/SwitchTab",
+    "ShowPostList": "../../../components/ShowPostList/ShowPostList"
+  },
+  "navigationBarTitleText": "已完成的"
+}

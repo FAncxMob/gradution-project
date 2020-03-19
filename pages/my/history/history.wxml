@@ -1,25 +1,2 @@
-<wxs src="../../../wxs/util.wxs" module="utils"></wxs>
-
-<view id="history" class="bg-gray-1">
-    <view class="list twoSideShadow" wx:for="{{history}}" wx:key="{{index}}">
-        <view class="post-info">
-            <image src="{{item.pic}}" mode="cover"></image>
-            <view class="right-box">
-                <text class="text-ellipsis-row2 fz30">{{item.title}}</text>
-                <!-- <text class="text-ellipsis-row2 ">{{item.desc}}</text> -->
-                <text class="fz26">{{utils.formatTime(item.createTime,'yyyy-MM-dd hh:mm')}}</text>
-                <view class="df justify-between align-center">
-                    <text class="tipColor"><text class="tag">UP</text>{{item.nickname}}</text>
-                    <view class="df align-center">
-                        <text class="iconfont icon-liulan1 fz40  " style="color:#4498d1"></text>
-                        <text class="fz26 mr10">{{item.watch}}</text>
-                        <text class="iconfont icon-iconzhengli_dianzan fz30" style="color:rgb(207, 71, 150)"></text>
-                        <text class="fz26 mr10">{{item.like}}</text>
-                        <text class="iconfont icon-shoucang3 f430" style="color:#FFC600"></text>
-                        <text class="fz26">{{item.collect}}</text>
-                    </view>
-                </view>
-            </view>
-        </view>
-    </view>
-</view>
+<!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
+<ShowPostList data="{{history}}" title="{{noDataText}}" haveOperation="{{false}}" noDataHeight="100vh"></ShowPostList>

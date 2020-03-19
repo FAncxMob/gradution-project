@@ -1,0 +1,9 @@
+<view id='allTaking' class="bg-gray-1">
+    <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    <block wx:if="{{currentSelect===0}}">
+        <MyOrderList data="{{legWork}}" title="还没有接收任何跑腿订单..."></MyOrderList>
+    </block>
+    <block wx:if="{{currentSelect===1}}">
+        <MyOrderList data="{{secondHand}}" title="还没有接收任何二手交易订单..."></MyOrderList>
+    </block>
+</view>

@@ -1,40 +1,18 @@
 @import '../../../common/variables.less';
 
-#history {
-    padding: 10rpx;
+#collect {
+    padding: 20rpx;
+    font-size: 26rpx;
 
-    .list {
-        display: flex;
-        flex-direction: column;
-        padding: 10rpx;
-        border-bottom: 2rpx solid @borderColor-1;
-        margin-bottom: 10rpx;
-        border: 2rpx solid @borderColor-1;
+    .collect-list {
+        padding: 20rpx;
+        border: 2rpx solid @borderColor-3;
+        border-radius: 10rpx;
+        margin-bottom: 20rpx;
 
-        .post-info {
-            display: flex;
-            padding-bottom: 10rpx;
-
-            image {
-                width: 250rpx;
-                height: 180rpx;
-                flex-shrink: 0;
-                margin-right: 20rpx;
-                border-radius: 10rpx;
-            }
-
-            .right-box {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                font-size: 26rpx;
-            }
+        .cancel-collect {
+            margin: 0 -20rpx -5px;
+            padding: 10rpx 20rpx 0;
         }
-
-
-
-
-
-
     }
 }

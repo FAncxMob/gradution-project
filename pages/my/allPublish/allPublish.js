@@ -19,6 +19,8 @@ Page({
       currentSelect: data.detail,
     })
   },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,7 +31,7 @@ Page({
 
   async _load() {
 
-    let result = await util.request('/getAllOrder')
+    let result = await util.request('/getAllPublish')
     if (result.code) {
       this.setData({
         legWork: result.data.legWork,

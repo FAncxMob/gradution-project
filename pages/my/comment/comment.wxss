@@ -1,6 +1,7 @@
 #comment {
     /* margin-top: 80rpx; */
     margin: 0 10rpx;
+    padding-bottom: 200rpx;
 }
 
 #comment .comment-area {

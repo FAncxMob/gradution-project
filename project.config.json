@@ -121,13 +121,6 @@
 				},
 				{
 					"id": -1,
-					"name": "全部订单",
-					"pathName": "pages/my/allOrder/allOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "地址管理",
 					"pathName": "pages/my/addressManager/addressManager",
 					"query": "",
@@ -144,6 +137,42 @@
 					"id": -1,
 					"name": "编辑地址",
 					"pathName": "pages/my/addressManager/editAddress/editAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allPublish/allPublish",
+					"pathName": "pages/my/allPublish/allPublish",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allTaking/allTaking",
+					"pathName": "pages/my/allTaking/allTaking",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allFinished/allFinished",
+					"pathName": "pages/my/allFinished/allFinished",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allOngoing/allOngoing",
+					"pathName": "pages/my/allOngoing/allOngoing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allCancel/allCancel",
+					"pathName": "pages/my/allCancel/allCancel",
+					"query": "",
 					"scene": null
 				}
 			]

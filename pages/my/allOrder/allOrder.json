@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "SwitchTab": "../../../components/SwitchTab/SwitchTab",
-    "NoData": "../../../components/NoData/NoData",
-    "OrderList": "../../../components/OrderList/OrderList"
-  },
-  "navigationBarTitleText": "全部订单"
-}

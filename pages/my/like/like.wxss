@@ -1,6 +1,7 @@
 #follow {
   margin: 0 10rpx;
   margin-top: 80rpx;
+  padding-bottom: 100rpx;
 }
 #follow .comment-area {
   width: 30vw;

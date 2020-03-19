@@ -1,28 +1,14 @@
-#history {
-  padding: 10rpx;
-}
-#history .list {
-  display: flex;
-  flex-direction: column;
-  padding: 10rpx;
-  border-bottom: 2rpx solid #c2bebe;
-  margin-bottom: 10rpx;
-  border: 2rpx solid #c2bebe;
-}
-#history .list .post-info {
-  display: flex;
-  padding-bottom: 10rpx;
-}
-#history .list .post-info image {
-  width: 250rpx;
-  height: 180rpx;
-  flex-shrink: 0;
-  margin-right: 20rpx;
-  border-radius: 10rpx;
-}
-#history .list .post-info .right-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+#collect {
+  padding: 20rpx;
   font-size: 26rpx;
+}
+#collect .collect-list {
+  padding: 20rpx;
+  border: 2rpx solid #c2bebe;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+#collect .collect-list .cancel-collect {
+  margin: 0 -20rpx -5px;
+  padding: 10rpx 20rpx 0;
 }

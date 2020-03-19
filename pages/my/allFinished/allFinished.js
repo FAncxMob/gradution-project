@@ -6,29 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myCollect: [],
-    noDataText: '还没有收藏任何帖子...',
-    btnData: {
-      btnText: '取消收藏',
-      btnConfirmText: '确定要取消收藏该帖子吗?'
-    }
+    tabArr: ["校园跑腿", "二手交易"],
+    currentSelect: 0,
+    legWork: [],
+    secondHand: [],
   },
-
-  async cancelCollectPost(e) {
-    console.log(e.detail, '父组件')
-    let cancelInvitationsId = e.detail.cancelInvitationsId
-    wx.showLoading({
-      title: ''
+  handleSelect(data) {
+    this.setData({
+      currentSelect: data.detail,
     })
-    let result = await util.request('/cancelCollectPost', {
-      cancelInvitationsId
-    })
-    wx.hideLoading()
-    if (result.code) {
-      this._load()
-    }
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -39,15 +26,13 @@ Page({
 
   async _load() {
 
-    let result = await util.request('/getMyCollect')
+    let result = await util.request('/allFinished')
     if (result.code) {
       this.setData({
-        myCollect: result.data
+        legWork: result.data.legWork,
+        secondHand: result.data.secondHand
       })
-    } else {
-      console.log('获取失败了')
     }
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "ShowPostList": "../../../components/ShowPostList/ShowPostList"
+  },
   "navigationBarTitleText": "历史记录"
 }
