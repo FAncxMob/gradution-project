@@ -1,0 +1,54 @@
+<wxs src="../../wxs/util.wxs" module="utils"></wxs>
+
+<view class="myOrderList">
+    <block wx:if="{{data.length===0}}">
+        <NoData height="{{noDataHeight}}" title="{{title}}" />
+    </block>
+    <block wx:else>
+        <view class="list twoSideShadow borderBottom" wx:for="{{data}}" wx:key="{{index}}">
+            <!-- 没有图片的排版 -->
+            <view class="gray-1">
+                <view class="mb20 text-ellipsis-row1 fwb gray-1">
+                    {{item.title}}
+                </view>
+                <view class="mb20 df justify-between fz26">
+                    <view class=" max-w420 text-ellipsis-row1">发布者: {{item.detail.posterDept}}</view>
+                    <view class="df">
+                        <view class="mr10">浏览:{{item.watch}}</view>
+                        <view class="mr10">收藏:{{item.collect}}</view>
+                    </view>
+                </view>
+                <view class="text-ellipsis-row3">
+                    {{item.desc}}
+                </view>
+                <block wx:if="{{item.pic.length!==0}}">
+                    <!-- 有图片的排版 -->
+                    <view class="df mt10 gray-1">
+                        <!-- 有图片的排版 -->
+                        <image class="long-pic mr20" src="{{item.pic[0]}}" mode="scaleToFill "></image>
+                    </view>
+                </block>
+                <block wx:if="{{item.file}}">
+                    <view>这里有一个附件</view>
+                    <!-- <view class="df mt10 gray-1">
+                        <image class="long-pic mr20" src="{{item.pic[0]}}" mode="scaleToFill "></image>
+                    </view> -->
+                </block>
+            </view>
+
+
+
+            <view class="bottom-box borderTop   df justify-between align-center">
+                <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd hh:mm')}}</text>
+                <block wx:if="{{haveOperation}}">
+                    <view>
+                        <button catchtap="editInvitations" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class=" mr20 pl20 small-btn">编辑</button>
+                        <button catchtap="deleteInvitations" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class="pl20 small-btn">删除</button>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </block>
+</view>

@@ -1,5 +1,8 @@
 <view id='allFinished' class="bg-gray-1">
-    <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    <view class="switchTab-wrapper">
+        <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    </view>
+
 
     <block wx:if="{{currentSelect===0}}">
         <ShowPostList haveOperation="{{false}}" data="{{legWork}}" noDataHeight="700rpx" title="还没有完成任何跑腿订单...">

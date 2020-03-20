@@ -98,3 +98,8 @@ page {
   background: #D6D6D6;
   color: #5B6B73;
 }
+
+.swiper-pic {
+  width: 100vw;
+  height: 300rpx;
+}

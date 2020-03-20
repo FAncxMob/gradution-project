@@ -174,6 +174,19 @@
 					"pathName": "pages/my/allCancel/allCancel",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/news/news",
+					"pathName": "pages/news/news",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"scene": null
 				}
 			]
 		}

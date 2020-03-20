@@ -1,15 +1,22 @@
 <view id='allPublish' class="bg-gray-1">
-    <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    <view class="switchTab-wrapper">
+        <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    </view>
+
     <block wx:if="{{currentSelect===0}}">
-        <MyOrderList data="{{legWork}}" title="还没有发布任何跑腿订单..."></MyOrderList>
+        <MyOrderList data="{{legWork}}" title="还没有发布任何跑腿订单..." haveOperation="{{true}}" noDataHeight="500rpx">
+        </MyOrderList>
     </block>
     <block wx:if="{{currentSelect===1}}">
-        <MyOrderList data="{{secondHand}}" title="还没有发布任何二手交易订单..."></MyOrderList>
+        <MyOrderList data="{{secondHand}}" title="还没有发布任何二手交易订单..." haveOperation="{{true}}" noDataHeight="500rpx">
+        </MyOrderList>
     </block>
     <block wx:if="{{currentSelect===2}}">
-        <MyOrderList data="{{partTimeJob}}" title="还没有发布任何兼职招聘帖子..."></MyOrderList>
+        <MyOrderList data="{{partTimeJob}}" title="还没有发布任何兼职招聘帖子..." haveOperation="{{true}}" noDataHeight="500rpx">
+        </MyOrderList>
     </block>
     <block wx:if="{{currentSelect===3}}">
-        <MyOrderList data="{{lostAndFound}}" title="还没有发布任何失物招领帖子..."></MyOrderList>
+        <MyOrderList data="{{lostAndFound}}" title="还没有发布任何失物招领帖子..." haveOperation="{{true}}" noDataHeight="500rpx">
+        </MyOrderList>
     </block>
 </view>

@@ -2,7 +2,7 @@
 
 <view class="myOrderList">
     <block wx:if="{{data.length===0}}">
-        <NoData height="700rpx" title="{{title}}" />
+        <NoData height="{{noDataHeight}}" title="{{title}}" />
     </block>
     <block wx:else>
         <view class="list twoSideShadow borderBottom" wx:for="{{data}}" wx:key="{{index}}">
@@ -42,12 +42,14 @@
             </block>
             <view class="bottom-box borderTop   df justify-between align-center">
                 <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd hh:mm')}}</text>
-                <view>
-                    <button catchtap="editInvitations" data-iid="{{item._id}}" data-classify="{{item.classify}}"
-                        class=" mr20 pl20 small-btn">编辑</button>
-                    <button catchtap="deleteInvitations" data-iid="{{item._id}}" data-classify="{{item.classify}}"
-                        class="pl20 small-btn">删除</button>
-                </view>
+                <block wx:if="{{haveOperation}}">
+                    <view>
+                        <button catchtap="editInvitations" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class=" mr20 pl20 small-btn">编辑</button>
+                        <button catchtap="deleteInvitations" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class="pl20 small-btn">删除</button>
+                    </view>
+                </block>
             </view>
         </view>
     </block>

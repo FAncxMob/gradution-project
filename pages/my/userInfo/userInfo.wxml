@@ -1,12 +1,12 @@
 <view id="userInfo">
     <view class='userInfo-container'>
-        <form class="userInfo-form" bindsubmit="formSubmit">
-            <view class="section">
+        <form class="userInfo-form " bindsubmit="formSubmit">
+            <!-- <view class="section">
                 <text class="section-title">
                     昵称
                 </text>
                 <open-data class="nickname" type="userNickName"></open-data>
-            </view>
+            </view> -->
             <view class="section">
                 <view class="section-title">学号</view>
                 <input disabled value="{{userInfo.sno}}" placeholder-class="input" placeholder="请输入学号" type="number" />

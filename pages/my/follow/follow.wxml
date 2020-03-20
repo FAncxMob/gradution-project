@@ -1,5 +1,8 @@
 <view id='follow' class="bg-gray-1">
-    <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    <view class="switchTab-wrapper">
+        <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    </view>
+
     <block wx:if="{{currentSelect===0}}">
         <block wx:if="{{following.length===0}}">
             <NoData height="700rpx" title="还没有关注任何人..." />

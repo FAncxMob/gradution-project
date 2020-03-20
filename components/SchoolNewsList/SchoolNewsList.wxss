@@ -1,5 +1,5 @@
 .myOrderList {
-    padding: 20rpx;
+    padding: 30rpx;
 }
 
 .myOrderList .list {
@@ -115,4 +115,21 @@
     font-weight: bold;
     color: #766d6d;
     box-shadow: 20rpx 0 20rpx -20rpx #766d8b, -20rpx 0 20rpx -20rpx #766d8b;
+}
+
+.w70p {
+    width: 70% !important;
+}
+
+.mt10 {
+    margin-top: 10rpx !important;
+}
+
+.max-w420 {
+    max-width: 420rpx !important;
+}
+
+.long-pic {
+    widows: 60%;
+    height: 150rpx;
 }

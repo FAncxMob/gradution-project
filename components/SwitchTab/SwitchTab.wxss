@@ -1,8 +1,13 @@
 .switchTab {
-    position: fixed;
-    top: 0;
+    position: absolute;
     left: 0;
     right: 0;
+    top: 0;
+    height: 80rpx;
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    right: 0; */
     display: flex;
     background: #ffffff;
     box-shadow: 0 2rpx 5rpx #9D9D9B;

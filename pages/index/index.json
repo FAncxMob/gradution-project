@@ -1,7 +1,9 @@
 {
-  "usingComponents": {},
-  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "SwitchTab": "../../components/SwitchTab/SwitchTab",
+    "Search": "../../components/Search/Search",
+    "ShowPostList": "../../components/ShowPostList/ShowPostList"
+  },
   "navigationBarTitleText": "首页",
-  "navigationBarTextStyle": "white",
   "enablePullDownRefresh": false
 }

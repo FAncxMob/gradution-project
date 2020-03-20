@@ -2,3 +2,12 @@
     margin: 0 10rpx;
     margin-top: 80rpx;
 }
+
+.switchTab-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80rpx;
+    z-index: 9999;
+}

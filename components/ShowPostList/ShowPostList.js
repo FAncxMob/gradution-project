@@ -6,9 +6,16 @@ Component({
   properties: {
     data: Array,
     title: String,
-    haveOperation: Boolean,
+    haveOperation: {
+      type: Boolean,
+      value: false
+    },
+    isMyPost: {
+      type: Boolean,
+      value: true
+    },
     noDataHeight: String,
-    btnData: Object
+    btnData: Object,
   },
 
   /**
