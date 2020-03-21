@@ -9,7 +9,12 @@ Page({
     history: [],
     noDataText: '还没有浏览任何帖子...'
   },
-
+  toDetailPage(e) {
+    let iid = e.detail.iid
+    wx.navigateTo({
+      url: `/pages/detailPage/indexDetailPage/indexDetailPage?iid=${iid}`
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -8,13 +8,14 @@
     <block wx:else>
         <block wx:if="{{isMyPost}}">
             <!-- 显示我的帖子 -->
-            <view class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
+            <view bindtap="toDetailPage" data-iid="{{item.iid}}"
+                class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
                 <view class="df align-start mb20">
                     <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
                     <view class="df h80 flex-column fx1 justify-between">
                         <text class="fwb">{{item.userDetail.nickName}}</text>
                         <text
-                            class="gray-3 fz22">发布于{{utils.formatTime(item.invitationsDetail.createTime,'yyyy-MM-dd hh:mm')}}</text>
+                            class="gray-3 fz22">发布于{{utils.formatTime(item.invitationsDetail.createTime,'yyyy-MM-dd HH:mm')}}</text>
                     </view>
                     <block wx:if="{{item.invitationsDetail.price!==''}}">
                         <view class="red-1 fz30 fwb">
@@ -36,7 +37,10 @@
                     <view class="pic-box">
                         <block wx:for="{{item.invitationsDetail.pic}}" wx:key="{{picIndex}}" wx:for-item="picItem"
                             wx:for-index="picIndex">
-                            <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image>
+                            <block wx:if="{{picIndex<2}}">
+                                <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image>
+                            </block>
+
                         </block>
                     </view>
                     <view class="mt10 gray-1 text-ellipsis-row1">
@@ -56,7 +60,7 @@
                 </view>
                 <view data-invitationsid="{{item.invitationsId}}"
                     class="gray-2 cancel-collect df mt10 borderTop align-center justify-between">
-                    <view>浏览于{{utils.formatTime(item.createTime,'yyyy-MM-dd hh:mm')}}</view>
+                    <view>浏览于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</view>
 
                     <block wx:if="{{haveOperation}}">
                         <text catchtap="tapBtn" data-iid="{{item.iid}}"
@@ -68,12 +72,13 @@
         </block>
         <block wx:else>
             <!-- 显示全部公共帖子 -->
-            <view class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
+            <view bindtap="toDetailPage" data-iid="{{item._id}}" 
+                class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
                 <view class="df align-start mb20">
                     <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
                     <view class="df h80 flex-column fx1 justify-between">
                         <text class="fwb">{{item.userDetail.nickName}}</text>
-                        <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd hh:mm')}}</text>
+                        <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</text>
                     </view>
                     <block wx:if="{{item.price!==''}}">
                         <view class="red-1 fz30 fwb">
@@ -94,7 +99,10 @@
                     <view class="pic-box">
                         <block wx:for="{{item.pic}}" wx:key="{{picIndex}}" wx:for-item="picItem"
                             wx:for-index="picIndex">
-                            <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image>
+                            <block wx:if="{{picIndex<2}}">
+                                <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image>
+                            </block>
+
                         </block>
                     </view>
                     <view class="mt10 gray-1 text-ellipsis-row1">

@@ -18,7 +18,9 @@
     "pages/my/addressManager/addressManager",
     "pages/my/addressManager/addAddress/addAddress",
     "pages/my/addressManager/editAddress/editAddress",
-    "components/Search/Search"
+    "components/Search/Search",
+
+    "pages/detailPage/indexDetailPage/indexDetailPage"
   ],
   "window": {
     "backgroundTextStyle": "dark",

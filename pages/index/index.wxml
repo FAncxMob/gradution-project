@@ -9,19 +9,22 @@
 	</view>
 	<block wx:if="{{currentSelect===0}}">
 		<view class="showPostList-wrapper">
-			<ShowPostList isMyPost="{{false}}" data="{{legWork}}" title="没有找到任何跑腿订单..." noDataHeight=" 500rpx">
+			<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{legWork}}" title="没有找到任何跑腿订单..."
+				noDataHeight=" 500rpx">
 			</ShowPostList>
 		</view>
 	</block>
 	<block wx:if="{{currentSelect===1}}">
 		<view class="showPostList-wrapper">
-			<ShowPostList isMyPost="{{false}}" data="{{secondHand}}" title="没有找到任何二手交易订单..." noDataHeight=" 500rpx">
+			<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{secondHand}}"
+				title="没有找到任何二手交易订单..." noDataHeight=" 500rpx">
 			</ShowPostList>
 		</view>
 	</block>
 	<block wx:if="{{currentSelect===2}}">
 		<view class="showPostList-wrapper">
-			<ShowPostList isMyPost="{{false}}" data="{{partTimeJob}}" title="没有找到任何兼职招聘帖子..." noDataHeight=" 500rpx">
+			<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{partTimeJob}}"
+				title="没有找到任何兼职招聘帖子..." noDataHeight=" 500rpx">
 			</ShowPostList>
 		</view>
 	</block>
@@ -32,14 +35,16 @@
 		</view>
 		<block wx:if="{{currentSelectForLostAndFound===0}}">
 			<view class="showPostList-wrapper2">
-				<ShowPostList isMyPost="{{false}}" data="{{lost}}" title="没有找到任何遗失物品的帖子..." noDataHeight=" 500rpx">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{lost}}"
+					title="没有找到任何遗失物品的帖子..." noDataHeight=" 500rpx">
 				</ShowPostList>
 			</view>
 
 		</block>
 		<block wx:if="{{currentSelectForLostAndFound===1}}">
 			<view class="showPostList-wrapper2">
-				<ShowPostList isMyPost="{{false}}" data="{{found}}" title="没有找到任何捡到物品帖子..." noDataHeight=" 500rpx">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{found}}"
+					title="没有找到任何捡到物品帖子..." noDataHeight=" 500rpx">
 				</ShowPostList>
 			</view>
 

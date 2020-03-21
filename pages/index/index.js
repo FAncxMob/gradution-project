@@ -80,13 +80,13 @@ Page({
       searchStr: ''
     })
   },
-  // //清空搜索框
-  // activity_clear(e) {
 
-  //   this.setData({
-  //     searchstr: ''
-  //   })
-  // },
+  toDetailPage(e) {
+    let iid = e.detail.iid
+    wx.navigateTo({
+      url: `/pages/detailPage/indexDetailPage/indexDetailPage?iid=${iid}`
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

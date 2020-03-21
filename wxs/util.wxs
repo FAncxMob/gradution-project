@@ -232,7 +232,30 @@ function skuShowStock(skuItems = [], stockConfig, current = 0) {
 }
 
 function haveYuan(price) {
+    price = price + ''
     return price.indexOf('元')
+}
+
+function statusToStr(status) {
+    status = +status
+    var str = ''
+    switch (status) {
+        case 1:
+            str = '已接单'
+            break;
+        case 2:
+            str = '已接单'
+            break;
+        case 3:
+            str = '已完成'
+            break;
+        case 4:
+            str = '中止'
+            break;
+        default:
+            break;
+    }
+    return str
 }
 
 module.exports = {
@@ -252,5 +275,6 @@ module.exports = {
     formatPrice2KorW: formatPrice2KorW,
     formatPriceNew: formatPriceNew,
     skuShowStock: skuShowStock,
-    haveYuan: haveYuan
+    haveYuan: haveYuan,
+    statusToStr: statusToStr
 }

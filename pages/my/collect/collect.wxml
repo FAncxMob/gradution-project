@@ -1,6 +1,6 @@
 <!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
 
 
-<ShowPostList bind:tapBtn="cancelCollectPost" data="{{myCollect}}" btnData="{{btnData}}" title="{{noDataText}}"
-    haveOperation="{{true}}" noDataHeight="100vh">
+<ShowPostList bind:toDetailPage="toDetailPage" bind:tapBtn="cancelCollectPost" data="{{myCollect}}"
+    btnData="{{btnData}}" title="{{noDataText}}" haveOperation="{{true}}" noDataHeight="100vh">
 </ShowPostList>

@@ -6,55 +6,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myCollect: [],
-    noDataText: '还没有收藏任何帖子...',
-    btnData: {
-      btnText: '取消收藏',
-      btnConfirmText: '确定要取消收藏该帖子吗?'
-    }
-  },
-  toDetailPage(e) {
-    let iid = e.detail.iid
-    wx.navigateTo({
-      url: `/pages/detailPage/indexDetailPage/indexDetailPage?iid=${iid}`
-    })
-  },
-
-  async cancelCollectPost(e) {
-    console.log(e.detail, '父组件')
-    let cancelInvitationsId = e.detail.cancelInvitationsId
-    wx.showLoading({
-      title: ''
-    })
-    let result = await util.request('/cancelCollectPost', {
-      cancelInvitationsId
-    })
-    wx.hideLoading()
-    if (result.code) {
-      this._load()
-    }
+    detail: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._load()
-
-  },
-
-  async _load() {
-
-    let result = await util.request('/getMyCollect')
-    if (result.code) {
-      this.setData({
-        myCollect: result.data
-      })
+    if (options.iid) {
+      let iid = options.iid
+      this._load(iid)
     } else {
-      console.log('获取失败了')
+      console.log('吼啦！没传iid，怎么查详情啊')
     }
 
   },
+  async _load(iid) {
+    wx.showLoading({
+      title: '拼命搜索中'
+    })
+    let result = await util.request('/getPostDetail', {
+      iid
+    })
+    wx.hideLoading()
+    if (result.code) {
+      this.setData({
+        detail: result.data.detail,
+        commentDetail: result.data.commentDetail,
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -39,7 +39,7 @@
 
 
             <view class="bottom-box borderTop   df justify-between align-center">
-                <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd hh:mm')}}</text>
+                <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</text>
                 <block wx:if="{{haveOperation}}">
                     <view>
                         <button catchtap="editInvitations" data-iid="{{item._id}}" data-classify="{{item.classify}}"

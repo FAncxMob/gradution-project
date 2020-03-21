@@ -1,0 +1,170 @@
+<wxs src="../../../wxs/util.wxs" module="utils"></wxs>
+
+<view class="indexDetailPage">
+    <view class="detailInfo setBorder twoSideShadow p20">
+        <view class="sign">{{utils.statusToStr(detail.status)}}</view>
+        <view class="df pb20 mb20 bottomBorder">
+            <image class="avatar avatar-small mr20 bdr0" mode="cover" src="{{detail.userDetail.avatar}}"></image>
+            <view class=" df flex-column justify-between">
+                <view class="fz30 fwb black-1">{{detail.userDetail.nickName}}</view>
+                <text class="gray-3 fz26">发布于{{utils.formatTime(detail.createTime,'yyyy-MM-dd HH:mm')}}</text>
+            </view>
+        </view>
+        <view class="postInfo mb20  pb10 bottomBorder">
+            <!-- 标题 -->
+            <view class="black-1 mb10 fwb">
+                <view class=" tag-orange mr20" wx:if="{{detail.invitationsDetail.tag}}">
+                    {{detail.invitationsDetail.tag}}
+                </view>
+                <text> {{detail.title}}</text>
+            </view>
+            <!-- 价格 -->
+            <!-- 失物招领是没有price的 -->
+            <block wx:if="{{detail.price!==''}}">
+                <!-- 兼职招聘-->
+                <!--兼职招聘才会有元这个字出现在内容中，二手和跑腿都是只让用户填价格数字，自己补元 -->
+                <view class="mt10 df mb10 red-1 fz30 fwb" wx:if="{{utils.haveYuan(detail.price)!==-1}}">
+                    {{detail.price}}
+                </view>
+                <view class="df mb10 align-end" wx:else>
+                    <!-- 二手交易和跑腿 -->
+                    <text class="mt10 df mr20  red-1 fz40 fwb">{{detail.price}}元</text>
+                    <!-- 只有二手交易才有原价格 -->
+                    <text class="gray-2 fz30 lineThrough" wx:if="{{detail.invitationsDetail.buyPrice}}">
+                        {{detail.invitationsDetail.buyPrice}}元
+                    </text>
+                </view>
+            </block>
+            <!-- 内容描述 -->
+            <view class="mb10 gray-1 ">{{detail.desc}}</view>
+            <!-- 每种帖子的详细内容 -->
+            <!-- 跑腿 -->
+            <view class="mb10 black-1 " wx:if="{{detail.invitationsDetail.expectedTime}}">
+                <text
+                    class="green-1">期望完成时间：</text>{{utils.formatTime(detail.invitationsDetail.expectedTime,'yyyy-MM-dd HH:mm')}}
+            </view>
+            <!-- 兼职招聘 -->
+            <view class="black-1" wx:if="{{detail.invitationsDetail.workTime}}">
+                <view>
+                    <text class=" blue-1">工作时间：</text>{{detail.invitationsDetail.workTime}}
+                </view>
+                <view>
+                    <text class=" blue-1">工作地点：</text>{{detail.invitationsDetail.workPlace}}
+                </view>
+            </view>
+            <!-- 失物招领 -->
+            <view class=" mb10 black-1" wx:if="{{detail.invitationsDetail.contact}}">
+                <text class="blue-1">联系方式：</text>{{detail.invitationsDetail.contact}}
+            </view>
+            <block wx:if="{{detail.pic.length!==0}}">
+                <view class="pic-box">
+                    <block wx:for="{{detail.pic}}" wx:key="{{picIndex}}" wx:for-item="picItem" wx:for-index="picIndex">
+                        <image class="pic-detail twoSideShadow-2 " src="{{picItem}}" mode="widthFix"></image>
+                    </block>
+                </view>
+
+            </block>
+
+
+
+        </view>
+        <view class="reaction">
+            <view class="justify-end mt10 df fz26 gray-2">
+                <view class="mr10">点赞:{{detail.like}}</view>
+                <view class="mr10">浏览:{{detail.watch}}</view>
+                <view class="mr10">收藏:{{detail.collect}}</view>
+                <view>留言:{{detail.comments}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="posterInfo df setBorder twoSideShadow mt20 p20 black-1">
+        <view class="df mr20 flex-column justify-between">
+            <view class="fwb gray-1">{{detail.userDetail.nickName}}</view>
+            <view class="fz28 gray-3">
+                于<text
+                    class="ml10 mr10 gray-1">{{utils.formatTime(detail.userDetail.createTime,'yyyy-MM-dd')}}</text>开始使用本平台，共完成了
+                <block wx:if="{{detail.classify===0}}">
+                    <text class=" mr10 gray-1"> {{detail.userDetail.completedOrderNum}}</text>个跑腿订单
+                </block>
+                <block wx:if="{{detail.classify===1}}">
+                    {{detail.userDetail.completedOrderNum}}个二手交易订单
+                </block>
+            </view>
+        </view>
+        <image class="avatar mr20 bdr0" mode="cover" src="{{detail.userDetail.avatar}}"></image>
+    </view>
+    <view class="userComments mb120 fz26 setBorder twoSideShadow mt20 p20 black-1">
+        <block wx:if="{{detail.comments===0}}">
+            <view class="bottomBorder">全部留言 . {{detail.comments}}条</view>
+            <NoData height="200rpx" title="还没有任何留言..." />
+        </block>
+        <block wx:else>
+            <view class="bottomBorder">全部留言 . {{detail.comments}}条</view>
+            <view class=" bottomBorder" wx:key="{{index}}" wx:for="{{commentDetail}}">
+                <view class="df mb10 justify-between align-center">
+                    <view class="df align-center">
+                        <image class="avatar-comment mr10" mode="cover" src="{{item.userDetail.avatar}}"></image>
+                        <view class=" fwb black-1">{{item.userDetail.nickName}}</view>
+                    </view>
+                    <text class="iconfont icon-iconzhengli_dianzan"></text>
+                </view>
+                <view class="ml60 mb20">
+                    <view class="mb10">
+                        <view class="">{{item.content}}</view>
+                    </view>
+                    <view>{{utils.formatTime(item.createTime,'yyyy-MM-DD')}}</view>
+                </view>
+                <block wx:if="{{item.reply.length}}">
+                    <view wx:for="{{item.reply}}" wx:key="{{replyIndex}}" wx:for-index="replyIndex"
+                        wx:for-item="replyItem">
+                        <!-- 评论的评论 -->
+                        <view class="ml80">
+                            <view class="df mb10 justify-between align-center">
+                                <view class="df align-center">
+                                    <image class="avatar-comment mr10" mode="cover"
+                                        src="{{replyItem.userDetail.avatar}}">
+                                    </image>
+                                    <view class=" fwb black-1">{{replyItem.userDetail.nickName}}</view>
+                                </view>
+                                <text class="iconfont icon-iconzhengli_dianzan"></text>
+                            </view>
+                            <view class="ml60 mb20">
+                                <view class="mb10">
+                                    <view class="">{{replyItem.content}}</view>
+                                </view>
+                                <view>{{utils.formatTime(replyItem.createTime,'yyyy-MM-DD')}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </block>
+    </view>
+    <view class="recommend">
+
+    </view>
+
+    <view class="fz26 df align-center justify-between gray-1  topBorder operation">
+        <view class="df align-center">
+            <view class="df mr40 flex-column align-center">
+                <text class="iconfont icon-dianzan3  fz40 gray-1"></text>
+                <text>超赞</text>
+            </view>
+            <view class="df mr40 flex-column align-center">
+                <text class="iconfont icon-icon_huifu-xian gray-1  fz40"></text>
+                <text>留言</text>
+            </view>
+            <view class="df mr40 flex-column align-center">
+                <text class="iconfont icon-xinbaniconshangchuan- gray-1  fz40"></text>
+                <text>收藏</text>
+            </view>
+        </view>
+        <block wx:if="{{detail.classify==0}}">
+            <view class="want-btn">去帮忙</view>
+        </block>
+        <block wx:if="{{detail.classify==1}}">
+            <view class="want-btn">我想要</view>
+        </block>
+
+    </view>
+</view>

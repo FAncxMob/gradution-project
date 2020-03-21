@@ -17,6 +17,12 @@ Page({
       currentSelect: data.detail,
     })
   },
+  toDetailPage(e) {
+    let iid = e.currentTarget.dataset.iid
+    wx.navigateTo({
+      url: `/pages/detailPage/indexDetailPage/indexDetailPage?iid=${iid}`
+    })
+  },
 
 
   /**

@@ -55,8 +55,15 @@ Component({
         }
       })
       let iid = e.currentTarget.dataset.iid
-      console.log(iid)
 
+    },
+    toDetailPage(e) {
+      let iid = e.currentTarget.dataset.iid
+      let classify = e.currentTarget.dataset.classify
+      this.triggerEvent('toDetailPage', {
+        iid,
+        classify
+      })
     }
   }
 })

@@ -1,0 +1,39 @@
+.indexDetailPage {
+  padding: 20rpx;
+  overflow: hidden;
+}
+.indexDetailPage .detailInfo {
+  position: relative;
+}
+.indexDetailPage .detailInfo .sign {
+  font-size: 40rpx;
+  color: #FE3928;
+  text-shadow: 3rpx 3rpx 6rpx #FE3928;
+  position: absolute;
+  right: 20rpx;
+}
+.indexDetailPage .userComments {
+  overflow: hidden;
+}
+.indexDetailPage .operation {
+  background: #F5F5F5;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 110rpx;
+  width: 100vw;
+  z-index: 99999;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+.indexDetailPage .operation .want-btn {
+  flex-shrink: 0;
+  display: inline;
+  font-size: 30rpx;
+  padding: 14rpx 40rpx 20rpx;
+  background: linear-gradient(to right, #FF8600, #E64E4E);
+  border-radius: 30rpx;
+  font-weight: bold;
+  color: white;
+  box-shadow: 20rpx 0 20rpx -20rpx #766d8b, -20rpx 0 20rpx -20rpx #766d8b;
+}

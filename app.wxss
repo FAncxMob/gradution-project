@@ -32,6 +32,14 @@
   border: 4rpx solid #e0cfbb;
 }
 
+.avatar-comment {
+  flex-shrink: 0;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid #e0cfbb;
+}
+
 .avatar-small {
   width: 80rpx;
   height: 80rpx;
@@ -60,12 +68,28 @@
   box-shadow: 20rpx 0 20rpx -20rpx #766d8b, -20rpx 0 20rpx -20rpx #766d8b;
 }
 
+.twoSideShadow-2 {
+  box-shadow: 10rpx 0 10rpx -10rpx #766d8b, -10rpx 0 10rpx -10rpx #766d8b;
+}
+
 .bottomShadow {
   box-shadow: 0rpx 20rpx 20rpx -20rpx #766d8b
 }
 
 .setBorder {
   border: 2rpx solid rgb(194, 190, 190);
+}
+
+.bottomBorder {
+  border-bottom: 2rpx solid rgb(194, 190, 190);
+  padding-bottom: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.topBorder {
+  border-top: 2rpx solid rgb(194, 190, 190);
+  /* padding-bottom: 10rpx;
+  margin-bottom: 10rpx; */
 }
 
 .pic-box {
@@ -76,7 +100,15 @@
 .pic {
   width: 40%;
   flex-shrink: 0;
+  margin: 10rpx;
   border: 4rpx solid #e0cfbb;
+}
+
+.pic-detail {
+  width: 90%;
+  flex-shrink: 0;
+  margin-bottom: 10rpx;
+  border: 2rpx solid #e0cfbb;
 }
 
 page {
@@ -84,6 +116,7 @@ page {
 }
 
 .tag-orange {
+  display: inline;
   font-size: 26rpx;
   border-radius: 10rpx;
   padding: 5rpx 10rpx;
@@ -102,4 +135,10 @@ page {
 .swiper-pic {
   width: 100vw;
   height: 300rpx;
+}
+
+.sign {
+  font-size: 40rpx;
+  color: #FE3928;
+  text-shadow: 3rpx 3rpx 6rpx #FE3928;
 }
