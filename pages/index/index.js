@@ -97,7 +97,11 @@ Page({
   },
 
   async _load() {
+    wx.showLoading({
+      title: '一生命悬检索中...'
+    })
     let result = await util.request('/getAllPost')
+    wx.hideLoading()
     if (result.code) {
       this.setData({
         legWork: result.data.legWork,

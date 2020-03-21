@@ -6,7 +6,18 @@
         <view class="df pb20 mb20 bottomBorder">
             <image class="avatar avatar-small mr20 bdr0" mode="cover" src="{{detail.userDetail.avatar}}"></image>
             <view class=" df flex-column justify-between">
-                <view class="fz30 fwb black-1">{{detail.userDetail.nickName}}</view>
+                <view class="df align-center">
+                    <view class="fz30 fwb black-1 mr20">{{detail.userDetail.nickName}}</view>
+                    <block wx:if="{{isFollowing}}">
+                        <view bindtap="cancelFollowing" data-openid="{{detail.openId}}" class="small-btn  p10 pt5 pb5">
+                            已关注</view>
+                    </block>
+                    <block wx:else>
+                        <view bindtap="followingTa" data-openid="{{detail.openId}}"
+                            class="small-btn follow-btn p10 pt5 pb5">
+                            关注Ta</view>
+                    </block>
+                </view>
                 <text class="gray-3 fz26">发布于{{utils.formatTime(detail.createTime,'yyyy-MM-dd HH:mm')}}</text>
             </view>
         </view>
@@ -106,7 +117,16 @@
                         <image class="avatar-comment mr10" mode="cover" src="{{item.userDetail.avatar}}"></image>
                         <view class=" fwb black-1">{{item.userDetail.nickName}}</view>
                     </view>
-                    <text class="iconfont icon-iconzhengli_dianzan"></text>
+                    <view class="df align-center">
+                        <block wx:if="{{item.iLikeThis}}">
+                            <text class="iconfont icon-iconzhengli_dianzan red-1"></text>
+                            <text class="red-1">{{item.likes}}</text>
+                        </block>
+                        <block wx:else>
+                            <text class="iconfont icon-iconzhengli_dianzan "></text>
+                            <text class="">{{item.likes}}</text>
+                        </block>
+                    </view>
                 </view>
                 <view class="ml60 mb20">
                     <view class="mb10">
@@ -126,7 +146,17 @@
                                     </image>
                                     <view class=" fwb black-1">{{replyItem.userDetail.nickName}}</view>
                                 </view>
-                                <text class="iconfont icon-iconzhengli_dianzan"></text>
+                                <view class="df align-center">
+                                    <block wx:if="{{replyItem.iLikeThis}}">
+                                        <text class="iconfont icon-iconzhengli_dianzan red-1"></text>
+                                        <text class="red-1">{{replyItem.likes}}</text>
+                                    </block>
+                                    <block wx:else>
+                                        <text class="iconfont icon-iconzhengli_dianzan "></text>
+                                        <text>{{replyItem.likes}}</text>
+                                    </block>
+
+                                </view>
                             </view>
                             <view class="ml60 mb20">
                                 <view class="mb10">

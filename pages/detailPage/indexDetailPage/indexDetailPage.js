@@ -6,7 +6,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detail: []
+    detail: [],
+    isFollowing: '',
+    commentDetail: [],
+    openId: ''
+  },
+  cancelFollowing(e) {
+    let that = this
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消关注吗？',
+      async success(res) {
+        if (res.confirm) {
+          let cancelOpenId = e.currentTarget.dataset.openid
+          wx.showLoading({
+            title: ''
+          })
+          let result = await util.request('/cancelFollowing', {
+            cancelOpenId
+          })
+          wx.hideLoading()
+          if (result.code) {
+
+            that._load(that.data.detail._id)
+          }
+        }
+      }
+    })
+  },
+
+  async followingTa(e) {
+    let followId = e.currentTarget.dataset.openid
+    let result = await util.request('/followingTa', {
+      followId
+    })
+    if (result.code) {
+      // this._load()
+      this._load(this.data.detail._id)
+    }
+
   },
 
   /**
@@ -33,6 +71,8 @@ Page({
       this.setData({
         detail: result.data.detail,
         commentDetail: result.data.commentDetail,
+        isFollowing: result.data.isFollowing,
+        openId: result.data.openId,
       })
     }
   },
