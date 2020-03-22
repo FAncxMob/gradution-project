@@ -142,3 +142,12 @@ page {
   color: #FE3928;
   text-shadow: 3rpx 3rpx 6rpx #FE3928;
 }
+
+.blackMC {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .4);
+}

@@ -1,4 +1,7 @@
 const util = require('../../../utils/util')
+const config = require('../../../utils/config')
+
+const THE_COMMENT_ID = config.commentId
 
 Page({
 
@@ -6,34 +9,307 @@ Page({
    * 页面的初始数据
    */
   data: {
+    fakeData: {
+      "code": 1,
+      "data": {
+        "detail": {
+          "_id": "5e67824f8d6d8077c0ffd415",
+          "openId": "ojoS-4qM_mvYAidQ7XwCkzQCvdzI",
+          "classify": 0,
+          "title": "帮忙带小吃街的吃的吃测试标题长度吃测试标题长度",
+          "desc": "臭豆腐锅盔和超市的臭豆腐锅盔和超市的臭豆腐锅盔和超市的臭豆腐锅盔和超市的臭豆腐锅盔和超市的臭豆腐锅盔和超市的臭豆腐锅盔和超市的",
+          "pic": ["https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWheJRmxCGTbHncmcqgWhOVsd6nPsTAK6cbpuCibMs5icibzSZBZH0KzNZk2DYIAvlBBpk0hibg98wmw/132", "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWheJRmxCGTbHncmcqgWhOVsd6nPsTAK6cbpuCibMs5icibzSZBZH0KzNZk2DYIAvlBBpk0hibg98wmw/132"],
+          "createTime": 1584527118000,
+          "price": "20",
+          "status": 3,
+          "invitationsDetail": {
+            "_id": "5e679c101fb09f0580c83734",
+            "status": 3,
+            "verify": "",
+            "iid": "5e67824f8d6d8077c0ffd415",
+            "openId": "ojoS-4qM_mvYAidQ7XwCkzQCvdzI",
+            "tag": "小吃街",
+            "expectedTime": 2134565,
+            "addressId": "1",
+            "takerId": "3",
+            "__v": 0
+          },
+          "collect": 3,
+          "like": 3,
+          "watch": 7,
+          "comments": 6,
+          "userDetail": {
+            "createTime": 1584786033454,
+            "openId": "ojoS-4qM_mvYAidQ7XwCkzQCvdzI",
+            "avatar": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWheJRmxCGTbHncmcqgWhOVsd6nPsTAK6cbpuCibMs5icibzSZBZH0KzNH2AlQjvewNWobOiafYEA0cw/132",
+            "nickName": "SoundOnly.",
+            "completedOrderNum": 2
+          }
+        },
+        "commentDetail": [{
+          "_id": "5e6648325ada4b4be82efd2d",
+          "openId": "4",
+          "iid": "5e67824f8d6d8077c0ffd415",
+          "replyCommentId": "5e73a4fc3793ae3a44a97e52",
+          "parentCommentId": "5e73a4fc3793ae3a44a97e52",
+          "content": "想要",
+          "createTime": 5583733016809,
+          "likes": 2,
+          "userDetail": {
+            "openId": "4",
+            "nickName": "我是用户4的昵称啦",
+            "avatar": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWheJRmxCGTbHncmcqgWhOVsd6nPsTAK6cbpuCibMs5icibzSZBZH0KzNZk2DYIAvlBBpk0hibg98wmw/132"
+          },
+          "iLikeThis": true,
+          "reply": []
+        }, {
+          "_id": "5e65d8977bcb981b101f30f1",
+          "openId": "2",
+          "iid": "5e67824f8d6d8077c0ffd415",
+          "replyCommentId": "5e73a4fc3793ae3a44a97e52",
+          "parentCommentId": "5e73a4fc3793ae3a44a97e52",
+          "content": "游戏是港版还是日版？",
+          "createTime": 1583733016809,
+          "likes": 3,
+          "userDetail": {
+            "openId": "2",
+            "nickName": "我是用户2的昵称啦",
+            "avatar": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWheJRmxCGTbHncmcqgWhOVsd6nPsTAK6cbpuCibMs5icibzSZBZH0KzNZk2DYIAvlBBpk0hibg98wmw/132"
+          },
+          "iLikeThis": true,
+          "reply": [{
+            "_id": "5e665e38f6c2e729c09dc972",
+            "openId": "4",
+            "iid": "5e67824f8d6d8077c0ffd415",
+            "replyCommentId": "5e65d8977bcb981b101f30f1",
+            "parentCommentId": "5e65d8977bcb981b101f30f1",
+            "content": "@我是用户2的昵称啦 ？？？",
+            "createTime": 6583733016809,
+            "likes": 1,
+            "userDetail": {
+              "openId": "4",
+              "nickName": "我是用户4的昵称啦",
+              "avatar": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWheJRmxCGTbHncmcqgWhOVsd6nPsTAK6cbpuCibMs5icibzSZBZH0KzNZk2DYIAvlBBpk0hibg98wmw/132"
+            },
+            "iLikeThis": true
+          }, {
+            "_id": "5e71cff502fdc63e6c97de74",
+            "openId": "5",
+            "iid": "5e67824f8d6d8077c0ffd415",
+            "replyCommentId": "5e65d9da50b7941b10b64ac8",
+            "parentCommentId": "5e65d8977bcb981b101f30f1",
+            "content": "@SoundOnly. 谢谢",
+            "createTime": 3583893096809,
+            "likes": 3,
+            "userDetail": {
+              "openId": "5",
+              "nickName": "我是用户5的昵称啦",
+              "avatar": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWheJRmxCGTbHncmcqgWhOVsd6nPsTAK6cbpuCibMs5icibzSZBZH0KzNZk2DYIAvlBBpk0hibg98wmw/132"
+            },
+            "iLikeThis": true
+          }, {
+            "_id": "5e65d9da50b7941b10b64ac8",
+            "openId": "ojoS-4qM_mvYAidQ7XwCkzQCvdzI",
+            "iid": "5e67824f8d6d8077c0ffd415",
+            "replyCommentId": "5e65d9a850b7941b10b64ac7",
+            "parentCommentId": "5e65d8977bcb981b101f30f1",
+            "content": "@我是用户3的昵称啦 不是哦，我这个是港版的",
+            "createTime": 3583793096809,
+            "likes": 4,
+            "userDetail": {
+              "openId": "ojoS-4qM_mvYAidQ7XwCkzQCvdzI",
+              "avatar": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWheJRmxCGTbHncmcqgWhOVsd6nPsTAK6cbpuCibMs5icibzSZBZH0KzNH2AlQjvewNWobOiafYEA0cw/132",
+              "nickName": "SoundOnly."
+            },
+            "iLikeThis": true
+          }, {
+            "_id": "5e65d9a850b7941b10b64ac7",
+            "openId": "3",
+            "iid": "5e67824f8d6d8077c0ffd415",
+            "replyCommentId": "5e65d8977bcb981b101f30f1",
+            "parentCommentId": "5e65d8977bcb981b101f30f1",
+            "content": "@我是用户2的昵称啦 这个游戏目前只有日版吧",
+            "createTime": 2583733096809,
+            "likes": 3,
+            "userDetail": {
+              "openId": "3",
+              "nickName": "我是用户3的昵称啦",
+              "avatar": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWheJRmxCGTbHncmcqgWhOVsd6nPsTAK6cbpuCibMs5icibzSZBZH0KzNZk2DYIAvlBBpk0hibg98wmw/132"
+            },
+            "iLikeThis": true
+          }]
+        }],
+        "isFollowing": 1,
+        "openId": "ojoS-4qM_mvYAidQ7XwCkzQCvdzI"
+      }
+    },
     detail: [],
     isFollowing: '',
     commentDetail: [],
-    openId: ''
+    openId: '',
+    commentStr: '',
+    focus: false,
+    replyCommentId: '',
+    parentCommentId: '',
+    commentNickName: '',
   },
-  cancelFollowing(e) {
-    let that = this
-    wx.showModal({
-      title: '提示',
-      content: '确定要取消关注吗？',
-      async success(res) {
-        if (res.confirm) {
-          let cancelOpenId = e.currentTarget.dataset.openid
-          wx.showLoading({
-            title: ''
-          })
-          let result = await util.request('/cancelFollowing', {
-            cancelOpenId
-          })
-          wx.hideLoading()
-          if (result.code) {
+  //搜索时触发
+  async sendComment(e) {
 
-            that._load(that.data.detail._id)
-          }
-        }
-      }
+    // 点击别人的留言 也会触发输入留言   自动加上@昵称    传replyComentId和parentCommentId（点击id评论的_id和detail[index]._id）
+    let {
+      commentStr,
+      replyCommentId,
+      parentCommentId,
+      commentNickName,
+    } = this.data
+    wx.showLoading({
+      title: '正在发送...'
+    })
+    let content = commentStr
+    if (commentNickName) {
+      content = `@${commentNickName} ${commentStr}`
+    }
+
+    let result = await util.request('/sendComment', {
+      content,
+      iid: this.data.detail._id,
+      replyCommentId,
+      parentCommentId
+    })
+    wx.hideLoading()
+    if (result.code) {
+      // 
+      this.setData({
+        commentStr: '',
+        focus: false,
+        replyCommentId: '',
+        parentCommentId: '',
+        commentNickName: '',
+      }, this._load(this.data.detail._id))
+    }
+  },
+  //输入时触发
+  commentInput(e) {
+    this.setData({
+      commentStr: e.detail.value,
+    })
+    // console.log(commentStr)
+  },
+
+  commentBluer(e) {
+    this.setData({
+      focus: false
     })
   },
+  commentFocus(e) {
+    // console.log(e)
+  },
+
+  async commentFather(e) {
+    // 直接对帖子进行评论
+    this.setData({
+      focus: true,
+      replyCommentId: THE_COMMENT_ID,
+      parentCommentId: THE_COMMENT_ID,
+      commentNickName: '',
+    })
+    // 弹出键盘
+  },
+  async commentChild(e) {
+    let replyCommentId = e.currentTarget.dataset.replycommentid
+    let parentCommentId = e.currentTarget.dataset.parentcommentid
+    let nickName = e.currentTarget.dataset.nickname
+    let _str = this.data.commentStr
+    this.setData({
+      focus: true,
+      replyCommentId,
+      parentCommentId,
+      commentNickName: nickName
+    })
+    // 弹出键盘
+  },
+  async cancelFollowing(e) {
+    let cancelOpenId = e.currentTarget.dataset.openid
+    wx.showLoading({
+      title: ''
+    })
+    let result = await util.request('/cancelFollowing', {
+      cancelOpenId
+    })
+    wx.hideLoading()
+    if (result.code) {
+      this.setData({
+        isFollowing: false
+      })
+      // this._load(this.data.detail._id)
+    }
+  },
+  async cancelCommentLikeChild(e) {
+    let commentId = e.currentTarget.dataset.commentid
+    let currentFatherIndex = e.currentTarget.dataset.currentfatherindex
+    let currentReplyIndex = e.currentTarget.dataset.currentreplyindex
+    let result = await util.request('/cancelCommentLike', {
+      commentId
+    })
+    if (result.code) {
+      let _commentDetail = this.data.commentDetail
+      _commentDetail[currentFatherIndex].reply[currentReplyIndex].iLikeThis = false
+      _commentDetail[currentFatherIndex].reply[currentReplyIndex].likes -= 1
+      this.setData({
+        commentDetail: _commentDetail
+      })
+    }
+  },
+  async commentLikeChild(e) {
+    let commentId = e.currentTarget.dataset.commentid
+    let currentFatherIndex = e.currentTarget.dataset.currentfatherindex
+    let currentReplyIndex = e.currentTarget.dataset.currentreplyindex
+    let result = await util.request('/commentLike', {
+      commentId,
+      postOpenId: this.data.detail.openId
+    })
+    if (result.code) {
+      let _commentDetail = this.data.commentDetail
+      _commentDetail[currentFatherIndex].reply[currentReplyIndex].iLikeThis = true
+      _commentDetail[currentFatherIndex].reply[currentReplyIndex].likes += 1
+      this.setData({
+        commentDetail: _commentDetail
+      })
+    }
+  },
+  async commentLike(e) {
+    let commentId = e.currentTarget.dataset.commentid
+    let currentIndex = e.currentTarget.dataset.currentindex
+    let result = await util.request('/commentLike', {
+      commentId,
+      postOpenId: this.data.detail.openId
+    })
+    if (result.code) {
+      let _commentDetail = this.data.commentDetail
+      _commentDetail[currentIndex].iLikeThis = true
+      _commentDetail[currentIndex].likes += 1
+      this.setData({
+        commentDetail: _commentDetail
+      })
+    }
+  },
+  async cancelCommentLike(e) {
+    let commentId = e.currentTarget.dataset.commentid
+    let currentIndex = e.currentTarget.dataset.currentindex
+    let result = await util.request('/cancelCommentLike', {
+      commentId
+    })
+    if (result.code) {
+      let _commentDetail = this.data.commentDetail
+      _commentDetail[currentIndex].iLikeThis = false
+      _commentDetail[currentIndex].likes -= 1
+      this.setData({
+        commentDetail: _commentDetail
+      })
+    }
+  },
+
 
   async followingTa(e) {
     let followId = e.currentTarget.dataset.openid
@@ -41,8 +317,11 @@ Page({
       followId
     })
     if (result.code) {
+      this.setData({
+        isFollowing: true
+      })
       // this._load()
-      this._load(this.data.detail._id)
+      // this._load(this.data.detail._id)
     }
 
   },
@@ -60,6 +339,15 @@ Page({
 
   },
   async _load(iid) {
+    // let {
+    //   fakeData
+    // } = this.data
+    // this.setData({
+    //   detail: fakeData.data.detail,
+    //   commentDetail: fakeData.data.commentDetail,
+    //   isFollowing: fakeData.data.isFollowing,
+    //   openId: fakeData.data.openId,
+    // })
     wx.showLoading({
       title: '拼命搜索中'
     })

@@ -1,5 +1,4 @@
 .indexDetailPage {
-  padding: 20rpx;
   overflow: hidden;
 }
 .indexDetailPage .detailInfo {
@@ -36,4 +35,19 @@
   font-weight: bold;
   color: white;
   box-shadow: 20rpx 0 20rpx -20rpx #766d8b, -20rpx 0 20rpx -20rpx #766d8b;
+}
+.indexDetailPage .commenting {
+  height: auto;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.indexDetailPage .commenting .commentInput {
+  margin-right: 20rpx;
+  background: #F0F0F0;
+  padding: 0 15rpx;
+  border-radius: 12rpx;
+  font-size: 30rpx;
 }
