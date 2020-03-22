@@ -13,12 +13,24 @@
 				noDataHeight=" 500rpx">
 			</ShowPostList>
 		</view>
+
+		<!-- 发布帖子 -->
+		<view catchtap="release" data-classify="0" class="release">
+			<text class="fz80 iconfont icon-fabudianjizhuangtai-"></text>
+			发布帖子
+		</view>
 	</block>
 	<block wx:if="{{currentSelect===1}}">
 		<view class="showPostList-wrapper">
 			<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{secondHand}}"
 				title="没有找到任何二手交易订单..." noDataHeight=" 500rpx">
 			</ShowPostList>
+		</view>
+
+		<!-- 发布帖子 -->
+		<view catchtap="release" data-classify="1" class="release">
+			<text class="fz80 iconfont icon-fabudianjizhuangtai-"></text>
+			发布闲置
 		</view>
 	</block>
 	<block wx:if="{{currentSelect===2}}">

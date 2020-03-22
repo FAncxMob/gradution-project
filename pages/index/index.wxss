@@ -33,3 +33,18 @@
 .showPostList-wrapper2 {
   margin-top: 260rpx;
 }
+
+.release {
+  position: fixed;
+  right: 0rpx;
+  bottom: 0rpx;
+  /* height: 150rpx; */
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  font-size: 22rpx;
+  color: #E64E4E;
+  align-items: center;
+  font-weight: bold;
+  /* writing-mode: vertical-rl; */
+}

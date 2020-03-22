@@ -145,6 +145,8 @@ Page({
     },
     detail: [],
     isFollowing: '',
+    isLike: '',
+    isCollect: '',
     commentDetail: [],
     openId: '',
     commentStr: '',
@@ -323,7 +325,48 @@ Page({
       // this._load()
       // this._load(this.data.detail._id)
     }
-
+  },
+  async cancelLikePost(e) {
+    let result = await util.request('/cancelLikePost', {
+      iid: this.data.detail._id
+    })
+    if (result.code) {
+      this.setData({
+        isLike: false
+      })
+    }
+  },
+  async likePost(e) {
+    let result = await util.request('/likePost', {
+      iid: this.data.detail._id,
+      postOpenId: this.data.detail.openId,
+    })
+    if (result.code) {
+      this.setData({
+        isLike: true
+      })
+    }
+  },
+  async cancelCollectPost(e) {
+    let result = await util.request('/cancelCollectPost', {
+      iid: this.data.detail._id
+    })
+    if (result.code) {
+      this.setData({
+        isCollect: false
+      })
+    }
+  },
+  async collectPost(e) {
+    let result = await util.request('/collectPost', {
+      iid: this.data.detail._id,
+      postOpenId: this.data.detail.openId,
+    })
+    if (result.code) {
+      this.setData({
+        isCollect: true
+      })
+    }
   },
 
   /**
@@ -360,6 +403,8 @@ Page({
         detail: result.data.detail,
         commentDetail: result.data.commentDetail,
         isFollowing: result.data.isFollowing,
+        isLike: result.data.isLike,
+        isCollect: result.data.isCollect,
         openId: result.data.openId,
       })
     }

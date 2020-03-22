@@ -26,6 +26,20 @@ Page({
     // }
   },
 
+  async release(e) {
+    let classify = e.currentTarget.dataset.classify
+    if (classify === '0') {
+      wx.navigateTo({
+        url: `/pages/release/releaseLegwork/releaseLegwork`
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/release/releaseSecondhand/releaseSecondhand`
+      })
+    }
+
+  },
+
   handleSelect(data) {
     this.setData({
       currentSelect: data.detail,

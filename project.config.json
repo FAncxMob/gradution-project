@@ -195,6 +195,13 @@
 					"pathName": "pages/detailPage/indexDetailPage/indexDetailPage",
 					"query": "iid=5e67824f8d6d8077c0ffd415",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/release/releaseLegwork/releaseLegwork",
+					"pathName": "pages/release/releaseLegwork/releaseLegwork",
+					"query": "iid=5e67824f8d6d8077c0ffd415",
+					"scene": null
 				}
 			]
 		}

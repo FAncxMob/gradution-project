@@ -33,9 +33,12 @@ Page({
         icon: 'success',
         duration: 2000,
         success: function () {
-          wx.navigateTo({
-            url: '/pages/my/addressManager/addressManager'
+          wx.navigateBack({
+            delta: 1
           })
+          // wx.navigateTo({
+          //   url: '/pages/my/addressManager/addressManager'
+          // })
         }
       })
     } else {

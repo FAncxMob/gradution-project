@@ -1,12 +1,39 @@
 const util = require('../../../utils/util')
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    address: []
+    address: [],
+    type: ''
+  },
+  chooseAddress(e) {
+    if (this.data.type !== 'choose') {
+      return
+    }
+    let currentIndex = e.currentTarget.dataset.currentindex
+
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1]; //当前页面
+    var prevPage = pages[pages.length - 2]; //上一个页面
+    let addressData = this.data.address[currentIndex]
+    //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      addressData,
+      address: `${addressData.name} ${addressData.tel} ${addressData.location}`
+    });
+
+    wx.navigateBack({
+      delta: 1, // 回退前 delta(默认为1) 页面
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+
   },
 
   bindToPage: function (event) {
@@ -26,7 +53,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._load()
+
+    if (options.type) {
+      this.setData({
+        type: 'choose'
+      })
+    }
 
   },
 
@@ -50,7 +82,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this._load()
   },
 
   /**

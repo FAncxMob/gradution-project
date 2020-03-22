@@ -104,6 +104,8 @@
   border: 4rpx solid #e0cfbb;
 }
 
+
+
 .pic-detail {
   width: 90%;
   flex-shrink: 0;

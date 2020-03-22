@@ -20,7 +20,9 @@
     "pages/my/addressManager/editAddress/editAddress",
     "components/Search/Search",
 
-    "pages/detailPage/indexDetailPage/indexDetailPage"
+    "pages/detailPage/indexDetailPage/indexDetailPage",
+    "pages/release/releaseSecondhand/releaseSecondhand",
+    "pages/release/releaseLegwork/releaseLegwork"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -215,18 +215,35 @@
     <block wx:else>
         <view class="operation fz26 df align-center justify-between gray-1  topBorder">
             <view class="df align-center">
-                <view class="df mr40 flex-column align-center">
-                    <text class="iconfont icon-dianzan3  fz40 gray-1"></text>
-                    <text>超赞</text>
-                </view>
-                <view bindtap="commentFather" class="df mr40 flex-column align-center">
-                    <text class="iconfont icon-icon_huifu-xian gray-1  fz40"></text>
+                <view bindtap="commentFather" class="df mr50 flex-column align-center">
+                    <text class="fwb iconfont icon-icon_huifu-xian gray-1  fz40"></text>
                     <text>留言</text>
                 </view>
-                <view class="df mr40 flex-column align-center">
-                    <text class="iconfont icon-xinbaniconshangchuan- gray-1  fz40"></text>
-                    <text>收藏</text>
-                </view>
+                <block wx:if="{{isLike}}">
+                    <view bindtap="cancelLikePost" class="red-1 df mr40 flex-column align-center">
+                        <text class="fwb iconfont icon-dianzan3  fz40 "></text>
+                        <text>已赞</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view bindtap="likePost" class="gray-1 df mr40 flex-column align-center">
+                        <text class="fwb iconfont icon-dianzan3  fz40 "></text>
+                        <text>超赞</text>
+                    </view>
+                </block>
+                <block wx:if="{{isCollect}}">
+                    <view bindtap="cancelCollectPost"  class="red-1 df flex-column align-center">
+                        <text class="fwb iconfont icon-xinbaniconshangchuan-   fz40"></text>
+                        <text>已收藏</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view bindtap="collectPost"  class="gray-1 df mr40 flex-column align-center">
+                        <text class="fwb iconfont icon-xinbaniconshangchuan-   fz40"></text>
+                        <text style="white-space: pre;">  收藏 </text>
+                    </view>
+                </block>
+                
             </view>
             <block wx:if="{{detail.classify==0}}">
                 <view class="want-btn">去帮忙</view>
@@ -236,10 +253,9 @@
             </block>
         </view>
     </block>
- </block>
+    </block>
 
  <!-- 输入时的黑色蒙层 -->
- <view class="blackMC" wx:if="{{focus}}">
+ <view class="blackMC" wx:if="{{focus}}"></view>
 
- </view>
 </view>
