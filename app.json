@@ -22,7 +22,10 @@
 
     "pages/detailPage/indexDetailPage/indexDetailPage",
     "pages/release/releaseSecondhand/releaseSecondhand",
-    "pages/release/releaseLegwork/releaseLegwork"
+    "pages/release/releaseLegwork/releaseLegwork",
+    "pages/release/releasePartimJob/releasePartimJob",
+    "pages/release/releaseLost/releaseLost",
+    "pages/release/releaseFound/releaseFound"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -2097,3 +2097,15 @@
 .lineThrough {
   text-decoration: line-through !important;
 }
+.setCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.opa-4 {
+  opacity: 0.4;
+}
+.opa-8 {
+  opacity: 0.8;
+}

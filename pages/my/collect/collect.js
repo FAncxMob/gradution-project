@@ -27,7 +27,7 @@ Page({
       title: ''
     })
     let result = await util.request('/cancelCollectPost', {
-      cancelInvitationsId
+      iid: cancelInvitationsId
     })
     wx.hideLoading()
     if (result.code) {
@@ -47,6 +47,7 @@ Page({
 
     let result = await util.request('/getMyCollect')
     if (result.code) {
+      console.log('/getMyCollect')
       this.setData({
         myCollect: result.data
       })

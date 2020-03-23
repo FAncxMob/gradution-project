@@ -56,6 +56,13 @@ const Utils = {
         complete: function () {}
       })
     })
+  },
+  showModal(msg) {
+    wx.showToast({
+      title: msg,
+      icon: 'none',
+      duration: 2000
+    })
   }
 }
 

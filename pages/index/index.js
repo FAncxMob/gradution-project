@@ -28,15 +28,29 @@ Page({
 
   async release(e) {
     let classify = e.currentTarget.dataset.classify
-    if (classify === '0') {
-      wx.navigateTo({
-        url: `/pages/release/releaseLegwork/releaseLegwork`
-      })
-    } else {
-      wx.navigateTo({
-        url: `/pages/release/releaseSecondhand/releaseSecondhand`
-      })
+    let url = ''
+    switch (classify) {
+      case '0':
+        url = `/pages/release/releaseLegwork/releaseLegwork`
+        break;
+      case '1':
+        url = `/pages/release/releaseSecondhand/releaseSecondhand`
+        break;
+      case '2':
+        url = `/pages/release/releasePartimJob/releasePartimJob`
+        break;
+      case '3':
+        url = `/pages/release/releaseLost/releaseLost`
+        break;
+      case '5':
+        url = `/pages/release/releaseFound/releaseFound`
+        break;
+      default:
+        break;
     }
+    wx.navigateTo({
+      url
+    })
 
   },
 
@@ -106,7 +120,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._load()
+
 
   },
 
@@ -137,7 +151,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this._load()
   },
 
   /**

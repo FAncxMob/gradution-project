@@ -1,18 +1,25 @@
 <view id="releaseLegwork">
     <view class='login-container setBorder twoSideShadow'>
         <form class="login-form " bindsubmit="submitForm">
-            <view class="section">
-                <view class="section-title">标题 <text class="red-1">*</text></view>
-                <textarea name="title" placeholder-class="input" auto-height placeholder="请输入标题" />
+            <block wx:if="{{!showPreview}}">
+                <view class="section">
+                    <view class="section-title">标题 <text class="red-1">*</text></view>
+                    <textarea show-confirm-bar="{{false}}" name="title" placeholder-class="input" auto-height
+                        placeholder="请输入标题" />
+                    </view>
+                <view class="section">
+                    <view class="section-title">跑腿内容  <text class="red-1">*</text></view>
+                    <textarea show-confirm-bar="{{false}}"  name="desc" placeholder-class="input" auto-height placeholder="请输入跑腿需求描述" />
                 </view>
-            <view class="section">
-                <view class="section-title">跑腿内容  <text class="red-1">*</text></view>
-                <textarea  name="desc" placeholder-class="input" auto-height placeholder="请输入跑腿需求描述" />
-            </view>
-            <view class="section">
-                <view class="section-title">标签</view>
-                <textarea  placeholder-class="input" name="tag" auto-height placeholder="请输入标签，如代取快递，占座等" />
-            </view>
+                <view class="section">
+                    <view class="section-title">报酬金额(元) <text class="red-1">*</text></view>
+                    <textarea show-confirm-bar="{{false}}" placeholder-class="input" name="price" auto-height placeholder="请输入报酬金额" />
+                </view>
+                <view class="section">
+                    <view class="section-title">标签</view>
+                    <textarea show-confirm-bar="{{false}}"  placeholder-class="input" name="tag" auto-height placeholder="请输入标签，如代取快递，占座等" />
+                </view>
+            </block>
             <view class="section mt40">
                 <view class="section-title">收货地址 <text class="red-1">*</text></view>
                 <view bindtap="chooseAddress" class="address text-ellipsis-row2">
@@ -31,16 +38,25 @@
                 <pickerYMDHM class="" name="expectedTime" placeholder = "{{placeholder}}" date = "{{date}}" disabled = "{{disabled}}" bind:onPickerChange="onPickerChange" startDate="{{startDate}}" endDate="{{endDate}}">
                 </pickerYMDHM>
             </view>
+             <!-- 为了让图片的高度等于高度，利用padding垂直的百分比是按照父元素的宽度来计算来进行 -->
             <view class="section imageBx">
                 <view class="section-title">选择图片</view>
-                <block wx:if="{{tempFilePaths.length}}">
+                <text class="mb10 fz26">您最多选择{{maxLength}}张图片!</text>
+                <block wx:if="{{files.length}}">
                     <view  class="choosePicBox" > 
-                        <!-- 为了让图片的高度等于高度，利用padding垂直的百分比是按照父元素的宽度来计算来进行 -->
-                        <view class="imgWrapper mb20" wx:for="{{tempFilePaths}}" wx:key="{{index}}">
-                            <image mode="cover" src="{{item}}"></image>
+                        <view class="imgWrapper mb20 por" bindtap="previewImage" data-index="{{index}}" wx:for="{{files}}" wx:key="{{index}}">
+                            <image mode="cover"  src="{{item}}">
+                            </image>
+                            <block wx:if="{{realPath[index]}}">
+                                <text class="iconfont  icon-chenggong opa-8 setCenter green-1 fz80 z-index-10"></text>
+                            </block>
+                            <block wx:else>
+                                <text class="iconfont icon-shibai2 opa-8 setCenter green-1 fz80 z-index-10"></text>
+                            </block>
+                            
                          </view>
                          <view bindtap="choosePic" class="imgWrapper ">
-                         <image mode="cover"  class="adjust setBorder gray-1 fz30 p30" src="/icon/plus.png"></image>
+                            <image mode="cover"  class="adjust setBorder gray-1 fz30 p30" src="/icon/plus.png"></image>
                          </view>
 
                     </view>
@@ -52,11 +68,14 @@
                 </block>
                
             </view>
-            
+           
             <view class="btn-area">
                 <button type="primary" formType="submit"> 发布
                 </button>
             </view>
         </form>
     </view>
+
+    <mp-gallery bind:hide="hide" hide-on-click="{{true}}" show-delete="{{true}}" show="{{showPreview}}"
+    binddelete="deletePic" img-urls="{{previewImageUrls}}" current="{{previewCurrent}}"></mp-gallery>
 </view>

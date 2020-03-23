@@ -39,6 +39,12 @@
 				title="没有找到任何兼职招聘帖子..." noDataHeight=" 500rpx">
 			</ShowPostList>
 		</view>
+
+		<!-- 发布帖子 -->
+		<view catchtap="release" data-classify="2" class="release">
+			<text class="fz80 iconfont icon-fabudianjizhuangtai-"></text>
+			发布兼职招聘
+		</view>
 	</block>
 	<block wx:if="{{currentSelect===3}}">
 		<view class="switchTab-wrapper2">
@@ -52,12 +58,24 @@
 				</ShowPostList>
 			</view>
 
+			<!-- 发布帖子 -->
+			<view catchtap="release" data-classify="3" class="release">
+				<text class="fz80 iconfont icon-fabudianjizhuangtai-"></text>
+				发布寻物启示
+			</view>
+
 		</block>
 		<block wx:if="{{currentSelectForLostAndFound===1}}">
 			<view class="showPostList-wrapper2">
 				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{found}}"
 					title="没有找到任何捡到物品帖子..." noDataHeight=" 500rpx">
 				</ShowPostList>
+			</view>
+
+			<!-- 发布帖子 -->
+			<view catchtap="release" data-classify="5" class="release">
+				<text class="fz80 iconfont icon-fabudianjizhuangtai-"></text>
+				发布失物招领
 			</view>
 
 		</block>

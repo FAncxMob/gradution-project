@@ -1,7 +1,7 @@
 // const WxValidate = require('../../../utils/WxValidate')
 import WxValidate from '../../../utils/WxValidate'
-const utils = require('../../../utils/util')
-
+const util = require('../../../utils/util')
+let config = require('../../../utils/config')
 
 Page({
 
@@ -24,24 +24,89 @@ Page({
       title: '',
       desc: '',
       tag: '',
-      expectedTime: '',
-      address: '' // 选择收货地址
-    }
+      price: ''
+    },
+    showPreview: false,
+    realPath: [],
+    maxLength: 6,
+    files: []
+  },
+  previewImage(e) {
+    let index = e.currentTarget.dataset.index;
+    console.log(index)
+    this.setData({
+      previewImageUrls: this.data.files,
+      previewCurrent: index,
+      showPreview: true
+    });
+  },
+  deletePic(e) {
+    let index = e.detail.index;
+    let {
+      files,
+      realPath
+    } = this.data
+    files.splice(index, 1);
+    realPath.splice(index, 1);
+    this.setData({
+      files,
+      realPath,
+      showPreview: false
+    });
   },
 
-  choosePic(e) {
-    let that = this
-    wx.chooseImage({
-      count: 6,
+  hide(e) {
+    console.log('delete', e.detail)
+    this.setData({
+      showPreview: false
+    })
+  },
+  async choosePic(e) {
+    let {
+      realPath,
+      maxLength,
+      files
+    } = this.data
+    let res = await wx.chooseImage({
+      count: maxLength,
       sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success(res) {
-        // tempFilePath可以作为img标签的src属性显示图片
-        const tempFilePaths = res.tempFilePaths
-        that.setData({
-          tempFilePaths
+      sourceType: ['album', 'camera']
+    })
+
+    // const _tempFilePaths = res.tempFilePaths
+    res.tempFilePaths.forEach((val, index) => {
+      if (files.length < maxLength) {
+        let picName = ''
+        // 上传图片
+        this.uploadPic(val).then((res) => {
+          res = JSON.parse(res)
+          realPath.push(res.fileName)
+          files.push(val)
+          this.setData({
+            realPath,
+            files
+          })
         })
+      } else {
+        console.log(`您最多选择${maxLength}张`)
       }
+    })
+  },
+
+  uploadPic(path) {
+    // 上传图片
+    return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: config.host + `/uploadPic`,
+        filePath: path,
+        name: 'file',
+        success(res) {
+          resolve(res.data)
+        },
+        fail(res) {
+          reject(res)
+        }
+      })
     })
   },
   chooseAddress(e) {
@@ -78,6 +143,10 @@ Page({
       tag: {
         required: false,
         maxlength: 6
+      },
+      price: {
+        required: true,
+        min: 1
       }
     };
     const messages = {
@@ -93,6 +162,10 @@ Page({
       tag: {
         required: '请输入标签',
         maxlength: '标签最多输入6个字符'
+      },
+      price: {
+        required: '请输入报酬金额',
+        min: '报酬必须高于1软妹币哦~'
       }
     };
     this.WxValidate = new WxValidate(rules, messages)
@@ -102,7 +175,7 @@ Page({
   //   obj[`basicInfo.${val.currentTarget.dataset.val}`] = val.detail.value
   //   this.setData(obj)
   // },
-  submitForm(e) {
+  async submitForm(e) {
     const params = e.detail.value
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
@@ -124,16 +197,33 @@ Page({
     let {
       addressData,
       expectedTime,
-      tempFilePaths
+      realPath
     } = this.data
     let values = {
       ...params,
       expectedTime,
-      iid: addressData._id,
+      addressId: addressData._id,
+      pic: realPath,
+      classify: 0
     }
 
     console.log(values)
-    // 提交操作
+
+    let result = await util.request('/publishLegWork', values)
+    if (result.code) {
+      wx.showToast({
+        title: "发布成功",
+        icon: 'success',
+        duration: 2000,
+        success() {
+          wx.switchTab({
+            url: '/pages/index/index'
+          })
+        }
+      })
+    } else {
+      util.showModal('发布失败了，请重试')
+    }
 
   },
   showModal(error) {
@@ -143,11 +233,28 @@ Page({
       duration: 2000
     })
   },
+
+  // previewImage: function (e) {
+  //   wx.previewImage({
+  //     current: e.currentTarget.id, // 当前显示图片的http链接
+  //     urls: this.data.files // 需要预览的图片http链接列表ss
+  //   })
+  // },
+
+  // showPreview(e) {
+  //   console.log('showPreview', e.detail)
+  //   this.setData({
+  //     showPreview: true
+  //   })
+  // },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initValidate();
+
+    this.initValidate()
+
   },
 
   /**

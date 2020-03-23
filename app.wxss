@@ -11,6 +11,7 @@
 
 @import "./icon/icon.wxss";
 @import "./common/style.wxss";
+@import './weui-miniprogram/weui-wxss/dist/style/weui.wxss';
 
 .tag {
   color: rgb(194, 190, 190);
