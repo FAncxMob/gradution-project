@@ -7,13 +7,57 @@ Page({
    */
   data: {
     history: [],
-    noDataText: '还没有浏览任何帖子...'
+    noDataText: '还没有浏览任何帖子...',
+    searchResult: [],
+    searchStr: '',
   },
+
+  //搜索时触发
+  async searchConfirm(e) {
+    let {
+      searchStr,
+    } = this.data
+    wx.showLoading({
+      title: '正在检索...'
+    })
+
+    let result = await util.request('/searchMyHistory', {
+      searchStr
+    })
+    wx.hideLoading()
+    if (result.code) {
+      // 
+      this.setData({
+        history: result.data
+      })
+    }
+  },
+  //输入时触发
+  searchInput(e) {
+    this.setData({
+      searchStr: e.detail.detail.value
+    })
+  },
+  // 清空搜索时触发
+  searchClear() {
+    this.setData({
+      searchStr: ''
+    })
+  },
+
   toDetailPage(e) {
     let iid = e.detail.iid
-    wx.navigateTo({
-      url: `/pages/detailPage/indexDetailPage/indexDetailPage?iid=${iid}`
-    })
+    let classify = e.detail.classify
+
+    if (classify === 4) {
+      wx.navigateTo({
+        url: `/pages/detailPage/schoolNewsDetailPage/schoolNewsDetailPage?iid=${iid}`
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/detailPage/indexDetailPage/indexDetailPage?iid=${iid}`
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

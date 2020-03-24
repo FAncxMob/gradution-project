@@ -30,6 +30,10 @@
     color: #5D5D5D;
 }
 
+.justify-end {
+    justify-content: flex-end;
+}
+
 .myOrderList .pic {
     width: 40%;
     flex-shrink: 0;

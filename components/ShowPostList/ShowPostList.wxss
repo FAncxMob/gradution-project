@@ -184,3 +184,18 @@
     width: 40rpx;
     color: #E64E4E;
 }
+
+.status {
+    position: absolute;
+    right: 0rpx;
+    top: 0rpx;
+    font-size: 40rpx;
+    display: block;
+    border: 2rpx solid #a09393;
+    padding: 30rpx 10rpx;
+    border-radius: 50%;
+    color: white;
+    background-color: rgba(0, 0, 0, .5);
+    transform: rotate(-25deg);
+    z-index: 3;
+}

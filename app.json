@@ -11,20 +11,27 @@
     "pages/my/follow/follow",
     "pages/my/collect/collect",
     "pages/my/allPublish/allPublish",
-    "pages/my/allTaking/allTaking",
-    "pages/my/allFinished/allFinished",
-    "pages/my/allOngoing/allOngoing",
-    "pages/my/allCancel/allCancel",
+    "pages/my/myReleaseLegwork/myReleaseLegwork",
+    "pages/my/myReleaseSecondhand/myReleaseSecondhand",
+    "pages/my/myReleasePartTimeJob/myReleasePartTimeJob",
+    "pages/my/myReleaseLostAndFound/myReleaseLostAndFound",
+    "pages/my/myTakeLegwork/myTakeLegwork",
+    "pages/my/myTakeSecondhand/myTakeSecondhand",
+    "pages/my/myDrop/myDrop",
+
     "pages/my/addressManager/addressManager",
     "pages/my/addressManager/addAddress/addAddress",
     "pages/my/addressManager/editAddress/editAddress",
     "components/Search/Search",
 
     "pages/detailPage/indexDetailPage/indexDetailPage",
+    "pages/detailPage/help/help",
+    "pages/detailPage/buy/buy",
     "pages/release/releaseSecondhand/releaseSecondhand",
     "pages/release/releaseLegwork/releaseLegwork",
     "pages/release/releasePartimJob/releasePartimJob",
-    "pages/release/releaseLostAndFound/releaseLostAndFound"
+    "pages/release/releaseLostAndFound/releaseLostAndFound",
+    "pages/detailPage/schoolNewsDetailPage/schoolNewsDetailPage"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -1,39 +1,20 @@
-const util = require('../../../utils/util')
-
+// pages/my/myDrop/myDrop.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabArr: ["校园跑腿", "二手交易"],
-    currentSelect: 0,
-    legWork: [],
-    secondHand: [],
+
   },
-  handleSelect(data) {
-    this.setData({
-      currentSelect: data.detail,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._load()
 
   },
 
-  async _load() {
-
-    let result = await util.request('/getAllTaking')
-    if (result.code) {
-      this.setData({
-        legWork: result.data.legWork,
-        secondHand: result.data.secondHand
-      })
-    }
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

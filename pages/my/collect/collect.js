@@ -11,13 +11,59 @@ Page({
     btnData: {
       btnText: '取消收藏',
       btnConfirmText: '确定要取消收藏该帖子吗?'
+    },
+    searchResult: [],
+    searchStr: '',
+  },
+
+  //搜索时触发
+  async searchConfirm(e) {
+    let {
+      searchStr,
+    } = this.data
+    wx.showLoading({
+      title: '正在检索...'
+    })
+
+    let result = await util.request('/searchMyCollect', {
+      searchStr
+    })
+    wx.hideLoading()
+    if (result.code) {
+      // 
+      this.setData({
+        myCollect: result.data
+      })
     }
   },
+  //输入时触发
+  searchInput(e) {
+    this.setData({
+      searchStr: e.detail.detail.value
+    })
+  },
+  // 清空搜索时触发
+  searchClear() {
+    this.setData({
+      searchStr: ''
+    })
+  },
+
   toDetailPage(e) {
     let iid = e.detail.iid
-    wx.navigateTo({
-      url: `/pages/detailPage/indexDetailPage/indexDetailPage?iid=${iid}`
-    })
+    let classify = e.detail.classify
+
+    if (classify === 4) {
+      wx.navigateTo({
+        url: `/pages/detailPage/schoolNewsDetailPage/schoolNewsDetailPage?iid=${iid}`
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/detailPage/indexDetailPage/indexDetailPage?iid=${iid}`
+      })
+    }
+
+
   },
 
   async cancelCollectPost(e) {

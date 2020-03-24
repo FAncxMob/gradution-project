@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "SchoolNewsList": "../../../components/SchoolNewsList/SchoolNewsList"
+    "SchoolNewsList": "../../../components/SchoolNewsList/SchoolNewsList",
+    "Search": "../../components/Search/Search"
 
   },
   "navigationBarTitleText": "校园热点"

@@ -16,6 +16,10 @@ Component({
     },
     noDataHeight: String,
     btnData: Object,
+    type: {
+      type: String,
+      value: ''
+    }
   },
 
   /**

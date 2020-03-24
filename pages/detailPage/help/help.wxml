@@ -1,0 +1,78 @@
+<view id="help">
+    <form bindsubmit="submitHelp">
+        <view class="info setBorder m10 mb20 twoSideShadow">
+            <view class="df justify-between " wx:if="{{helpData.pic.length}}">
+                <image class="pic w200" mode="widthFix" src="{{helpData.pic[0]}}"> </image>
+                <view class="df flex-column justify-between">
+                    <view class="fwb text-ellipsis-row1">
+                        <rich-text nodes="{{helpData.title}}"></rich-text>
+                    </view>
+                    <view class="text-ellipsis-row2">
+                        <rich-text nodes="{{helpData.desc}}"></rich-text>
+                    </view>
+                    <view class="fwb red-1">￥{{helpData.price}}</view>
+                </view>
+            </view>
+            <view wx:else>
+                <view class="df flex-column p10 justify-between">
+                    <view class="fwb text-ellipsis-row1">
+                        <rich-text nodes="{{helpData.title}}"></rich-text>
+                    </view>
+                    <view class="text-ellipsis-row2">
+                        <rich-text nodes="{{helpData.desc}}"></rich-text>
+                    </view>
+                    <view class="fwb red-1">￥{{helpData.price}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="require setBorder p10 m10 mb20 twoSideShadow">
+            <view>
+                <view class="fwb black-1 ">跑腿内容</view>
+                <view class="pl40 ">
+                    <rich-text class="gray-1" nodes="{{helpData.desc}}"></rich-text>
+                </view>
+            </view>
+        </view>
+        <view class="require setBorder p10 m10 mb20 twoSideShadow">
+            <view>
+                <view class="fwb black-1 ">期望送货时间</view>
+                <view class="pl40 ">
+                    <rich-text class="gray-1" nodes="{{helpData.invitationsDetail.expectedTime}}"></rich-text>
+                </view>
+            </view>
+
+            <view>
+                <view class="fwb black-1 ">送货地址</view>
+                <view class="pl40 gray-1">
+                    <view class="">
+                        <text class="shrink-0">收货人姓名：</text>
+                        {{helpData.addressData.name}}
+                    </view>
+                    <view class="">
+                        <text class="shrink-0">收货人手机：</text>
+                        {{helpData.addressData.tel}}
+                    </view>
+                    <view class="">
+                        <text class="shrink-0">收货地址：</text>
+                        {{helpData.addressData.location}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="takerContact  setBorder p10 m10 mb20 twoSideShadow">
+            <view>
+                <view class="fwb black-1 mb10">您的电话</view>
+                <input class="pl20 bottomBorder" show-confirm-bar="{{false}}" placeholder-class="input"
+                    name="takerContact" placeholder="请留下一个可以让发帖人联系上你的手机号..." />
+            </view>
+        </view>
+        <view class="p20 fz26 gray-3 pb200">
+            <view>1. 请保存好购买的转账记录或发票！ 在核销订单时需要出示转账记录或发票进行线下转账</view>
+            <view>2. 点击确认帮忙后，发帖人那里会生成一个核销码， 请在交易完成后通过扫码来核销订单</view>
+        </view>
+        <view class="operation topShadow fz26 df align-center justify-between gray-1  topBorder">
+            <view class="fwb fz40 red-1">￥{{helpData.price}}</view>
+            <button formType="submit" class="want-btn mr0">确认帮忙</button>
+        </view>
+    </form>
+</view>

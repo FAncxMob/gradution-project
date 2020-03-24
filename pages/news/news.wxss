@@ -1,0 +1,14 @@
+.searchBox {
+    position: fixed;
+    top: 0rpx;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    z-index: 10;
+}
+
+.schoolNewsLisBox {}
+
+.swiperBox {
+    padding-top: 100rpx;
+}

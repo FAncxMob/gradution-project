@@ -2,9 +2,8 @@
 
 <view class="indexDetailPage">
     <block wx:if="{{detail._id}}">
-        <view class="detailInfo setBorder twoSideShadow p20">
-            <view class="sign">{{utils.statusToStr(detail.status)}}</view>
-            <view class="df pb20 mb20 bottomBorder">
+        <view class="detailInfo setBorder twoSideShadow p20 ">
+            <view class="df pb20 mb20 bottomBorder" style="position: relative;z-index: 1;">
                 <image class="avatar avatar-small mr20 bdr0" mode="cover" src="{{detail.userDetail.avatar}}"></image>
                 <view class=" df flex-column justify-between">
                     <view class="df align-center">
@@ -22,6 +21,8 @@
                     </view>
                     <text class="gray-3 fz26">发布于{{utils.formatTime(detail.createTime,'yyyy-MM-dd HH:mm')}}</text>
                 </view>
+                <view style="z-index: 100;" class="{{detail.status===0?dn:'status'}}">
+                    {{utils.statusToStr(detail.status)}}</view>
             </view>
             <view class="postInfo mb20  pb10 bottomBorder">
                 <!-- 标题 -->
@@ -258,11 +259,17 @@
                 </block>
                 
             </view>
-            <block wx:if="{{detail.classify==0}}">
-                <view class="want-btn">去帮忙</view>
+            <block wx:if="{{detail.classify==0&&detail.status==0}}">
+                <view bindtap="toHelpOrBuy" data-type="help" class="want-btn">去帮忙</view>
             </block>
-            <block wx:if="{{detail.classify==1}}">
-                <view class="want-btn">我想要</view>
+            <block wx:if="{{detail.classify==0&&detail.status!=0}}">
+                <view  class="want-btn want-btn-gray">已被承接</view>
+            </block>
+            <block wx:if="{{detail.classify==1&&detail.status==0}}">
+                <view bindtap="toHelpOrBuy"  data-type="buy" class="want-btn" >我想要</view>
+            </block>
+            <block wx:if="{{detail.classify==1&&detail.status!=0}}">
+                <view  class="want-btn want-btn-gray">已被购买</view>
             </block>
         </view>
     </block>

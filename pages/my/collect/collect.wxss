@@ -2,16 +2,19 @@
   padding: 20rpx;
   font-size: 26rpx;
 }
+
 #collect .collect-list {
   padding: 20rpx;
   border: 2rpx solid #c2bebe;
   border-radius: 10rpx;
   margin-bottom: 20rpx;
 }
+
 #collect .collect-list .cancel-collect {
   margin: 0 -20rpx -5px;
   padding: 10rpx 20rpx 0;
 }
+
 #collect .switchTab-wrapper {
   position: fixed;
   top: 0;
@@ -19,4 +22,18 @@
   right: 0;
   height: 80rpx;
   z-index: 9999;
+}
+
+
+.showPostListBox {
+  padding-top: 100rpx;
+}
+
+.searchBox {
+  position: fixed;
+  top: 0rpx;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  z-index: 10;
 }

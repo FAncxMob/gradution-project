@@ -221,6 +221,21 @@
 					"id": -1,
 					"name": "pages/release/releaseLostAndFound/releaseLostAndFound",
 					"pathName": "pages/release/releaseLostAndFound/releaseLostAndFound",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "pages/detailPage/help/help",
+					"pathName": "pages/detailPage/help/help",
+					"query": "iid=5e79ea1eabe2c40970c8506c",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/detailPage/buy/buy",
+					"pathName": "pages/detailPage/buy/buy",
+					"query": "iid=5e79d99117422f14ac84c71a",
 					"scene": null
 				}
 			]

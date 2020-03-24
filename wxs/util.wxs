@@ -241,16 +241,44 @@ function statusToStr(status) {
     var str = ''
     switch (status) {
         case 1:
-            str = '已接单'
+            str = '已被承接'
             break;
         case 2:
-            str = '已接单'
+            str = '已被购买'
             break;
         case 3:
             str = '已完成'
             break;
         case 4:
             str = '中止'
+            break;
+        case 5:
+            str = '已结束'
+            break;
+        case 6:
+            str = '已找回'
+            break;
+        case 7:
+            str = '物归原主'
+            break;
+        default:
+            break;
+    }
+    return str
+}
+
+function deliveryWayToStr(deliveryWay) {
+    deliveryWay = +deliveryWay
+    var str = ''
+    switch (deliveryWay) {
+        case 0:
+            str = '自提和送货上门都可以'
+            break;
+        case 1:
+            str = '仅支持自提'
+            break;
+        case 2:
+            str = '仅支持送货上门'
             break;
         default:
             break;
@@ -276,5 +304,6 @@ module.exports = {
     formatPriceNew: formatPriceNew,
     skuShowStock: skuShowStock,
     haveYuan: haveYuan,
-    statusToStr: statusToStr
+    statusToStr: statusToStr,
+    deliveryWayToStr: deliveryWayToStr
 }

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "ShowPostList": "../../../components/ShowPostList/ShowPostList",
+    "NoData": "../../../components/NoData/NoData"
+  },
+  "navigationBarTitleText": "校园热点详情"
+}

@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "SwitchTab": "../../../components/SwitchTab/SwitchTab",
-    "ShowPostList": "../../../components/ShowPostList/ShowPostList"
-  },
-  "navigationBarTitleText": "进行中的"
-}

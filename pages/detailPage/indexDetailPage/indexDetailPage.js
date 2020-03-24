@@ -154,7 +154,12 @@ Page({
     parentCommentId: '',
     commentNickName: '',
   },
-  //搜索时触发
+  toHelpOrBuy(e) {
+    let type = e.currentTarget.dataset.type
+    wx.navigateTo({
+      url: `/pages/detailPage/${type}/${type}?iid=${this.data.detail._id}`
+    })
+  }, //搜索时触发
   async sendComment(e) {
 
     // 点击别人的留言 也会触发输入留言   自动加上@昵称    传replyComentId和parentCommentId（点击id评论的_id和detail[index]._id）
@@ -330,8 +335,11 @@ Page({
       iid: this.data.detail._id
     })
     if (result.code) {
+      let detail = this.data.detail
+      detail.like -= 1
       this.setData({
-        isLike: false
+        isLike: false,
+        detail
       })
     }
   },
@@ -341,8 +349,11 @@ Page({
       postOpenId: this.data.detail.openId,
     })
     if (result.code) {
+      let detail = this.data.detail
+      detail.like += 1
       this.setData({
-        isLike: true
+        isLike: true,
+        detail
       })
     }
   },
@@ -351,8 +362,11 @@ Page({
       iid: this.data.detail._id
     })
     if (result.code) {
+      let detail = this.data.detail
+      detail.collect -= 1
       this.setData({
-        isCollect: false
+        isCollect: false,
+        detail
       })
     }
   },
@@ -362,8 +376,11 @@ Page({
       postOpenId: this.data.detail.openId,
     })
     if (result.code) {
+      let detail = this.data.detail
+      detail.collect += 1
       this.setData({
-        isCollect: true
+        isCollect: true,
+        detail
       })
     }
   },
@@ -374,7 +391,9 @@ Page({
   onLoad: function (options) {
     if (options.iid) {
       let iid = options.iid
-      this._load(iid)
+      this.setData({
+        iid
+      })
     } else {
       console.log('吼啦！没传iid，怎么查详情啊')
     }
@@ -420,6 +439,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this._load(this.data.iid)
 
   },
 

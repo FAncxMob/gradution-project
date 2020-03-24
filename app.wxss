@@ -78,6 +78,10 @@
   box-shadow: 0rpx 20rpx 20rpx -20rpx #766d8b
 }
 
+.topShadow {
+  box-shadow: 0rpx -10rpx 10rpx -10rpx #766d8b
+}
+
 .setBorder {
   border: 2rpx solid rgb(194, 190, 190);
 }
@@ -159,3 +163,22 @@ page {
 .hide {
   visibility: hidden;
 }
+
+.dn {
+  display: none;
+}
+
+/* .status {
+  position: absolute;
+  right: 10rpx;
+  top: 100rpx;
+  font-size: 40rpx;
+  display: block;
+  border: 2rpx solid #a09393;
+  padding: 30rpx 10rpx;
+  border-radius: 50%;
+  color: white;
+  background-color: rgba(0, 0, 0, .5);
+  transform: rotate(-25deg);
+  z-index: 20;
+} */

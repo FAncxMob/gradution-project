@@ -5,29 +5,31 @@
         <NoData height="{{noDataHeight}}" title="{{title}}" />
     </block>
     <block wx:else>
-        <view class="list twoSideShadow borderBottom" wx:for="{{data}}" wx:key="{{index}}">
+        <view bindtap="toDetailPage" data-iid="{{item._id}}" class="list twoSideShadow borderBottom" wx:for="{{data}}"
+            wx:key="{{index}}">
             <!-- 没有图片的排版 -->
             <view class="gray-1">
                 <view class="mb20 text-ellipsis-row1 fwb gray-1">
                     {{item.title}}
                 </view>
                 <view class="mb20 df justify-between fz26">
-                    <view class=" max-w420 text-ellipsis-row1">发布者: {{item.detail.posterDept}}</view>
-                    <view class="df">
-                        <view class="mr10">浏览:{{item.watch}}</view>
-                        <view class="mr10">收藏:{{item.collect}}</view>
-                    </view>
+                    <view class=" text-ellipsis-row1">发布者: {{item.detail.posterDept}}</view>
                 </view>
-                <view class="text-ellipsis-row3">
+                <view class="mb20 text-ellipsis-row3">
                     <rich-text nodes=" {{item.desc}}"></rich-text>
                 </view>
                 <block wx:if="{{item.pic.length!==0}}">
                     <!-- 有图片的排版 -->
-                    <view class="df mt10 gray-1">
+                    <view class="mb20 df mt10 gray-1">
                         <!-- 有图片的排版 -->
                         <image class="long-pic mr20" src="{{item.pic[0]}}" mode="scaleToFill "></image>
                     </view>
                 </block>
+                <view class="df justify-end fz26 gray-1">
+                    <view class="mr10">浏览:{{item.watch}}</view>
+                    <view class="mr10">收藏:{{item.collect}}</view>
+                    <view class="mr10">点赞:{{item.like}}</view>
+                </view>
                 <block wx:if="{{item.file}}">
                     <view>这里有一个附件</view>
                     <!-- <view class="df mt10 gray-1">

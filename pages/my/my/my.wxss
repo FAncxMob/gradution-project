@@ -88,9 +88,19 @@
   padding-bottom: 50rpx;
   border: 2rpx solid #e4dcdc;
   border-radius: 20rpx;
+  background: #ffffff;
+  font-size: 28rpx;
+}
+#person-container .card-vertical .title {
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 2rpx solid #c2bebe;
 }
 #person-container .card-vertical view {
-  padding: 15rpx 0;
+  padding: 0;
   border-bottom: 2rpx solid #c2bebe;
 }
 #person-container .card-vertical view text {

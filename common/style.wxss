@@ -143,6 +143,9 @@
   word-break: break-all;
   word-wrap: break-word;
 }
+.showBr {
+  white-space: pre;
+}
 .bg-cover {
   background-position: center;
   background-repeat: no-repeat;
@@ -1562,6 +1565,9 @@
 }
 .pb60 {
   padding-bottom: 60rpx !important;
+}
+.pb200 {
+  padding-bottom: 200rpx !important;
 }
 .pl0 {
   padding-left: 0rpx !important;

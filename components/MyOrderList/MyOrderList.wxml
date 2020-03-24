@@ -9,15 +9,19 @@
             wx:key="{{index}}">
             <block wx:if="{{item.pic.length!==0}}">
                 <!-- 有图片的排版 -->
-                <view class="df gray-1">
+                <view class="df gray-1" style="position: relative;">
                     <!-- 有图片的排版 -->
+                    <view style="z-index: 100;" class="{{item.status===0?dn:'status'}}">
+                        {{utils.statusToStr(item.status)}}</view>
                     <image class="pic mr20" src="{{item.pic[0]}}" mode="widthFix"></image>
                     <view class="df flex-column justify-between fz30 gray-1">
                         <view class=" fwb text-ellipsis-row1">
                             <rich-text nodes="{{item.title}}"></rich-text>
+
                         </view>
                         <view class="text-ellipsis-row3">
                             <rich-text nodes="{{item.desc}}"></rich-text>
+
                         </view>
                         <view class="df fz26">
                             <view class="mr10">点赞:{{item.like}}</view>
@@ -30,7 +34,9 @@
             </block>
             <block wx:else>
                 <!-- 没有图片的排版 -->
-                <view class="gray-1">
+                <view class="gray-1" style="position: relative;z-index: 1;">
+                    <view style="z-index: 100;" class="{{item.status===0?dn:'status'}}">
+                        {{utils.statusToStr(item.status)}}</view>
                     <view class="mb20 text-ellipsis-row1 fwb gray-1">
                         <rich-text nodes="{{item.title}}"></rich-text>
                     </view>

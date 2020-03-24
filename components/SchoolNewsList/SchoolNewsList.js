@@ -21,6 +21,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    toDetailPage(e) {
+      let iid = e.currentTarget.dataset.iid
+      // let classify = e.currentTarget.dataset.classify
+      this.triggerEvent('toDetailPage', {
+        iid
+      })
+    },
     deleteInvitations(e) {
       let that = this
       wx.showModal({

@@ -8,30 +8,35 @@
     <block wx:else>
         <block wx:if="{{isMyPost}}">
             <!-- 显示我的帖子 -->
-            <view bindtap="toDetailPage" data-iid="{{item.iid}}" class="list twoSideShadow" wx:for="{{data}}"
-                wx:key="{{index}}">
-                <view class="df align-start mb20">
-                    <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
-                    <view class="df h80 flex-column fx1 justify-between">
-                        <text class="fwb">{{item.userDetail.nickName}}</text>
-                        <text
-                            class="gray-3 fz22">发布于{{utils.formatTime(item.invitationsDetail.createTime,'yyyy-MM-dd HH:mm')}}</text>
-                    </view>
-                    <block wx:if="{{item.invitationsDetail.price!==''}}">
-                        <view class="red-1 fz30 fwb">
-
-                            <block wx:if="{{utils.haveYuan(item.invitationsDetail.price)!==-1}}">
-                                {{item.invitationsDetail.price}}
-                            </block>
-                            <block wx:else>
-                                {{item.invitationsDetail.price}}元
-                            </block>
+            <view bindtap="toDetailPage" data-iid="{{item.iid}}" data-classify="{{item.invitationsDetail.classify}}"
+                class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
+                <block wx:if="{{item.invitationsDetail.classify!==4}}">
+                    <view class="df align-start mb20">
+                        <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
+                        <view class="df h80 flex-column fx1 justify-between">
+                            <text class="fwb">{{item.userDetail.nickName}}</text>
+                            <text
+                                class="gray-3 fz22">发布于{{utils.formatTime(item.invitationsDetail.createTime,'yyyy-MM-dd HH:mm')}}</text>
                         </view>
-                    </block>
+                        <block wx:if="{{item.invitationsDetail.price!==''}}">
+                            <view class="red-1 fz30 fwb">
 
-                </view>
-                <view class="mt20 mb10 black-1 fwb">
-                    <rich-text nodes="{{item.invitationsDetail.title}}"></rich-text>
+                                <block wx:if="{{utils.haveYuan(item.invitationsDetail.price)!==-1}}">
+                                    {{item.invitationsDetail.price}}
+                                </block>
+                                <block wx:else>
+                                    {{item.invitationsDetail.price}}元
+                                </block>
+                            </view>
+                        </block>
+
+                    </view>
+                </block>
+                <view class="mt20 mb10 black-1 " style="position: relative;z-index: 1;">
+                    <rich-text class="fwb fz30" nodes="{{item.invitationsDetail.title}}"></rich-text>
+                    <view class="{{item.invitationsDetail.status===0?dn:'status'}}">
+                        {{utils.statusToStr(item.invitationsDetail.status)}}
+                    </view>
                 </view>
                 <block wx:if="{{item.invitationsDetail.pic.length!==0}}">
                     <view class="pic-box">
@@ -60,7 +65,12 @@
                 </view>
                 <view data-invitationsid="{{item.invitationsId}}"
                     class="gray-2 cancel-collect df mt10 borderTop align-center justify-between">
-                    <view>浏览于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</view>
+                    <block wx:if="{{type=='collect'}}">
+                        <view>收藏于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</view>
+                    </block>
+                    <block wx:if="{{type===''}}">
+                        <view>浏览于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</view>
+                    </block>
 
                     <block wx:if="{{haveOperation}}">
                         <text catchtap="tapBtn" data-iid="{{item.iid}}"
@@ -92,8 +102,10 @@
                         </view>
                     </block>
                 </view>
-                <view class="mt20 mb10 black-1 fwb">
-                    {{item.title}}
+                <view class="mt20 mb10 black-1" style="position: relative;z-index: 1;">
+                    <text class=" fwb fz30">{{item.title}}</text>
+                    <view class="{{item.status===0?dn:'status'}}">{{utils.statusToStr(item.status)}}</view>
+
                 </view>
                 <block wx:if="{{item.pic.length!==0}}">
                     <view class="pic-box">
@@ -131,6 +143,7 @@
                     </block>
 
                 </view>
+
             </view>
         </block>
     </block>

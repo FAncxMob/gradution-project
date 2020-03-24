@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "SwitchTab": "../../../components/SwitchTab/SwitchTab",
-    "MyOrderList": "../../../components/MyOrderList/MyOrderList"
-  },
-  "navigationBarTitleText": "我接单的"
-}

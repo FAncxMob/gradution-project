@@ -8,7 +8,42 @@ Page({
   data: {
     tabArr: ['评论的赞', '帖子的赞'],
     currentSelect: 0,
-    reply: []
+    reply: [],
+    searchResult: [],
+    searchStr: '',
+  },
+
+  //搜索时触发
+  async searchConfirm(e) {
+    let {
+      searchStr,
+    } = this.data
+    wx.showLoading({
+      title: '正在检索...'
+    })
+
+    let result = await util.request('/searchMyComment', {
+      searchStr
+    })
+    wx.hideLoading()
+    if (result.code) {
+      // 
+      this.setData({
+        reply: result.data
+      })
+    }
+  },
+  //输入时触发
+  searchInput(e) {
+    this.setData({
+      searchStr: e.detail.detail.value
+    })
+  },
+  // 清空搜索时触发
+  searchClear() {
+    this.setData({
+      searchStr: ''
+    })
   },
 
   handleSelect(data) {

@@ -1,5 +1,10 @@
 <view class="">
-    <view class="">
+    <view class="searchBox">
+        <Search searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm" bind:searchInput="searchInput"
+            bind:searchClear="searchClear">
+        </Search>
+    </view>
+    <view class="swiperBox">
         <swiper class="bottomShadow" indicator-dots="{{true}}" autoplay="{{ true }}" circular="{{ true }}"
             interval="{{ 2000 }}" duration="{{ 500 }}" previous-margin="{{ 0 }}px" next-margin="{{ 0 }}px">
             <block wx:for="{{ background }}" wx:key="*this">
@@ -9,8 +14,11 @@
             </block>
         </swiper>
     </view>
-    <SchoolNewsList data="{{schoolNews}}" title="{{noDataText}}" haveOperation="{{false}}" noDataHeight="500rpx">
-    </SchoolNewsList>
+    <view class="schoolNewsLisBox">
+        <SchoolNewsList bind:toDetailPage="toDetailPage" data="{{schoolNews}}" title="{{noDataText}}"
+            haveOperation="{{false}}" noDataHeight="500rpx">
+        </SchoolNewsList>
+    </view>
 
 
 </view>

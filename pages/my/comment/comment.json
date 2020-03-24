@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "SwitchTab": "../../../components/SwitchTab/SwitchTab",
-    "NoData": "../../../components/NoData/NoData"
+    "NoData": "../../../components/NoData/NoData",
+    "Search": "../../components/Search/Search"
   },
   "navigationBarTitleText": "回复我的"
 }
