@@ -10,21 +10,20 @@ Page({
    */
   data: {
     addressData: {},
-    expectedTime: '',
-    // date: '2019-01-01 13:37',
-    // times: 0,
-    data: {
-      date: '2020-01-01 13:37',
-      disabled: false, //设置是否能点击 false可以 true不能点击
-      startDate: '2020-01-01 12:37',
-      endDate: '2020-03-12 12:38',
-      placeholder: '请选择时间'
-    },
+    // expectedTime: '',
+    // data: {
+    //   date: '2020-01-01 13:37',
+    //   disabled: false, //设置是否能点击 false可以 true不能点击
+    //   startDate: '2020-01-01 12:37',
+    //   endDate: '2020-03-12 12:38',
+    //   placeholder: '请选择时间'
+    // },
     basicInfo: {
       title: '',
       desc: '',
       tag: '',
-      price: ''
+      price: '',
+      expectedTime: ''
     },
     showPreview: false,
     realPath: [],
@@ -40,19 +39,29 @@ Page({
       showPreview: true
     });
   },
-  deletePic(e) {
+  async deletePic(e) {
     let index = e.detail.index;
     let {
       files,
       realPath
     } = this.data
-    files.splice(index, 1);
-    realPath.splice(index, 1);
-    this.setData({
-      files,
-      realPath,
-      showPreview: false
-    });
+
+    // 删除图片接口
+    let result = await util.request('/deletePic', {
+      path: `${realPath[index]}`
+    })
+    if (result.code) {
+      files.splice(index, 1);
+      realPath.splice(index, 1);
+      this.setData({
+        files,
+        realPath,
+        showPreview: false
+      });
+    } else {
+      util.showModal('删除图片失败')
+    }
+
   },
 
   hide(e) {
@@ -86,6 +95,9 @@ Page({
             realPath,
             files
           })
+        }).catch((res) => {
+          wx.hideLoading()
+          util.showModal('上传图片失败了X_X')
         })
       } else {
         console.log(`您最多选择${maxLength}张`)
@@ -120,15 +132,15 @@ Page({
       }
     })
   },
-  onPickerChange: function (e) {
-    let date = e.detail.dateString
-    let expectedTime = new Date(date).getTime()
-    this.setData({
-      date,
-      expectedTime,
-      // times: times + 1
-    })
-  },
+  // onPickerChange: function (e) {
+  //   let date = e.detail.dateString
+  //   let expectedTime = new Date(date).getTime()
+  //   this.setData({
+  //     date,
+  //     expectedTime,
+  //     // times: times + 1
+  //   })
+  // },
   initValidate() {
     const rules = {
       title: {
@@ -147,7 +159,10 @@ Page({
       price: {
         required: true,
         min: 1
-      }
+      },
+      expectedTime: {
+        required: true
+      },
     };
     const messages = {
       title: {
@@ -166,7 +181,10 @@ Page({
       price: {
         required: '请输入报酬金额',
         min: '报酬必须高于1软妹币哦~'
-      }
+      },
+      expectedTime: {
+        required: '请输入期望送达时间'
+      },
     };
     this.WxValidate = new WxValidate(rules, messages)
   },
@@ -188,20 +206,25 @@ Page({
       })
       return false
     }
-    if (this.data.expectedTime === '') {
-      this.showModal({
-        msg: '请选择期望送达时间'
-      })
-      return false
-    }
+    // if (this.data.expectedTime === '') {
+    //   this.showModal({
+    //     msg: '请选择期望送达时间'
+    //   })
+    //   return false
+    // }
     let {
       addressData,
-      expectedTime,
+      // expectedTime,
       realPath
     } = this.data
+
+    params.price = params.price.trim()
+    params.desc = params.desc.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+    params.expectedTime = params.expectedTime.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+    params.title = params.title.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+
     let values = {
       ...params,
-      expectedTime,
       addressId: addressData._id,
       pic: realPath,
       classify: 0

@@ -17,7 +17,7 @@
 		<!-- 发布帖子 -->
 		<view catchtap="release" data-classify="0" class="release">
 			<text class="fz80 iconfont icon-fabudianjizhuangtai-"></text>
-			发布帖子
+			发布校园跑腿
 		</view>
 	</block>
 	<block wx:if="{{currentSelect===1}}">
@@ -61,7 +61,7 @@
 			<!-- 发布帖子 -->
 			<view catchtap="release" data-classify="3" class="release">
 				<text class="fz80 iconfont icon-fabudianjizhuangtai-"></text>
-				发布寻物启示
+				发布失物招领
 			</view>
 
 		</block>

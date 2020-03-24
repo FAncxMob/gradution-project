@@ -1,6 +1,5 @@
 const util = require('../../../utils/util')
 const config = require('../../../utils/config')
-
 const THE_COMMENT_ID = config.commentId
 
 Page({

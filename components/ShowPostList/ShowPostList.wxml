@@ -8,8 +8,8 @@
     <block wx:else>
         <block wx:if="{{isMyPost}}">
             <!-- 显示我的帖子 -->
-            <view bindtap="toDetailPage" data-iid="{{item.iid}}"
-                class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
+            <view bindtap="toDetailPage" data-iid="{{item.iid}}" class="list twoSideShadow" wx:for="{{data}}"
+                wx:key="{{index}}">
                 <view class="df align-start mb20">
                     <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
                     <view class="df h80 flex-column fx1 justify-between">
@@ -31,7 +31,7 @@
 
                 </view>
                 <view class="mt20 mb10 black-1 fwb">
-                    {{item.invitationsDetail.title}}
+                    <rich-text nodes="{{item.invitationsDetail.title}}"></rich-text>
                 </view>
                 <block wx:if="{{item.invitationsDetail.pic.length!==0}}">
                     <view class="pic-box">
@@ -44,12 +44,12 @@
                         </block>
                     </view>
                     <view class="mt10 gray-1 text-ellipsis-row1">
-                        {{item.invitationsDetail.desc}}
+                        <rich-text nodes="{{item.invitationsDetail.desc}}"></rich-text>
                     </view>
                 </block>
                 <block wx:else>
                     <view class=" mt10 gray-1 text-ellipsis-row3">
-                        {{item.invitationsDetail.desc}}
+                        <rich-text nodes="{{item.invitationsDetail.desc}}"></rich-text>
                     </view>
                 </block>
                 <view class="justify-end mt10 df fz26 gray-2">
@@ -72,8 +72,8 @@
         </block>
         <block wx:else>
             <!-- 显示全部公共帖子 -->
-            <view bindtap="toDetailPage" data-iid="{{item._id}}" 
-                class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
+            <view bindtap="toDetailPage" data-iid="{{item._id}}" class="list twoSideShadow" wx:for="{{data}}"
+                wx:key="{{index}}">
                 <view class="df align-start mb20">
                     <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
                     <view class="df h80 flex-column fx1 justify-between">
@@ -106,12 +106,13 @@
                         </block>
                     </view>
                     <view class="mt10 gray-1 text-ellipsis-row1">
-                        {{item.desc}}
+                        <rich-text nodes="{{item.desc}}"></rich-text>
+
                     </view>
                 </block>
                 <block wx:else>
                     <view class=" mt10 gray-1 text-ellipsis-row3">
-                        {{item.desc}}
+                        <rich-text nodes=" {{item.desc}}"></rich-text>
                     </view>
                 </block>
 

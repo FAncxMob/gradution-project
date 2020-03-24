@@ -12,6 +12,7 @@
 @import "./icon/icon.wxss";
 @import "./common/style.wxss";
 @import './weui-miniprogram/weui-wxss/dist/style/weui.wxss';
+/* @import "/wxParse/wxParse.wxss"; */
 
 .tag {
   color: rgb(194, 190, 190);
@@ -153,4 +154,8 @@ page {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, .4);
+}
+
+.hide {
+  visibility: hidden;
 }

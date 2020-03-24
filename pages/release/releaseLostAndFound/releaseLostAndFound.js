@@ -16,21 +16,20 @@ Page({
     basicInfo: {
       title: '',
       desc: '',
-      tag: '',
-      price: '',
-      buyPrice: '',
+      // price: '',
+      contact: '',
     },
     showPreview: false,
     realPath: [],
     maxLength: 6,
     files: [],
-    deliveryArray: ['都可以', '仅支持自提', '仅支持送货上门'],
-    deliveryIndex: 0,
+    typeArray: ['丢了东西', '捡到东西'],
+    typeIndex: 0,
   },
 
   bindPickerChange(e) {
     this.setData({
-      deliveryIndex: e.detail.value
+      typeIndex: e.detail.value
     })
   },
   previewImage(e) {
@@ -48,6 +47,7 @@ Page({
       files,
       realPath
     } = this.data
+
     // 删除图片接口
     let result = await util.request('/deletePic', {
       path: `${realPath[index]}`
@@ -78,9 +78,6 @@ Page({
       maxLength,
       files
     } = this.data
-    wx.showLoading({
-      title: '正在上传图片...'
-    })
     let res = await wx.chooseImage({
       count: maxLength,
       sizeType: ['original', 'compressed'],
@@ -99,7 +96,7 @@ Page({
           this.setData({
             realPath,
             files
-          }, () => wx.hideLoading())
+          })
         }).catch((res) => {
           wx.hideLoading()
           util.showModal('上传图片失败了X_X')
@@ -137,15 +134,6 @@ Page({
       }
     })
   },
-  onPickerChange: function (e) {
-    let date = e.detail.dateString
-    let expectedTime = new Date(date).getTime()
-    this.setData({
-      date,
-      expectedTime,
-      // times: times + 1
-    })
-  },
   initValidate() {
     const rules = {
       title: {
@@ -157,49 +145,34 @@ Page({
         required: true,
         minlength: 10,
       },
-      tag: {
-        required: false,
-        maxlength: 6
-      },
-      price: {
+      // price: {
+      //   required: false,
+      //   // maxlength: 6
+      //   min: 0
+      // },
+      contact: {
         required: true,
-        min: 1
-      },
-      buyPrice: {
-        required: true,
-        min: 1
+        maxlength: 80
       }
     };
     const messages = {
       title: {
         required: '请输入一个醒目的标题吧！',
-        minlength: '标题最少要输入5个字符',
-        maxlength: '标题最多输入50个字符',
+        minlength: '标题最少要输入5个字符'
       },
       desc: {
-        required: '请输入物品详细介绍！',
-        minlength: '需求描述最少要输入10个字符',
+        required: '请输入兼职详情介绍！',
+        minlength: '详情介绍最少要输入10个字符',
       },
-      tag: {
-        required: '请输入物品的类别！',
-        maxlength: '类别最多输入6个字符'
-      },
-      price: {
-        required: '请输入出售金额！',
-        min: '出售金额必须是大于1的数字哦~'
-      },
-      buyPrice: {
-        required: '请输入入手金额！',
-        min: '入手金额必须是大于1的数字哦~'
+      // price: {
+      //   min: '悬赏金额最小是0~'
+      // },
+      contact: {
+        required: '请输入联系方式！',
       }
     };
     this.WxValidate = new WxValidate(rules, messages)
   },
-  // formChange(val) {
-  //   let obj = {}
-  //   obj[`basicInfo.${val.currentTarget.dataset.val}`] = val.detail.value
-  //   this.setData(obj)
-  // },
   async submitForm(e) {
     const params = e.detail.value
     if (!this.WxValidate.checkForm(params)) {
@@ -207,52 +180,26 @@ Page({
       this.showModal(error)
       return false
     }
-    console.log(this.data.deliveryIndex != 2, !this.data.addressData._id)
-    if (this.data.deliveryIndex != 2 && !this.data.addressData._id) {
-      this.showModal({
-        msg: '请选择收货地址'
-      })
-      return false
-    }
-    if (this.data.files.length == 0) {
-      this.showModal({
-        msg: '请选择一张图片作为帖子的主图吧！'
-      })
-      return false
-    }
     let {
-      addressData,
-      deliveryIndex,
-      realPath
+      realPath,
+      typeIndex
     } = this.data
-
-    params.price = params.price.trim()
-    params.buyPrice = params.buyPrice.trim()
-    params.desc = params.desc.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
-    params.title = params.title.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
-
-
-    let values = {}
-    if (+deliveryIndex !== 2) {
-      values = {
-        ...params,
-        deliveryAddressId: addressData._id,
-        pic: realPath,
-        classify: 1,
-        deliveryWay: deliveryIndex
-      }
-    } else {
-      values = {
-        ...params,
-        pic: realPath,
-        classify: 1,
-        deliveryWay: deliveryIndex
-      }
+    if (params.price) {
+      params.price = params.price.trim()
+      params.price = params.price == 0 ? '' : params.price
     }
+    params.title = params.title.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+    params.desc = params.desc.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+    params.contact = params.contact.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
 
+    let classify = typeIndex === 0 ? 3 : 5
+    let values = {
+      ...params,
+      pic: realPath,
+      classify
+    }
     console.log(values)
-
-    let result = await util.request('/publishSecondhand', values)
+    let result = await util.request('/publishLostAndFound', values)
     if (result.code) {
       wx.showToast({
         title: "发布成功",

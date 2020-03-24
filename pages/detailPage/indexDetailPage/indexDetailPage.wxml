@@ -49,25 +49,29 @@
                     </view>
                 </block>
                 <!-- 内容描述 -->
-                <view class="mb10 gray-1 ">{{detail.desc}}</view>
+                <rich-text class="mb10 gray-1 showBr" nodes="{{detail.desc}}"></rich-text>
+                <!-- <view class="mb10 gray-1 showBr">{{detail.desc}}</view> -->
                 <!-- 每种帖子的详细内容 -->
                 <!-- 跑腿 -->
-                <view class="mb10 black-1 " wx:if="{{detail.invitationsDetail.expectedTime}}">
-                    <text
-                        class="green-1">期望完成时间：</text>{{utils.formatTime(detail.invitationsDetail.expectedTime,'yyyy-MM-dd HH:mm')}}
+                <view class="mb10 black-1 mt20" wx:if="{{detail.invitationsDetail.expectedTime}}">
+                    <text class="green-1 fwb">期望完成时间：</text>
+                    <rich-text nodes="{{detail.invitationsDetail.expectedTime}}"></rich-text>
                 </view>
                 <!-- 兼职招聘 -->
                 <view class="black-1" wx:if="{{detail.invitationsDetail.workTime}}">
-                    <view>
-                        <text class=" blue-1">工作时间：</text>{{detail.invitationsDetail.workTime}}
+                    <view class="mt20">
+                        <text class=" blue-1 fwb">工作时间：</text>
+                        <rich-text nodes="{{detail.invitationsDetail.workTime}}"></rich-text>
                     </view>
-                    <view>
-                        <text class=" blue-1">工作地点：</text>{{detail.invitationsDetail.workPlace}}
+                    <view class="mt20">
+                        <text class=" blue-1 fwb">工作地点：</text>
+                        <rich-text nodes="{{detail.invitationsDetail.workPlace}}"></rich-text>
                     </view>
                 </view>
                 <!-- 失物招领 -->
-                <view class=" mb10 black-1" wx:if="{{detail.invitationsDetail.contact}}">
-                    <text class="blue-1">联系方式：</text>{{detail.invitationsDetail.contact}}
+                <view class=" mb10 black-1 mt20" wx:if="{{detail.invitationsDetail.contact}}">
+                    <text class="blue-1 fwb">联系方式：</text>
+                    <rich-text nodes="{{detail.invitationsDetail.contact}}"></rich-text>
                 </view>
                 <block wx:if="{{detail.pic.length!==0}}">
                     <view class="pic-box">
@@ -96,12 +100,21 @@
                 <view class="fwb gray-1">{{detail.userDetail.nickName}}</view>
                 <view class="fz28 gray-3">
                     于<text
-                        class="ml10 mr10 gray-1">{{utils.formatTime(detail.userDetail.createTime,'yyyy-MM-dd')}}</text>开始使用本平台，共完成了
+                        class="ml10 mr10 gray-1">{{utils.formatTime(detail.userDetail.createTime,'yyyy-MM-dd')}}</text>开始使用本平台，
                     <block wx:if="{{detail.classify===0}}">
-                        <text class=" mr10 gray-1"> {{detail.userDetail.completedOrderNum}}</text>个跑腿订单
+                        共完成了<text class=" mr10 gray-1"> {{detail.userDetail.completedOrderNum}}</text>个校园跑腿订单
                     </block>
                     <block wx:if="{{detail.classify===1}}">
-                        {{detail.userDetail.completedOrderNum}}个二手交易订单
+                        共完成了<text class=" mr10 gray-1"> {{detail.userDetail.completedOrderNum}}</text>个二手交易订单
+                    </block>
+                    <block wx:if="{{detail.classify===2}}">
+                        共发布了<text class=" mr10 gray-1"> {{detail.userDetail.completedOrderNum}}</text>个兼职招聘的帖子
+                    </block>
+                    <block wx:if="{{detail.classify===3}}">
+                        共发布了<text class=" mr10 gray-1"> {{detail.userDetail.completedOrderNum}}</text>个寻物启事的帖子
+                    </block>
+                    <block wx:if="{{detail.classify===5}}">
+                        共发布了<text class=" mr10 gray-1"> {{detail.userDetail.completedOrderNum}}</text>个失物招领的帖子
                     </block>
                 </view>
             </view>
@@ -140,7 +153,7 @@
 
                         <view class="ml60 mb20">
                             <view class="mb10">
-                                <view class="">{{item.content}}</view>
+                                <rich-text nodes="{{item.content}}"></rich-text>
                             </view>
                             <view>{{utils.formatTime(item.createTime,'yyyy-MM-DD')}}</view>
                         </view>
@@ -179,7 +192,7 @@
                                 data-replycommentid="{{replyItem._id}}"
                                 data-parentcommentid="{{replyItem.parentCommentId}}" class="ml60 mb20">
                                 <view class="mb10">
-                                    <view class="">{{replyItem.content}}</view>
+                                    <rich-text nodes="{{replyItem.content}}"></rich-text>
                                 </view>
                                 <view>{{utils.formatTime(replyItem.createTime,'yyyy-MM-DD')}}</view>
                             </view>

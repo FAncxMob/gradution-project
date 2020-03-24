@@ -40,10 +40,8 @@ Page({
         url = `/pages/release/releasePartimJob/releasePartimJob`
         break;
       case '3':
-        url = `/pages/release/releaseLost/releaseLost`
-        break;
       case '5':
-        url = `/pages/release/releaseFound/releaseFound`
+        url = `/pages/release/releaseLostAndFound/releaseLostAndFound`
         break;
       default:
         break;

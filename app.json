@@ -24,8 +24,7 @@
     "pages/release/releaseSecondhand/releaseSecondhand",
     "pages/release/releaseLegwork/releaseLegwork",
     "pages/release/releasePartimJob/releasePartimJob",
-    "pages/release/releaseLost/releaseLost",
-    "pages/release/releaseFound/releaseFound"
+    "pages/release/releaseLostAndFound/releaseLostAndFound"
   ],
   "window": {
     "backgroundTextStyle": "dark",

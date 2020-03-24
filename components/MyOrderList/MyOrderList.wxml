@@ -5,15 +5,20 @@
         <NoData height="{{noDataHeight}}" title="{{title}}" />
     </block>
     <block wx:else>
-        <view class="list twoSideShadow borderBottom" wx:for="{{data}}" wx:key="{{index}}">
+        <view bindtap="toDetailPage" data-iid="{{item._id}}" class="list twoSideShadow borderBottom" wx:for="{{data}}"
+            wx:key="{{index}}">
             <block wx:if="{{item.pic.length!==0}}">
                 <!-- 有图片的排版 -->
                 <view class="df gray-1">
                     <!-- 有图片的排版 -->
                     <image class="pic mr20" src="{{item.pic[0]}}" mode="widthFix"></image>
                     <view class="df flex-column justify-between fz30 gray-1">
-                        <view class=" fwb text-ellipsis-row1">{{item.title}}</view>
-                        <view class="text-ellipsis-row3">{{item.desc}}</view>
+                        <view class=" fwb text-ellipsis-row1">
+                            <rich-text nodes="{{item.title}}"></rich-text>
+                        </view>
+                        <view class="text-ellipsis-row3">
+                            <rich-text nodes="{{item.desc}}"></rich-text>
+                        </view>
                         <view class="df fz26">
                             <view class="mr10">点赞:{{item.like}}</view>
                             <view class="mr10">浏览:{{item.watch}}</view>
@@ -27,10 +32,10 @@
                 <!-- 没有图片的排版 -->
                 <view class="gray-1">
                     <view class="mb20 text-ellipsis-row1 fwb gray-1">
-                        {{item.title}}
+                        <rich-text nodes="{{item.title}}"></rich-text>
                     </view>
                     <view class="mb20 text-ellipsis-row3">
-                        {{item.desc}}
+                        <rich-text nodes="{{item.desc}}"></rich-text>
                     </view>
                     <view class="df fz26">
                         <view class="mr10">点赞:{{item.like}}</view>

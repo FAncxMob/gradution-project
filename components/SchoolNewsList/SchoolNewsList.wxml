@@ -19,7 +19,7 @@
                     </view>
                 </view>
                 <view class="text-ellipsis-row3">
-                    {{item.desc}}
+                    <rich-text nodes=" {{item.desc}}"></rich-text>
                 </view>
                 <block wx:if="{{item.pic.length!==0}}">
                     <!-- 有图片的排版 -->

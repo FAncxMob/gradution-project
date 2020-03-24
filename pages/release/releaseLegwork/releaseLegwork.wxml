@@ -1,7 +1,7 @@
 <view id="releaseLegwork">
     <view class='login-container setBorder twoSideShadow'>
         <form class="login-form " bindsubmit="submitForm">
-            <block wx:if="{{!showPreview}}">
+            <view class="{{showPreview?hideForm:''}}">
                 <view class="section">
                     <view class="section-title">标题 <text class="red-1">*</text></view>
                     <textarea show-confirm-bar="{{false}}" name="title" placeholder-class="input" auto-height
@@ -16,10 +16,14 @@
                     <textarea show-confirm-bar="{{false}}" placeholder-class="input" name="price" auto-height placeholder="请输入报酬金额" />
                 </view>
                 <view class="section">
+                    <view class="section-title">期望送达时间 <text class="red-1">*</text></view>
+                    <textarea show-confirm-bar="{{false}}" placeholder-class="input" name="expectedTime" auto-height placeholder="请输入期望送达时间，如3.24号下午四点至六点" />
+                </view>
+                <view class="section">
                     <view class="section-title">标签</view>
                     <textarea show-confirm-bar="{{false}}"  placeholder-class="input" name="tag" auto-height placeholder="请输入标签，如代取快递，占座等" />
                 </view>
-            </block>
+            </view>
             <view class="section mt40">
                 <view class="section-title">收货地址 <text class="red-1">*</text></view>
                 <view bindtap="chooseAddress" class="address text-ellipsis-row2">
@@ -33,11 +37,11 @@
                     </block>
                 </view>
             </view>
-            <view class="section ">
+            <!-- <view class="section ">
                 <view class="section-title">期望送达时间 <text class="red-1">*</text></view>
                 <pickerYMDHM class="" name="expectedTime" placeholder = "{{placeholder}}" date = "{{date}}" disabled = "{{disabled}}" bind:onPickerChange="onPickerChange" startDate="{{startDate}}" endDate="{{endDate}}">
                 </pickerYMDHM>
-            </view>
+            </view> -->
              <!-- 为了让图片的高度等于高度，利用padding垂直的百分比是按照父元素的宽度来计算来进行 -->
             <view class="section imageBx">
                 <view class="section-title">选择图片</view>
@@ -51,7 +55,7 @@
                                 <text class="iconfont  icon-chenggong opa-8 setCenter green-1 fz80 z-index-10"></text>
                             </block>
                             <block wx:else>
-                                <text class="iconfont icon-shibai2 opa-8 setCenter green-1 fz80 z-index-10"></text>
+                                <text class="iconfont icon-shibai2 opa-8 setCenter red-1 fz80 z-index-10"></text>
                             </block>
                             
                          </view>
