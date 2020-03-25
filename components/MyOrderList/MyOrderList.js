@@ -22,6 +22,18 @@ Component({
       type: Boolean,
       value: false
     },
+    haveDelete: {
+      type: Boolean,
+      value: false
+    },
+    havePutOn: {
+      type: Boolean,
+      value: false
+    },
+    haveComplete: {
+      type: Boolean,
+      value: false
+    },
     noDataHeight: String
   },
 
@@ -43,27 +55,58 @@ Component({
         iid
       })
     },
+
     drop(e) {
-      let that = this
-      wx.showModal({
-        title: '提示',
-        content: '确定要下架该帖子吗？下架的帖子将不会被其他用户搜索到',
-        async success(res) {
-          if (res.confirm) {
-            let iid = e.currentTarget.dataset.iid
-            let classify = e.currentTarget.dataset.classify
-            let data = {
-              iid,
-              classify
-            }
-            console.log(iid, classify)
-            that.triggerEvent('drop', data)
-            // TODO:删除帖子
-          }
-        }
-      })
+      let iid = e.currentTarget.dataset.iid
+      let classify = e.currentTarget.dataset.classify
+      let index = e.currentTarget.dataset.index
+      let data = {
+        iid,
+        classify,
+        index
+      }
+      // console.log(iid, classify)
+      this.triggerEvent('drop', data)
+
     },
-    async edit(e) {
+
+    putOn(e) {
+      let iid = e.currentTarget.dataset.iid
+      let classify = e.currentTarget.dataset.classify
+      let index = e.currentTarget.dataset.index
+      let data = {
+        iid,
+        classify,
+        index
+      }
+      this.triggerEvent('putOn', data)
+    },
+
+    delete(e) {
+      let iid = e.currentTarget.dataset.iid
+      let classify = e.currentTarget.dataset.classify
+      let index = e.currentTarget.dataset.index
+      let data = {
+        iid,
+        classify,
+        index
+      }
+      this.triggerEvent('delete', data)
+    },
+
+    complete(e) {
+      let iid = e.currentTarget.dataset.iid
+      let classify = e.currentTarget.dataset.classify
+      let index = e.currentTarget.dataset.index
+      let data = {
+        iid,
+        classify,
+        index
+      }
+      this.triggerEvent('complete', data)
+    },
+
+    edit(e) {
       let iid = e.currentTarget.dataset.iid
       let classify = e.currentTarget.dataset.classify
       let data = {
@@ -71,10 +114,9 @@ Component({
         classify
       }
       console.log(iid, classify)
-      that.triggerEvent('edit', data)
-      // TODO:编辑帖子
+      this.triggerEvent('edit', data)
     },
-    async scanCode(e) {
+    scanCode(e) {
       let iid = e.currentTarget.dataset.iid
       let classify = e.currentTarget.dataset.classify
       let data = {
@@ -82,10 +124,9 @@ Component({
         classify
       }
       console.log(iid, classify)
-      that.triggerEvent('scanCode', data)
-      // TODO:编辑帖子
+      this.triggerEvent('scanCode', data)
     },
-    async checkCode(e) {
+    checkCode(e) {
       let iid = e.currentTarget.dataset.iid
       let classify = e.currentTarget.dataset.classify
       let data = {
@@ -93,8 +134,7 @@ Component({
         classify
       }
       console.log(iid, classify)
-      that.triggerEvent('checkCode', data)
-      // TODO:编辑帖子
+      this.triggerEvent('checkCode', data)
     },
   }
 })

@@ -57,11 +57,11 @@ const Utils = {
       })
     })
   },
-  showModal(msg) {
+  showModal(msg, duration = 2000) {
     wx.showToast({
       title: msg,
       icon: 'none',
-      duration: 2000
+      duration
     })
   }
 }

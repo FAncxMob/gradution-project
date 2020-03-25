@@ -242,6 +242,21 @@
 					"id": -1,
 					"name": "pages/my/myReleaseLegwork/myReleaseLegwork",
 					"pathName": "pages/my/myReleaseLegwork/myReleaseLegwork",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myDrop/myDrop",
+					"pathName": "pages/my/myDrop/myDrop",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/update/updateLegwork/updateLegwork",
+					"pathName": "pages/update/updateLegwork/updateLegwork",
+					"query": "iid=5e78e872111fed251cedc54f",
 					"scene": null
 				}
 			]

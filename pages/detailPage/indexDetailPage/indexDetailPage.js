@@ -213,6 +213,11 @@ Page({
   },
 
   async commentFather(e) {
+
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行留言')
+      return
+    }
     // 直接对帖子进行评论
     this.setData({
       focus: true,
@@ -223,6 +228,10 @@ Page({
     // 弹出键盘
   },
   async commentChild(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行回复')
+      return
+    }
     let replyCommentId = e.currentTarget.dataset.replycommentid
     let parentCommentId = e.currentTarget.dataset.parentcommentid
     let nickName = e.currentTarget.dataset.nickname
@@ -252,6 +261,10 @@ Page({
     }
   },
   async cancelCommentLikeChild(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行取消点赞操作')
+      return
+    }
     let commentId = e.currentTarget.dataset.commentid
     let currentFatherIndex = e.currentTarget.dataset.currentfatherindex
     let currentReplyIndex = e.currentTarget.dataset.currentreplyindex
@@ -268,6 +281,10 @@ Page({
     }
   },
   async commentLikeChild(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行点赞操作')
+      return
+    }
     let commentId = e.currentTarget.dataset.commentid
     let currentFatherIndex = e.currentTarget.dataset.currentfatherindex
     let currentReplyIndex = e.currentTarget.dataset.currentreplyindex
@@ -285,6 +302,10 @@ Page({
     }
   },
   async commentLike(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行点赞操作')
+      return
+    }
     let commentId = e.currentTarget.dataset.commentid
     let currentIndex = e.currentTarget.dataset.currentindex
     let result = await util.request('/commentLike', {
@@ -301,6 +322,10 @@ Page({
     }
   },
   async cancelCommentLike(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行取消点赞操作')
+      return
+    }
     let commentId = e.currentTarget.dataset.commentid
     let currentIndex = e.currentTarget.dataset.currentindex
     let result = await util.request('/cancelCommentLike', {
@@ -318,6 +343,10 @@ Page({
 
 
   async followingTa(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行关注操作')
+      return
+    }
     let followId = e.currentTarget.dataset.openid
     let result = await util.request('/followingTa', {
       followId
@@ -331,6 +360,10 @@ Page({
     }
   },
   async cancelLikePost(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行取消点赞操作')
+      return
+    }
     let result = await util.request('/cancelLikePost', {
       iid: this.data.detail._id
     })
@@ -344,6 +377,10 @@ Page({
     }
   },
   async likePost(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行点赞操作')
+      return
+    }
     let result = await util.request('/likePost', {
       iid: this.data.detail._id,
       postOpenId: this.data.detail.openId,
@@ -358,6 +395,10 @@ Page({
     }
   },
   async cancelCollectPost(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行取消收藏操作')
+      return
+    }
     let result = await util.request('/cancelCollectPost', {
       iid: this.data.detail._id
     })
@@ -371,6 +412,10 @@ Page({
     }
   },
   async collectPost(e) {
+    if (this.data.detail.status === 3) {
+      util.showModal('请恢复上架后再进行收藏操作')
+      return
+    }
     let result = await util.request('/collectPost', {
       iid: this.data.detail._id,
       postOpenId: this.data.detail.openId,
@@ -416,7 +461,9 @@ Page({
       iid
     })
     wx.hideLoading()
+
     if (result.code) {
+      result.data.detail.watch += 1
       this.setData({
         detail: result.data.detail,
         commentDetail: result.data.commentDetail,

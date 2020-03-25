@@ -109,7 +109,7 @@
     flex-shrink: 0;
     display: inline;
     font-size: 26rpx;
-    padding: 10rpx 20rpx 10rpx 10rpx;
+    padding: 10rpx 15rpx;
     background: #cbcbcb;
     border-radius: 10rpx;
     font-weight: bold;
@@ -130,4 +130,12 @@
     background-color: rgba(0, 0, 0, .5);
     transform: rotate(-25deg);
     z-index: 3;
+}
+
+.ml20 {
+    margin-left: 20rpx !important;
+}
+
+.ml10 {
+    margin-left: 10rpx !important;
 }

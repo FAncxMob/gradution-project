@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "SwitchTab": "../../../components/SwitchTab/SwitchTab",
+    "MyOrderList": "../../../components/MyOrderList/MyOrderList",
+    "Search": "../../../components/Search/Search"
+  },
+  "navigationBarTitleText": "我下架的"
 }

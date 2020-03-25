@@ -262,14 +262,17 @@
             <block wx:if="{{detail.classify==0&&detail.status==0}}">
                 <view bindtap="toHelpOrBuy" data-type="help" class="want-btn">去帮忙</view>
             </block>
-            <block wx:if="{{detail.classify==0&&detail.status!=0}}">
+            <block wx:if="{{detail.classify==0&&detail.status==1}}">
                 <view  class="want-btn want-btn-gray">已被承接</view>
             </block>
             <block wx:if="{{detail.classify==1&&detail.status==0}}">
                 <view bindtap="toHelpOrBuy"  data-type="buy" class="want-btn" >我想要</view>
             </block>
-            <block wx:if="{{detail.classify==1&&detail.status!=0}}">
+            <block wx:if="{{detail.classify==1&&detail.status==1}}">
                 <view  class="want-btn want-btn-gray">已被购买</view>
+            </block>
+            <block wx:if="{{detail.status==3}}">
+                <view  class="want-btn want-btn-gray">已下架</view>
             </block>
         </view>
     </block>

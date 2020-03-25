@@ -245,7 +245,15 @@ function statusToStr(status, classify) {
             classify === 0 ? str = '已被承接' : str = "已被购买"
             break;
         case 2:
-            classify === 0 || 1 || 5 ? str = '已完成' : str = "已结束"
+            if (classify === 0 || classify === 1) {
+                str = '已完成'
+            } else if (classify == 2) {
+                str = "已结束"
+            } else if (classify == 3) {
+                str = "已找回"
+            } else if (classify == 5) {
+                str = "已归还"
+            }
             break;
         case 3:
             str = '已下架'

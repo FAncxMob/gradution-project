@@ -52,22 +52,53 @@
             </block>
             <view class="bottom-box borderTop   df justify-between align-center">
                 <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</text>
-                <block wx:if="{{haveDrop}}">
-                    <button catchtap="drop" data-iid="{{item._id}}" data-classify="{{item.classify}}"
-                        class="pl20 small-btn">下架</button>
-                </block>
-                <block wx:if="{{haveEdit}}">
-                    <button catchtap="edit" data-iid="{{item._id}}" data-classify="{{item.classify}}"
-                        class=" mr20 pl20 small-btn">编辑</button>
-                </block>
-                <block wx:if="{{haveScanCode}}">
-                    <button catchtap="scanCode" data-iid="{{item._id}}" data-classify="{{item.classify}}"
-                        class=" mr20 pl20 small-btn">扫码核销</button>
-                </block>
-                <block wx:if="{{haveCheckCode}}">
-                    <button catchtap="checkCode" data-iid="{{item._id}}" data-classify="{{item.classify}}"
-                        class=" mr20 pl20 small-btn">查看核销码</button>
-                </block>
+                <view class="btn-wrap">
+                    <block wx:if="{{haveEdit}}">
+                        <view catchtap="edit" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class=" small-btn">
+                            编辑
+                        </view>
+                    </block>
+                    <block wx:if="{{haveDrop}}">
+                        <view catchtap="drop" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">下架
+                        </view>
+                    </block>
+                    <block wx:if="{{havePutOn}}">
+                        <view catchtap="putOn" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">恢复上架
+                        </view>
+                    </block>
+                    <block wx:if="{{haveComplete&&item.classify==3}}">
+                        <view catchtap="complete" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">已找回
+                        </view>
+                    </block>
+                    <block wx:if="{{haveComplete&&item.classify==5}}">
+                        <view catchtap="complete" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">已归还
+                        </view>
+                    </block>
+                    <block wx:if="{{haveComplete&&item.classify==2}}">
+                        <view catchtap="complete" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">结束
+                        </view>
+                    </block>
+
+                    <block wx:if="{{haveDelete}}">
+                        <view catchtap="delete" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">删除
+                        </view>
+                    </block>
+                    <block wx:if="{{haveScanCode}}">
+                        <view catchtap="scanCode" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class=" ml10  small-btn">扫码核销</view>
+                    </block>
+                    <block wx:if="{{haveCheckCode}}">
+                        <view catchtap="checkCode" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class=" ml10  small-btn">查看核销码</view>
+                    </block>
+                </view>
             </view>
         </view>
     </block>

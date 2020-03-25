@@ -1,2 +1,59 @@
-<!--pages/my/myDrop/myDrop.wxml-->
-<text>pages/my/myDrop/myDrop.wxml</text>
+<!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
+
+<!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
+
+<view>
+    <view class="switchTab-wrapper">
+        <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    </view>
+    <view class="searchBox">
+        <Search searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm" bind:searchInput="searchInput"
+            bind:searchClear="searchClear">
+        </Search>
+    </view>
+    <block wx:if="{{currentSelect===0}}">
+        <view class="myOrderLisBox">
+            <MyOrderList bind:putOn="putOn" data-putondata="{{legWork}}" data-putonname="legWork" havePutOn="{{true}}"
+                bind:toDetailPage="toDetailPage" data="{{legWork}}" title="没有已下架的校园跑腿" noDataHeight="500rpx">
+            </MyOrderList>
+        </view>
+    </block>
+    <block wx:if="{{currentSelect===1}}">
+        <view class="myOrderLisBox">
+            <MyOrderList bind:putOn="putOn" data-putondata="{{secondHand}}" data-putonname="secondHand"
+                havePutOn="{{true}}" bind:toDetailPage="toDetailPage" data="{{secondHand}}" title="没有已下架的二手交易"
+                noDataHeight="500rpx">
+            </MyOrderList>
+        </view>
+    </block>
+    <block wx:if="{{currentSelect===2}}">
+        <view class="myOrderLisBox">
+            <MyOrderList bind:putOn="putOn" data-putondata="{{partTimeJob}}" data-putonname="partTimeJob"
+                havePutOn="{{true}}" bind:toDetailPage="toDetailPage" data="{{partTimeJob}}" title="没有已下架的兼职招聘"
+                noDataHeight="500rpx">
+            </MyOrderList>
+        </view>
+    </block>
+    <block wx:if="{{currentSelect===3}}">
+        <view class="switchTab-wrapper2">
+            <SwitchTab currentSelect="{{currentSelectForLostAndFound}}" arr="{{tabForLostAndFound}}"
+                bindhandleSelect="handleSelectForLostAndFound" />
+        </view>
+        <block wx:if="{{currentSelectForLostAndFound===0}}">
+            <view class="myOrderLisBox2">
+                <MyOrderList bind:putOn="putOn" data-putondata="{{lost}}" data-putonname="lost" havePutOn="{{true}}"
+                    bind:toDetailPage="toDetailPage" data="{{lost}}" title="没有已下架的寻物启事" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <block wx:if="{{currentSelectForLostAndFound===1}}">
+            <view class="myOrderLisBox2">
+                <MyOrderList bind:putOn="putOn" data-putondata="{{found}}" data-putonname="found" havePutOn="{{true}}"
+                    bind:toDetailPage="toDetailPage" data="{{found}}" title="没有已下架的失物招领" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+
+    </block>
+
+</view>
