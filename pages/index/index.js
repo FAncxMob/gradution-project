@@ -7,9 +7,21 @@ Page({
    */
   data: {
     tabArr: ["校园跑腿", "二手交易", "兼职招聘", "失物招领"],
-    tabArrForLostAndFound: ["丢了东西", "捡了东西"],
     currentSelect: 0,
+    tabForLostAndFound: ["丢了东西", "捡了东西"],
     currentSelectForLostAndFound: 0,
+    tabForLegWork: ["全部", "未被承接", "已被承接", "已完成"],
+    tabForSecondhand: ["全部", "未被购买", "已被购买", "已完成"],
+    tabForPartTimeJob: ["全部", "招募中", "已结束"],
+    tabForLost: ["全部", "寻找中", "已结束"],
+    tabForFound: ["全部", "寻找中", "已结束"],
+
+    currentSelectForLegWork: 0,
+    currentSelectForSecondhand: 0,
+    currentSelectForPartTimeJob: 0,
+    currentSelectForLost: 0,
+    currentSelectForFound: 0,
+
     legWork: [],
     secondHand: [],
     partTimeJob: [],
@@ -51,7 +63,36 @@ Page({
     })
 
   },
-
+  handleSelectForLost(data) {
+    this.setData({
+      currentSelectForLost: data.detail,
+    })
+  },
+  handleSelectForFound(data) {
+    this.setData({
+      currentSelectForFound: data.detail,
+    })
+  },
+  handleSelectForLostAndFound(data) {
+    this.setData({
+      currentSelectForLostAndFound: data.detail,
+    })
+  },
+  handleSelectForPartTimeJob(data) {
+    this.setData({
+      currentSelectForPartTimeJob: data.detail,
+    })
+  },
+  handleSelectForSecondhand(data) {
+    this.setData({
+      currentSelectForSecondhand: data.detail,
+    })
+  },
+  handleSelectForLegWork(data) {
+    this.setData({
+      currentSelectForLegWork: data.detail,
+    })
+  },
   handleSelect(data) {
     this.setData({
       currentSelect: data.detail,
@@ -67,7 +108,12 @@ Page({
     let {
       searchStr,
       currentSelect,
-      currentSelectForLostAndFound
+      currentSelectForLostAndFound,
+      currentSelectForLegWork,
+      currentSelectForSecondhand,
+      currentSelectForPartTimeJob,
+      currentSelectForLost,
+      currentSelectForFound,
     } = this.data
     wx.showLoading({
       title: '正在检索...'
@@ -77,19 +123,98 @@ Page({
     if (currentSelect !== 3) {
       classify = currentSelect
     } else {
-      classify = currentSelectForLostAndFound == 0 ? 3 : 5
+      classify = currentSelectForLostAndFound === 0 ? 3 : 5
+    }
+
+    let statusArr = []
+    let statusName = ''
+    switch (classify) {
+      case 0:
+        if (currentSelectForLegWork === 0) {
+          statusArr = [0, 1, 2, 4, 5]
+          statusName = 'statusIs01245'
+        } else if (currentSelectForLegWork === 1) {
+          statusArr = [0]
+          statusName = 'statusIs0'
+        } else if (currentSelectForLegWork === 2) {
+          statusArr = [1]
+          statusName = 'statusIs1'
+        } else if (currentSelectForLegWork === 3) {
+          statusArr = [2]
+          statusName = 'statusIs2'
+        }
+        break;
+      case 1:
+        if (currentSelectForSecondhand === 0) {
+          statusArr = [0, 1, 2, 4, 5]
+          statusName = 'statusIs01245'
+        } else if (currentSelectForSecondhand === 1) {
+          statusArr = [0]
+          statusName = 'statusIs0'
+        } else if (currentSelectForSecondhand === 2) {
+          statusArr = [1]
+          statusName = 'statusIs1'
+        } else if (currentSelectForSecondhand === 3) {
+          statusArr = [2]
+          statusName = 'statusIs2'
+        }
+        break;
+      case 2:
+        if (currentSelectForPartTimeJob === 0) {
+          statusArr = [0, 2]
+          statusName = 'statusIs02'
+        } else if (currentSelectForPartTimeJob === 1) {
+          statusArr = [0]
+          statusName = 'statusIs0'
+        } else if (currentSelectForPartTimeJob === 3) {
+          statusArr = [2]
+          statusName = 'statusIs2'
+        }
+        break;
+      case 3:
+        if (currentSelectForLost === 0) {
+          statusArr = [0, 2]
+          statusName = 'statusIs02'
+        } else if (currentSelectForLost === 1) {
+          statusArr = [0]
+          statusName = 'statusIs0'
+        } else if (currentSelectForLost === 3) {
+          statusArr = [2]
+          statusName = 'statusIs2'
+        }
+        break;
+      case 5:
+        if (currentSelectForFound === 0) {
+          statusArr = [0, 2]
+          statusName = 'statusIs02'
+        } else if (currentSelectForFound === 1) {
+          statusArr = [0]
+          statusName = 'statusIs0'
+        } else if (currentSelectForFound === 3) {
+          statusArr = [2]
+          statusName = 'statusIs2'
+        }
+        break;
+
+      default:
+        break;
     }
 
     let result = await util.request('/searchInIndexPage', {
       searchStr,
-      classify
+      classify,
+      statusArr
     })
     wx.hideLoading()
     if (result.code) {
-      // 
-      let data = this.data[result.str]
+
+      // 修改对应类下对应status 的 结果数据
+      console.log(this.data[result.classifyStr], statusName)
+      let data = this.data[result.classifyStr]
+      data[statusName] = result.data
+      // console.log(data[statusName])
       this.setData({
-        [result.str]: result.data
+        [result.classifyStr]: data
       })
     }
   },

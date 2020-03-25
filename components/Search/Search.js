@@ -5,7 +5,11 @@
 Component({
 
   properties: {
-    searchStr: String
+    searchStr: String,
+    tipStr: {
+      type: String,
+      value: "根据标题或内容进行搜索..."
+    }
   },
 
   /**

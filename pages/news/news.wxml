@@ -1,7 +1,7 @@
 <view class="">
     <view class="searchBox">
-        <Search searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm" bind:searchInput="searchInput"
-            bind:searchClear="searchClear">
+        <Search searchStr="{{searchStr}}" tipStr="根据标题或内容进行搜索" bind:searchConfirm="searchConfirm"
+            bind:searchInput="searchInput" bind:searchClear="searchClear">
         </Search>
     </view>
     <view class="swiperBox">

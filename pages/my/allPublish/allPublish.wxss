@@ -10,3 +10,29 @@
     height: 80rpx;
     z-index: 9999;
 }
+
+.switchTab-wrapper2 {
+    position: fixed;
+    top: 80rpx;
+    left: 0;
+    right: 0;
+    height: 80rpx;
+    z-index: 9999;
+}
+
+.switchTab-wrapper3 {
+    position: fixed;
+    top: 160rpx;
+    left: 0;
+    right: 0;
+    height: 80rpx;
+    z-index: 9999;
+}
+
+.MyOrderList-wrapper {
+    padding-top: 80rpx;
+}
+
+.MyOrderList-wrapper2 {
+    padding-top: 160rpx;
+}

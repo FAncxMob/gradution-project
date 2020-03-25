@@ -46,46 +46,39 @@
 				<text class="iconfont icon-guanzhu1 fz70 mr10 mb10" style="color:#4585F5"></text>
 				我关注的
 			</view>
-			<view bindtap="bindToPage" data-page="../collect/collect">
-				<text class="iconfont icon-shoucang1 fz70 mr10 mb10" style="color:#4585F5"></text>
-				我收藏的
-			</view>
 		</view>
 	</view>
-	<view class="card-vertical twoSideShadow">
+	<view class="card-horizontal twoSideShadow">
 		<view class="title df justify-between">
 			<!-- <text class="iconfont icon-badge- fz40 mr10"></text> -->
 			我的帖子
 		</view>
 		<view class="item-container">
-			<view bindtap="bindToPage" data-page="../myReleaseLegwork/myReleaseLegwork">
-				<text class="iconfont icon-fabu21 fz50 mr10 mb10" style="color:#DB693A"></text>
-				我发布的校内跑腿
-			</view>
-			<view bindtap="bindToPage" data-page="../myReleaseSecondhand/myReleaseSecondhand">
-				<text class="iconfont icon-fabu21 fz50 mr10 mb10" style="color:#DB693A"></text>
-				我发布的二手交易
-			</view>
-			<view bindtap="bindToPage" data-page="../myReleasePartTimeJob/myReleasePartTimeJob">
-				<text class="iconfont icon-fabu21 fz50 mr10 mb10" style="color:#DB693A"></text>
-				我发布的兼职招聘
-			</view>
-			<view bindtap="bindToPage" data-page="../myReleaseLostAndFound/myReleaseLostAndFound">
-				<text class="iconfont icon-fabu21 fz50 mr10 mb10" style="color:#DB693A"></text>
-				我发布的失物招领
+			<view bindtap="bindToPage" data-page="../allPublish/allPublish">
+				<text class="iconfont icon-fabu1 fz70 mr10 mb10" style="color:#DB693A"></text>
+				我发布的
 			</view>
 			<view bindtap="bindToPage" data-page="../myTakeLegwork/myTakeLegwork">
-				<text class="iconfont icon-fabu21 fz50 mr10 mb10" style="color:#DB693A"></text>
-				我承接的校内跑腿
+				<text class="iconfont icon-yijiedan fz70 mr10 mb10" style="color:#DB693A"></text>
+				我承接的
 			</view>
 			<view bindtap="bindToPage" data-page="../myTakeSecondhand/myTakeSecondhand">
-				<text class="iconfont icon-fabu21 fz50 mr10 mb10" style="color:#DB693A"></text>
-				我购买的二手交易
+				<text class="iconfont icon-yiwancheng3 fz70 mr10 mb10" style="color:#DB693A"></text>
+				我购买的
 			</view>
-			<view style="border-bottom: none;" bindtap="bindToPage" data-page="../myDrop/myDrop">
-				<text class="iconfont icon-fabu21 fz50 mr10 mb10" style="color:#DB693A"></text>
-				已下架
+			<view bindtap="bindToPage" data-page="../collect/collect">
+				<text class="iconfont icon-tiezishoucang fz70 mr10 mb10" style="color:#DB693A"></text>
+				我收藏的
 			</view>
+			<view bindtap="bindToPage" data-page="../myDrop/myDrop">
+				<text class="iconfont icon-yiquxiao3 fz70 mr10 mb10" style="color:#DB693A"></text>
+				已下架的
+			</view>
+			<view bindtap="bindToPage" data-page="../myCancel/myCancel">
+				<text class="iconfont icon-yiquxiao2 fz70 mr10 mb10" style="color:#DB693A"></text>
+				中止交易
+			</view>
+
 		</view>
 	</view>
 

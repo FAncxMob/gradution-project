@@ -2,25 +2,127 @@
     <view class="switchTab-wrapper">
         <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
     </view>
-
     <block wx:if="{{currentSelect===0}}">
-        <MyOrderList bind:toDetailPage="toDetailPage" data="{{legWork}}" title="还没有发布任何跑腿订单..." haveOperation="{{true}}"
-            noDataHeight="500rpx">
-        </MyOrderList>
+        <view class="switchTab-wrapper2">
+            <SwitchTab size="small" currentSelect="{{currentSelectForLegWork}}" arr="{{tabForLegWork}}"
+                bindhandleSelect="handleSelectForLegWork" />
+        </view>
+        <block wx:if="{{currentSelectForLegWork===0}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:toDetailPage="toDetailPage" data="{{legWork.statusIs0}}" title="没有未被承接的跑腿订单..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <block wx:if="{{currentSelectForLegWork===1}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:toDetailPage="toDetailPage" data="{{legWork.statusIs1}}" title="还没有被承接的跑腿订单..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <block wx:if="{{currentSelectForLegWork===2}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:toDetailPage="toDetailPage" data="{{legWork.statusIs2}}" title="还没有已完成的跑腿订单..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
     </block>
     <block wx:if="{{currentSelect===1}}">
-        <MyOrderList bind:toDetailPage="toDetailPage" data="{{secondHand}}" title="还没有发布任何二手交易订单..."
-            haveOperation="{{true}}" noDataHeight="500rpx">
-        </MyOrderList>
+        <view class="switchTab-wrapper2">
+            <SwitchTab size="small" currentSelect="{{currentSelectForSecondhand}}" arr="{{tabForSecondhand}}"
+                bindhandleSelect="handleSelectForSecondhand" />
+        </view>
+        <block wx:if="{{currentSelectForSecondhand===0}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:toDetailPage="toDetailPage" data="{{secondHand.statusIs0}}" title="还没有未被购买的二手交易帖子..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <block wx:if="{{currentSelectForSecondhand===1}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:toDetailPage="toDetailPage" data="{{secondHand.statusIs1}}" title="还没有已被购买的二手交易帖子..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <block wx:if="{{currentSelectForSecondhand===2}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:toDetailPage="toDetailPage" data="{{secondHand.statusIs2}}" title="还没有已完成的二手交易帖子..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
     </block>
     <block wx:if="{{currentSelect===2}}">
-        <MyOrderList bind:toDetailPage="toDetailPage" data="{{partTimeJob}}" title="还没有发布任何兼职招聘帖子..."
-            haveOperation="{{true}}" noDataHeight="500rpx">
-        </MyOrderList>
+        <view class="switchTab-wrapper2">
+            <SwitchTab size="small" currentSelect="{{currentSelectForPartTimeJob}}" arr="{{tabForPartTimeJob}}"
+                bindhandleSelect="handleSelectForPartTimeJob" />
+        </view>
+        <block wx:if="{{currentSelectForPartTimeJob===0}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:toDetailPage="toDetailPage" data="{{partTimeJob.statusIs0}}" title="还没有招募中的兼职招聘帖子..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <block wx:if="{{currentSelectForPartTimeJob===1}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:toDetailPage="toDetailPage" data="{{partTimeJob.statusIs2}}" title="还没有已结束的兼职招聘帖子..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
     </block>
     <block wx:if="{{currentSelect===3}}">
-        <MyOrderList bind:toDetailPage="toDetailPage" data="{{lostAndFound}}" title="还没有发布任何失物招领帖子..."
-            haveOperation="{{true}}" noDataHeight="500rpx">
-        </MyOrderList>
+
+        <view class="switchTab-wrapper2">
+            <SwitchTab currentSelect="{{currentSelectForLostAndFound}}" arr="{{tabForLostAndFound}}"
+                bindhandleSelect="handleSelectForLostAndFound" />
+        </view>
+        <block wx:if="{{currentSelectForLostAndFound===0}}">
+            <view class="switchTab-wrapper3">
+                <SwitchTab size="small" currentSelect="{{currentSelectForLost}}" arr="{{tabForLost}}"
+                    bindhandleSelect="handleSelectForLost" />
+            </view>
+            <block wx:if="{{currentSelectForLost===0}}">
+                <view class="MyOrderList-wrapper2">
+                    <MyOrderList bind:toDetailPage="toDetailPage" data="{{lost.statusIs0}}" title="还没有寻找中的寻物启事帖子..."
+                        haveOperation="{{true}}" noDataHeight="500rpx">
+                    </MyOrderList>
+                </view>
+            </block>
+            <block wx:if="{{currentSelectForLost===1}}">
+                <view class="MyOrderList-wrapper2">
+                    <MyOrderList bind:toDetailPage="toDetailPage" data="{{lost.statusIs2}}" title="还没有已完成的寻物启事帖子..."
+                        haveOperation="{{true}}" noDataHeight="500rpx">
+                    </MyOrderList>
+                </view>
+            </block>
+        </block>
+        <block wx:if="{{currentSelectForLostAndFound===1}}">
+            <view class="switchTab-wrapper3">
+                <SwitchTab size="small" currentSelect="{{currentSelectForFound}}" arr="{{tabForFound}}"
+                    bindhandleSelect="handleSelectForFound" />
+            </view>
+            <block wx:if="{{currentSelectForFound===0}}">
+                <view class="MyOrderList-wrapper2">
+                    <MyOrderList bind:toDetailPage="toDetailPage" data="{{found.statusIs0}}" title="还没有已完成的失物招领帖子..."
+                        haveOperation="{{true}}" noDataHeight="500rpx">
+                    </MyOrderList>
+                </view>
+            </block>
+            <block wx:if="{{currentSelectForFound===1}}">
+                <view class="MyOrderList-wrapper2">
+                    <MyOrderList bind:toDetailPage="toDetailPage" data="{{found.statusIs2}}" title="还没有已完成的失物招领帖子..."
+                        haveOperation="{{true}}" noDataHeight="500rpx">
+                    </MyOrderList>
+                </view>
+            </block>
+
+        </block>
+
     </block>
 </view>

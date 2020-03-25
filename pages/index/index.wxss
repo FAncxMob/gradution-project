@@ -1,8 +1,18 @@
 .mainPage {}
 
+
 .searchBox {
   position: fixed;
   top: 80rpx;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  z-index: 10;
+}
+
+.searchBox2 {
+  position: fixed;
+  top: 160rpx;
   left: 0;
   right: 0;
   height: 100rpx;
@@ -27,13 +37,40 @@
   z-index: 9999;
 }
 
+.switchTab-wrapper3 {
+  position: fixed;
+  top: 80rpx;
+  left: 0;
+  right: 0;
+  height: 80rpx;
+  z-index: 9999;
+}
+
+.switchTab-wrapper4 {
+  position: fixed;
+  top: 260rpx;
+  left: 0;
+  right: 0;
+  height: 80rpx;
+  z-index: 9999;
+}
+
+
+
 .showPostList-wrapper {
-  margin-top: 180rpx;
+  margin-top: 260rpx;
 }
 
 .showPostList-wrapper2 {
-  margin-top: 260rpx;
+  margin-top: 340rpx;
 }
+
+
+
+
+
+
+
 
 .release {
   position: fixed;

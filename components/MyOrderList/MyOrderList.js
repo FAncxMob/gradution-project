@@ -6,7 +6,22 @@ Component({
   properties: {
     data: Array,
     title: String,
-    haveOperation: Boolean,
+    haveDrop: {
+      type: Boolean,
+      value: false
+    },
+    haveEdit: {
+      type: Boolean,
+      value: false
+    },
+    haveScanCode: {
+      type: Boolean,
+      value: false
+    },
+    haveCheckCode: {
+      type: Boolean,
+      value: false
+    },
     noDataHeight: String
   },
 
@@ -28,11 +43,11 @@ Component({
         iid
       })
     },
-    deleteInvitations(e) {
+    drop(e) {
       let that = this
       wx.showModal({
         title: '提示',
-        content: '确定要删除该帖子吗？',
+        content: '确定要下架该帖子吗？下架的帖子将不会被其他用户搜索到',
         async success(res) {
           if (res.confirm) {
             let iid = e.currentTarget.dataset.iid
@@ -42,13 +57,13 @@ Component({
               classify
             }
             console.log(iid, classify)
-            // that.triggerEvent('deleteInvitations', data)
+            that.triggerEvent('drop', data)
             // TODO:删除帖子
           }
         }
       })
     },
-    async editInvitations(e) {
+    async edit(e) {
       let iid = e.currentTarget.dataset.iid
       let classify = e.currentTarget.dataset.classify
       let data = {
@@ -56,7 +71,29 @@ Component({
         classify
       }
       console.log(iid, classify)
-      // that.triggerEvent('deleteInvitations', data)
+      that.triggerEvent('edit', data)
+      // TODO:编辑帖子
+    },
+    async scanCode(e) {
+      let iid = e.currentTarget.dataset.iid
+      let classify = e.currentTarget.dataset.classify
+      let data = {
+        iid,
+        classify
+      }
+      console.log(iid, classify)
+      that.triggerEvent('scanCode', data)
+      // TODO:编辑帖子
+    },
+    async checkCode(e) {
+      let iid = e.currentTarget.dataset.iid
+      let classify = e.currentTarget.dataset.classify
+      let data = {
+        iid,
+        classify
+      }
+      console.log(iid, classify)
+      that.triggerEvent('checkCode', data)
       // TODO:编辑帖子
     },
   }

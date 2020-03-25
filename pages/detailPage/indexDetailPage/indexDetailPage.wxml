@@ -22,7 +22,7 @@
                     <text class="gray-3 fz26">发布于{{utils.formatTime(detail.createTime,'yyyy-MM-dd HH:mm')}}</text>
                 </view>
                 <view style="z-index: 100;" class="{{detail.status===0?dn:'status'}}">
-                    {{utils.statusToStr(detail.status)}}</view>
+                    {{utils.statusToStr(detail.status,detail.classify)}}</view>
             </view>
             <view class="postInfo mb20  pb10 bottomBorder">
                 <!-- 标题 -->

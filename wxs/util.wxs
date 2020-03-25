@@ -236,30 +236,25 @@ function haveYuan(price) {
     return price.indexOf('元')
 }
 
-function statusToStr(status) {
+function statusToStr(status, classify) {
     status = +status
+    classify = +classify
     var str = ''
     switch (status) {
         case 1:
-            str = '已被承接'
+            classify === 0 ? str = '已被承接' : str = "已被购买"
             break;
         case 2:
-            str = '已被购买'
+            classify === 0 || 1 || 5 ? str = '已完成' : str = "已结束"
             break;
         case 3:
-            str = '已完成'
+            str = '已下架'
             break;
         case 4:
-            str = '中止'
+            str = '待中止'
             break;
         case 5:
-            str = '已结束'
-            break;
-        case 6:
-            str = '已找回'
-            break;
-        case 7:
-            str = '物归原主'
+            str = '已中止'
             break;
         default:
             break;

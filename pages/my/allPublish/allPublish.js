@@ -8,12 +8,56 @@ Page({
   data: {
     tabArr: ["校园跑腿", "二手交易", "兼职招聘", "失物招领"],
     currentSelect: 0,
+    tabForLegWork: ["未被承接", "已被承接", "已完成"],
+    currentSelectForLegWork: 0,
+    tabForSecondhand: ["未被购买", "已被购买", "已完成"],
+    currentSelectForSecondhand: 0,
+    tabForPartTimeJob: ["招募中", "已结束"],
+    currentSelectForPartTimeJob: 0,
+    tabForLostAndFound: ["丢了东西", "捡了东西"],
+    currentSelectForLostAndFound: 0,
+    tabForLost: ["寻找中", "已结束"],
+    currentSelectForLost: 0,
+    tabForFound: ["寻找中", "已结束"],
+    currentSelectForFound: 0,
     legWork: [],
     secondHand: [],
     partTimeJob: [],
     lostAndFound: [],
+    lost: [],
+    found: []
   },
 
+  handleSelectForLost(data) {
+    this.setData({
+      currentSelectForLost: data.detail,
+    })
+  },
+  handleSelectForFound(data) {
+    this.setData({
+      currentSelectForFound: data.detail,
+    })
+  },
+  handleSelectForLostAndFound(data) {
+    this.setData({
+      currentSelectForLostAndFound: data.detail,
+    })
+  },
+  handleSelectForPartTimeJob(data) {
+    this.setData({
+      currentSelectForPartTimeJob: data.detail,
+    })
+  },
+  handleSelectForSecondhand(data) {
+    this.setData({
+      currentSelectForSecondhand: data.detail,
+    })
+  },
+  handleSelectForLegWork(data) {
+    this.setData({
+      currentSelectForLegWork: data.detail,
+    })
+  },
   handleSelect(data) {
     this.setData({
       currentSelect: data.detail,
@@ -43,7 +87,8 @@ Page({
         legWork: result.data.legWork,
         secondHand: result.data.secondHand,
         partTimeJob: result.data.partTimeJob,
-        lostAndFound: result.data.lostAndFound
+        lost: result.data.lost,
+        found: result.data.found
       })
     }
   },

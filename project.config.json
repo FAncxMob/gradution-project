@@ -237,6 +237,12 @@
 					"pathName": "pages/detailPage/buy/buy",
 					"query": "iid=5e79d99117422f14ac84c71a",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myReleaseLegwork/myReleaseLegwork",
+					"pathName": "pages/my/myReleaseLegwork/myReleaseLegwork",
+					"scene": null
 				}
 			]
 		}

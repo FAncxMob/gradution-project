@@ -2,17 +2,54 @@
 	<view class="switchTab-wrapper">
 		<SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
 	</view>
-	<view class="searchBox">
-		<Search searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm" bind:searchInput="searchInput"
-			bind:searchClear="searchClear">
-		</Search>
-	</view>
-	<block wx:if="{{currentSelect===0}}">
-		<view class="showPostList-wrapper">
-			<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{legWork}}" title="没有找到任何跑腿订单..."
-				noDataHeight=" 500rpx">
-			</ShowPostList>
+	<block wx:if="{{currentSelect===3}}">
+		<view class="searchBox2">
+			<Search searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm" bind:searchInput="searchInput"
+				bind:searchClear="searchClear" tipStr="根据标题或内容进行搜索">
+			</Search>s
 		</view>
+	</block>
+	<block wx:else>
+		<view class="searchBox">
+			<Search searchStr="{{searchStr}}" tipStr="根据标题或内容进行搜索" bind:searchConfirm="searchConfirm"
+				bind:searchInput="searchInput" bind:searchClear="searchClear">
+			</Search>
+		</view>
+	</block>
+	<block wx:if="{{currentSelect===0}}">
+		<view class="switchTab-wrapper2">
+			<SwitchTab size="small" currentSelect="{{currentSelectForLegWork}}" arr="{{tabForLegWork}}"
+				bindhandleSelect="handleSelectForLegWork" />
+		</view>
+		<block wx:if="{{currentSelectForLegWork===0}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{legWork.statusIs01245}}"
+					title="没有找到任何跑腿订单..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+		<block wx:if="{{currentSelectForLegWork===1}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{legWork.statusIs0}}"
+					title="没有找到未承接的跑腿订单..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+		<block wx:if="{{currentSelectForLegWork===2}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{legWork.statusIs1}}"
+					title="没有找到已被承接的跑腿订单..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+		<block wx:if="{{currentSelectForLegWork===3}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{legWork.statusIs2}}"
+					title="没有找到已完成的跑腿订单..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+
 
 		<!-- 发布帖子 -->
 		<view catchtap="release" data-classify="0" class="release">
@@ -21,11 +58,39 @@
 		</view>
 	</block>
 	<block wx:if="{{currentSelect===1}}">
-		<view class="showPostList-wrapper">
-			<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{secondHand}}"
-				title="没有找到任何二手交易订单..." noDataHeight=" 500rpx">
-			</ShowPostList>
+		<view class="switchTab-wrapper2">
+			<SwitchTab size="small" currentSelect="{{currentSelectForSecondhand}}" arr="{{tabForSecondhand}}"
+				bindhandleSelect="handleSelectForSecondhand" />
 		</view>
+		<block wx:if="{{currentSelectForSecondhand===0}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{secondHand.statusIs01245}}"
+					title="没有找到任何二手交易订单..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+		<block wx:if="{{currentSelectForSecondhand===1}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{secondHand.statusIs0}}"
+					title="没有找到未被购买的二手交易订单..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+		<block wx:if="{{currentSelectForSecondhand===2}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{secondHand.statusIs1}}"
+					title="没有找到已被购买的二手交易订单..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+		<block wx:if="{{currentSelectForSecondhand===3}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{secondHand.statusIs2}}"
+					title="没有找到已完成的二手交易订单..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+
 
 		<!-- 发布帖子 -->
 		<view catchtap="release" data-classify="1" class="release">
@@ -34,11 +99,32 @@
 		</view>
 	</block>
 	<block wx:if="{{currentSelect===2}}">
-		<view class="showPostList-wrapper">
-			<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{partTimeJob}}"
-				title="没有找到任何兼职招聘帖子..." noDataHeight=" 500rpx">
-			</ShowPostList>
+		<view class="switchTab-wrapper2">
+			<SwitchTab size="small" currentSelect="{{currentSelectForPartTimeJob}}" arr="{{tabForPartTimeJob}}"
+				bindhandleSelect="handleSelectForPartTimeJob" />
 		</view>
+		<block wx:if="{{currentSelectForPartTimeJob===0}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{partTimeJob.statusIs02}}"
+					title="没有找到任何兼职招聘帖子..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+		<block wx:if="{{currentSelectForPartTimeJob===1}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{partTimeJob.statusIs0}}"
+					title="没有找到招募中的兼职招聘帖子..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+		<block wx:if="{{currentSelectForPartTimeJob===2}}">
+			<view class="showPostList-wrapper">
+				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{partTimeJob.statusIs2}}"
+					title="没有找到已结束的兼职招聘帖子..." noDataHeight=" 500rpx">
+				</ShowPostList>
+			</view>
+		</block>
+
 
 		<!-- 发布帖子 -->
 		<view catchtap="release" data-classify="2" class="release">
@@ -47,17 +133,36 @@
 		</view>
 	</block>
 	<block wx:if="{{currentSelect===3}}">
-		<view class="switchTab-wrapper2">
-			<SwitchTab currentSelect="{{currentSelectForLostAndFound}}" arr="{{tabArrForLostAndFound}}"
+		<view class="switchTab-wrapper3">
+			<SwitchTab currentSelect="{{currentSelectForLostAndFound}}" arr="{{tabForLostAndFound}}"
 				bindhandleSelect="handleSelectForLostAndFound" />
 		</view>
 		<block wx:if="{{currentSelectForLostAndFound===0}}">
-			<view class="showPostList-wrapper2">
-				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{lost}}"
-					title="没有找到任何遗失物品的帖子..." noDataHeight=" 500rpx">
-				</ShowPostList>
+			<view class="switchTab-wrapper4">
+				<SwitchTab size="small" currentSelect="{{currentSelectForLost}}" arr="{{tabForLost}}"
+					bindhandleSelect="handleSelectForLost" />
 			</view>
-
+			<block wx:if="{{currentSelectForLost===0}}">
+				<view class="showPostList-wrapper2">
+					<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{lost.statusIs02}}"
+						title="没有找到任何寻物启事..." noDataHeight=" 500rpx">
+					</ShowPostList>
+				</view>
+			</block>
+			<block wx:if="{{currentSelectForLost===1}}">
+				<view class="showPostList-wrapper2">
+					<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{lost.statusIs0}}"
+						title="没有找到寻找中的寻物启事..." noDataHeight=" 500rpx">
+					</ShowPostList>
+				</view>
+			</block>
+			<block wx:if="{{currentSelectForLost===2}}">
+				<view class="showPostList-wrapper2">
+					<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{lost.statusIs2}}"
+						title="没有找到已结束的寻物启事..." noDataHeight=" 500rpx">
+					</ShowPostList>
+				</view>
+			</block>
 			<!-- 发布帖子 -->
 			<view catchtap="release" data-classify="3" class="release">
 				<text class="fz80 iconfont icon-fabudianjizhuangtai-"></text>
@@ -66,11 +171,32 @@
 
 		</block>
 		<block wx:if="{{currentSelectForLostAndFound===1}}">
-			<view class="showPostList-wrapper2">
-				<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{found}}"
-					title="没有找到任何捡到物品帖子..." noDataHeight=" 500rpx">
-				</ShowPostList>
+			<view class="switchTab-wrapper4">
+				<SwitchTab size="small" currentSelect="{{currentSelectForFound}}" arr="{{tabForFound}}"
+					bindhandleSelect="handleSelectForFound" />
 			</view>
+			<block wx:if="{{currentSelectForFound===0}}">
+				<view class="showPostList-wrapper2">
+					<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{found.statusIs02}}"
+						title="没有找到任何失物招领..." noDataHeight=" 500rpx">
+					</ShowPostList>
+				</view>
+			</block>
+			<block wx:if="{{currentSelectForFound===1}}">
+				<view class="showPostList-wrapper2">
+					<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{found.statusIs0}}"
+						title="没有找到寻找中的失物招领..." noDataHeight=" 500rpx">
+					</ShowPostList>
+				</view>
+			</block>
+			<block wx:if="{{currentSelectForFound===2}}">
+				<view class="showPostList-wrapper2">
+					<ShowPostList bind:toDetailPage="toDetailPage" isMyPost="{{false}}" data="{{found.statusIs2}}"
+						title="没有找到已结束的失物招领..." noDataHeight=" 500rpx">
+					</ShowPostList>
+				</view>
+			</block>
+
 
 			<!-- 发布帖子 -->
 			<view catchtap="release" data-classify="5" class="release">

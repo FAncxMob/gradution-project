@@ -10,9 +10,8 @@
             <block wx:if="{{item.pic.length!==0}}">
                 <!-- 有图片的排版 -->
                 <view class="df gray-1" style="position: relative;">
-                    <!-- 有图片的排版 -->
                     <view style="z-index: 100;" class="{{item.status===0?dn:'status'}}">
-                        {{utils.statusToStr(item.status)}}</view>
+                        {{utils.statusToStr(item.status,item.classify)}}</view>
                     <image class="pic mr20" src="{{item.pic[0]}}" mode="widthFix"></image>
                     <view class="df flex-column justify-between fz30 gray-1">
                         <view class=" fwb text-ellipsis-row1">
@@ -36,7 +35,7 @@
                 <!-- 没有图片的排版 -->
                 <view class="gray-1" style="position: relative;z-index: 1;">
                     <view style="z-index: 100;" class="{{item.status===0?dn:'status'}}">
-                        {{utils.statusToStr(item.status)}}</view>
+                        {{utils.statusToStr(item.status,item.classify)}}</view>
                     <view class="mb20 text-ellipsis-row1 fwb gray-1">
                         <rich-text nodes="{{item.title}}"></rich-text>
                     </view>
@@ -53,13 +52,21 @@
             </block>
             <view class="bottom-box borderTop   df justify-between align-center">
                 <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</text>
-                <block wx:if="{{haveOperation}}">
-                    <view>
-                        <button catchtap="editInvitations" data-iid="{{item._id}}" data-classify="{{item.classify}}"
-                            class=" mr20 pl20 small-btn">编辑</button>
-                        <button catchtap="deleteInvitations" data-iid="{{item._id}}" data-classify="{{item.classify}}"
-                            class="pl20 small-btn">删除</button>
-                    </view>
+                <block wx:if="{{haveDrop}}">
+                    <button catchtap="drop" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                        class="pl20 small-btn">下架</button>
+                </block>
+                <block wx:if="{{haveEdit}}">
+                    <button catchtap="edit" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                        class=" mr20 pl20 small-btn">编辑</button>
+                </block>
+                <block wx:if="{{haveScanCode}}">
+                    <button catchtap="scanCode" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                        class=" mr20 pl20 small-btn">扫码核销</button>
+                </block>
+                <block wx:if="{{haveCheckCode}}">
+                    <button catchtap="checkCode" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                        class=" mr20 pl20 small-btn">查看核销码</button>
                 </block>
             </view>
         </view>

@@ -1,4 +1,4 @@
-// pages/my/myReleasePartTimeJob/myReleasePartTimeJob.js
+// pages/my/myCancel/myCancel.js
 Page({
 
   /**
