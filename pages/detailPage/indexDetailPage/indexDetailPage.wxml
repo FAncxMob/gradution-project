@@ -30,7 +30,9 @@
                     <view class=" tag-orange mr20" wx:if="{{detail.invitationsDetail.tag}}">
                         {{detail.invitationsDetail.tag}}
                     </view>
-                    <text> {{detail.title}}</text>
+                    <view>
+                        <rich-text nodes="{{detail.title}}"></rich-text>
+                    </view>
                 </view>
                 <!-- 价格 -->
                 <!-- 失物招领是没有price的 -->
@@ -50,7 +52,9 @@
                     </view>
                 </block>
                 <!-- 内容描述 -->
-                <rich-text class="mb10 gray-1 showBr" nodes="{{detail.desc}}"></rich-text>
+                <view>
+                    <rich-text class="mb10 gray-1 " nodes="{{detail.desc}}"></rich-text>
+                </view>
                 <!-- <view class="mb10 gray-1 showBr">{{detail.desc}}</view> -->
                 <!-- 每种帖子的详细内容 -->
                 <!-- 跑腿 -->

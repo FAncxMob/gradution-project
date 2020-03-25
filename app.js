@@ -25,6 +25,7 @@ App({
           console.log('保存token和haveUser到本地')
           wx.hideLoading()
           wx.setStorageSync('token', result.token)
+          wx.setStorageSync('openId', result.openId)
           wx.setStorageSync('haveUser', result.haveUser)
           this.onLaunch()
         }

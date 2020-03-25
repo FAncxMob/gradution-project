@@ -23,7 +23,6 @@ Page({
     showPreview: false,
     realPath: [],
     maxLength: 6,
-    files: [],
     deliveryArray: ['都可以', '仅支持自提', '仅支持送货上门'],
     deliveryIndex: 0,
   },
@@ -37,7 +36,7 @@ Page({
     let index = e.currentTarget.dataset.index;
     console.log(index)
     this.setData({
-      previewImageUrls: this.data.files,
+      previewImageUrls: this.data.realPath,
       previewCurrent: index,
       showPreview: true
     });
@@ -45,7 +44,6 @@ Page({
   async deletePic(e) {
     let index = e.detail.index;
     let {
-      files,
       realPath
     } = this.data
     // 删除图片接口
@@ -53,10 +51,8 @@ Page({
       path: `${realPath[index]}`
     })
     if (result.code) {
-      files.splice(index, 1);
       realPath.splice(index, 1);
       this.setData({
-        files,
         realPath,
         showPreview: false
       });
@@ -76,7 +72,6 @@ Page({
     let {
       realPath,
       maxLength,
-      files
     } = this.data
     wx.showLoading({
       title: '正在上传图片...'
@@ -89,16 +84,14 @@ Page({
 
     // const _tempFilePaths = res.tempFilePaths
     res.tempFilePaths.forEach((val, index) => {
-      if (files.length < maxLength) {
+      if (realPath.length < maxLength) {
         let picName = ''
         // 上传图片
         this.uploadPic(val).then((res) => {
           res = JSON.parse(res)
           realPath.push(res.fileName)
-          files.push(val)
           this.setData({
             realPath,
-            files
           }, () => wx.hideLoading())
         }).catch((res) => {
           wx.hideLoading()
@@ -214,7 +207,7 @@ Page({
       })
       return false
     }
-    if (this.data.files.length == 0) {
+    if (this.data.realPath.length == 0) {
       this.showModal({
         msg: '请选择一张图片作为帖子的主图吧！'
       })
@@ -228,8 +221,8 @@ Page({
 
     params.price = params.price.trim()
     params.buyPrice = params.buyPrice.trim()
-    params.desc = params.desc.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
-    params.title = params.title.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+    params.desc = util.HHToBr(params.desc)
+    params.title = util.HHToBr(params.title)
 
 
     let values = {}

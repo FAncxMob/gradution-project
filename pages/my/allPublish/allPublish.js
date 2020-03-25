@@ -97,7 +97,8 @@ Page({
             that.setData({
               [dropName]: dropData
 
-            }, () => util.showModal(`下架成功，您可以在我的页面的已下架模块查看已下架的帖子`, 3000))
+            }, () => util.showModal('下架成功，您可以在我的页面的已下架模块查看已下架的帖子'))
+
           } else {
             util.showModal(`下架失败了，请重试`)
           }
@@ -130,7 +131,13 @@ Page({
             that.setData({
               [dropName]: dropData
 
-            }, () => util.showModal(`删除成功`))
+            }, () => {
+              wx.showToast({
+                title: "删除成功",
+                icon: 'success',
+                duration: 2000
+              })
+            })
           } else {
             util.showModal(`删除失败了，请重试`)
           }
@@ -172,7 +179,13 @@ Page({
               [dropName]: dropData,
               [completeName]: completeData
 
-            }, () => util.showModal(`${content}成功`))
+            }, () => {
+              wx.showToast({
+                title: `${content}成功`,
+                icon: 'success',
+                duration: 2000
+              })
+            })
           } else {
             util.showModal(`${content}失败了，请重试`)
           }
@@ -188,27 +201,28 @@ Page({
 
     let dropData = e.currentTarget.dataset.dropdata
     let dropName = e.currentTarget.dataset.dropname
+    console.log(iid, 'iid')
 
     switch (classify) {
       case 0:
         wx.navigateTo({
-          url: `/pages/update/updateLegwork/updateLegwork?iid${iid}`
+          url: `/pages/update/updateLegwork/updateLegwork?iid=${iid}`
         })
         break;
       case 1:
         wx.navigateTo({
-          url: `/pages/update/updateSecondhand/updateSecondhand?iid${iid}`
+          url: `/pages/update/updateSecondhand/updateSecondhand?iid=${iid}`
         })
         break;
       case 2:
         wx.navigateTo({
-          url: `/pages/update/updatePartimJob/updatePartimJob?iid${iid}`
+          url: `/pages/update/updatePartimJob/updatePartimJob?iid=${iid}`
         })
         break;
       case 3:
       case 5:
         wx.navigateTo({
-          url: `/pages/update/updateLostAndFound/updateLostAndFound?iid${iid}`
+          url: `/pages/update/updateLostAndFound/updateLostAndFound?iid=${iid}`
         })
         break;
 

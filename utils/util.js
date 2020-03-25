@@ -63,7 +63,15 @@ const Utils = {
       icon: 'none',
       duration
     })
-  }
+  },
+  brToHH(str) {
+    str = str.replace(/<br\/>/g, "\r\n")
+    return str
+  },
+  HHToBr(str) {
+    str = str.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+    return str
+  },
 }
 
 

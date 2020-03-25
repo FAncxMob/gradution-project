@@ -14,6 +14,11 @@ Page({
   },
 
   async submitHelp(e) {
+    let myOpenId = wx.getStorageSync('openId')
+    if (this.data.helpData.openId == myOpenId) {
+      util.showModal('不能购买自己发的订单哦~')
+      return false
+    }
     const params = e.detail.value
     console.log(params)
     if (!this.WxValidate.checkForm(params)) {

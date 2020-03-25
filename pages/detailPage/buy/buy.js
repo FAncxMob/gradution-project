@@ -21,6 +21,11 @@ Page({
     })
   },
   async submitBuy(e) {
+    let myOpenId = wx.getStorageSync('openId')
+    if (this.data.buyData.openId == myOpenId) {
+      util.showModal('不能购买自己发的订单哦~')
+      return false
+    }
     let {
       addressData
     } = this.data

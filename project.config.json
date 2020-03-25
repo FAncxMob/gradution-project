@@ -258,6 +258,34 @@
 					"pathName": "pages/update/updateLegwork/updateLegwork",
 					"query": "iid=5e78e872111fed251cedc54f",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/update/updateSecondhand/updateSecondhand",
+					"pathName": "pages/update/updateSecondhand/updateSecondhand",
+					"query": "iid=5e79bd2982dbba25086ad45b",
+					"scene": null
+				},
+				{
+					"id": 30,
+					"name": "pages/update/updatePartimJob/updatePartimJob",
+					"pathName": "pages/update/updatePartimJob/updatePartimJob",
+					"query": "iid=5e7b750fb645d445103d033f",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/update/updateLostAndFound/updateLostAndFound",
+					"pathName": "pages/update/updateLostAndFound/updateLostAndFound",
+					"query": "iid=5e7b7559b645d445103d0341",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/detailPage/indexDetailPage/indexDetailPage",
+					"pathName": "pages/detailPage/indexDetailPage/indexDetailPage",
+					"query": "iid=5e7b99980d2bc5392ca8dac0",
+					"scene": null
 				}
 			]
 		}

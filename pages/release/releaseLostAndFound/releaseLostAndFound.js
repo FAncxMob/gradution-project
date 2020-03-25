@@ -22,7 +22,6 @@ Page({
     showPreview: false,
     realPath: [],
     maxLength: 6,
-    files: [],
     typeArray: ['丢了东西', '捡到东西'],
     typeIndex: 0,
   },
@@ -36,7 +35,7 @@ Page({
     let index = e.currentTarget.dataset.index;
     console.log(index)
     this.setData({
-      previewImageUrls: this.data.files,
+      previewImageUrls: this.data.realPath,
       previewCurrent: index,
       showPreview: true
     });
@@ -44,7 +43,6 @@ Page({
   async deletePic(e) {
     let index = e.detail.index;
     let {
-      files,
       realPath
     } = this.data
 
@@ -53,10 +51,8 @@ Page({
       path: `${realPath[index]}`
     })
     if (result.code) {
-      files.splice(index, 1);
       realPath.splice(index, 1);
       this.setData({
-        files,
         realPath,
         showPreview: false
       });
@@ -76,7 +72,6 @@ Page({
     let {
       realPath,
       maxLength,
-      files
     } = this.data
     let res = await wx.chooseImage({
       count: maxLength,
@@ -86,16 +81,14 @@ Page({
 
     // const _tempFilePaths = res.tempFilePaths
     res.tempFilePaths.forEach((val, index) => {
-      if (files.length < maxLength) {
+      if (realPath.length < maxLength) {
         let picName = ''
         // 上传图片
         this.uploadPic(val).then((res) => {
           res = JSON.parse(res)
           realPath.push(res.fileName)
-          files.push(val)
           this.setData({
             realPath,
-            files
           })
         }).catch((res) => {
           wx.hideLoading()
@@ -188,9 +181,9 @@ Page({
       params.price = params.price.trim()
       params.price = params.price == 0 ? '' : params.price
     }
-    params.title = params.title.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
-    params.desc = params.desc.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
-    params.contact = params.contact.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+    params.title = util.HHToBr(params.title)
+    params.desc = util.HHToBr(params.desc)
+    params.contact = util.HHToBr(params.contact)
 
     let classify = typeIndex === 0 ? 3 : 5
     let values = {

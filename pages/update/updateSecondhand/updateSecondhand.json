@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "mp-gallery": "/weui-miniprogram/gallery/gallery"
+  },
+  "navigationBarTitleText": "修改二手交易"
 }

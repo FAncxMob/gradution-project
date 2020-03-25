@@ -139,3 +139,7 @@
 .ml10 {
     margin-left: 10rpx !important;
 }
+
+.shrink-0 {
+    flex-shrink: 0 !important;
+}

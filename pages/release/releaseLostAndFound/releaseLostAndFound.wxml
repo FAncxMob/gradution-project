@@ -35,9 +35,9 @@
             <view class="section imageBx">
                 <view class="section-title">选择图片</view>
                 <text class="mb10 fz26">您最多选择{{maxLength}}张图片!</text>
-                <block wx:if="{{files.length}}">
+                <block wx:if="{{realPath.length}}">
                     <view  class="choosePicBox" > 
-                        <view class="imgWrapper mb20 por" bindtap="previewImage" data-index="{{index}}" wx:for="{{files}}" wx:key="{{index}}">
+                        <view class="imgWrapper mb20 por" bindtap="previewImage" data-index="{{index}}" wx:for="{{realPath}}" wx:key="{{index}}">
                             <image mode="cover"  src="{{item}}">
                             </image>
                             <block wx:if="{{realPath[index]}}">

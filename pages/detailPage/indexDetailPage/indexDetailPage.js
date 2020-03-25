@@ -463,7 +463,7 @@ Page({
     wx.hideLoading()
 
     if (result.code) {
-      result.data.detail.watch += 1
+      // result.data.detail.watch += 1
       this.setData({
         detail: result.data.detail,
         commentDetail: result.data.commentDetail,
