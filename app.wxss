@@ -105,6 +105,7 @@
 
 .pic {
   width: 40%;
+  max-height: 100rpx;
   flex-shrink: 0;
   margin: 10rpx;
   border: 4rpx solid #e0cfbb;

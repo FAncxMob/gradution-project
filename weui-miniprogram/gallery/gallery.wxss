@@ -49,7 +49,7 @@
     text-align: center
 }
 
-.weui-gallery__opr navigator {
+.weui-gallery__opr .navigator {
     color: #FFFFFF
 }
 

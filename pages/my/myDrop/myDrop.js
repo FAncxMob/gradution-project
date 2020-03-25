@@ -33,19 +33,27 @@ Page({
   async searchConfirm(e) {
     let {
       searchStr,
+      currentSelect,
+      currentSelectForLostAndFound
     } = this.data
     wx.showLoading({
       title: '正在检索...'
     })
+    let classify
+    if (currentSelect !== 3) {
+      classify = currentSelect
+    } else {
+      classify = currentSelectForLostAndFound === 0 ? 3 : 5
+    }
 
     let result = await util.request('/searchMyDrop', {
-      searchStr
+      searchStr,
+      classify
     })
     wx.hideLoading()
     if (result.code) {
-      // 
       this.setData({
-        drop: result.data
+        [result.classifyStr]: result.data
       })
     }
   },

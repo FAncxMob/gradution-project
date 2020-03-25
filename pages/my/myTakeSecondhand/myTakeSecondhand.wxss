@@ -1,1 +1,51 @@
-/* pages/my/myTakeSecondhand/myTakeSecondhand.wxss */
+#collect {
+    padding: 20rpx;
+    font-size: 26rpx;
+}
+
+#collect .collect-list {
+    padding: 20rpx;
+    border: 2rpx solid #c2bebe;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+}
+
+#collect .collect-list .cancel-collect {
+    margin: 0 -20rpx -5px;
+    padding: 10rpx 20rpx 0;
+}
+
+.myOrderLisBox {
+    padding-top: 180rpx;
+}
+
+.myOrderLisBox2 {
+    padding-top: 260rpx;
+}
+
+.searchBox {
+    position: fixed;
+    top: 80rpx;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    z-index: 10;
+}
+
+.switchTab-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80rpx;
+    z-index: 9999;
+}
+
+.switchTab-wrapper2 {
+    position: fixed;
+    top: 180rpx;
+    left: 0;
+    right: 0;
+    height: 80rpx;
+    z-index: 9999;
+}

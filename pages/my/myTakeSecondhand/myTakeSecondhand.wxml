@@ -1,2 +1,26 @@
-<!--pages/my/myTakeSecondhand/myTakeSecondhand.wxml-->
-<text>pages/my/myTakeSecondhand/myTakeSecondhand.wxml</text>
+<view>
+    <view class="switchTab-wrapper">
+        <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    </view>
+    <view class="searchBox">
+        <Search searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm" bind:searchInput="searchInput"
+            bind:searchClear="searchClear">
+        </Search>
+    </view>
+    <block wx:if="{{currentSelect===0}}">
+        <view class="myOrderLisBox">
+            <MyOrderList bind:toDetailPage="toDetailPage" data="{{secondHandStatusIs1}}" title="没有待发货的二手交易"
+                noDataHeight="500rpx">
+            </MyOrderList>
+        </view>
+    </block>
+    <block wx:if="{{currentSelect===1}}">
+        <view class="myOrderLisBox">
+            <MyOrderList bind:toDetailPage="toDetailPage" data="{{secondHandStatusIs2}}" title="没有已完成的二手交易"
+                noDataHeight="500rpx">
+            </MyOrderList>
+        </view>
+    </block>
+
+
+</view>

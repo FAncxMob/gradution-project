@@ -46,19 +46,25 @@ Page({
     let {
       realPath
     } = this.data
+
+    realPath.splice(index, 1);
+    this.setData({
+      realPath,
+      showPreview: false
+    });
     // 删除图片接口
-    let result = await util.request('/deletePic', {
-      path: `${realPath[index]}`
-    })
-    if (result.code) {
-      realPath.splice(index, 1);
-      this.setData({
-        realPath,
-        showPreview: false
-      });
-    } else {
-      util.showModal('删除图片失败')
-    }
+    // let result = await util.request('/deletePic', {
+    //   path: `${realPath[index]}`
+    // })
+    // if (result.code) {
+    //   realPath.splice(index, 1);
+    //   this.setData({
+    //     realPath,
+    //     showPreview: false
+    //   });
+    // } else {
+    //   util.showModal('删除图片失败')
+    // }
 
 
   },

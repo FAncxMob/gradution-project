@@ -29,7 +29,7 @@
     left: 0;
     right: 0;
     height: 100rpx;
-    z-index: 10;
+    z-index: 9999;
 }
 
 .switchTab-wrapper {

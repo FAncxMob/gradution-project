@@ -286,6 +286,19 @@
 					"pathName": "pages/detailPage/indexDetailPage/indexDetailPage",
 					"query": "iid=5e7b99980d2bc5392ca8dac0",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myTakeLegwork/myTakeLegwork",
+					"pathName": "pages/my/myTakeLegwork/myTakeLegwork",
+					"query": "iid=5e7b99980d2bc5392ca8dac0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myTakeSecondhand/myTakeSecondhand",
+					"pathName": "pages/my/myTakeSecondhand/myTakeSecondhand",
+					"scene": null
 				}
 			]
 		}
