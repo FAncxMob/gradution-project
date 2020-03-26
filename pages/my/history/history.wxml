@@ -10,6 +10,6 @@
     </view>
     <view class="showPostListBox">
         <ShowPostList bind:toDetailPage="toDetailPage" data="{{history}}" title="{{noDataText}}"
-            haveOperation="{{false}}" noDataHeight="500vh"></ShowPostList>
+            haveOperation="{{false}}" noDataHeight="100vh"></ShowPostList>
     </view>
 </view>

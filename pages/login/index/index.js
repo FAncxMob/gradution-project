@@ -1,4 +1,5 @@
 const util = require('../../../utils/util')
+import WxValidate from '../../../utils/WxValidate'
 let app = getApp()
 
 
@@ -23,6 +24,7 @@ Page({
     },
   },
   async saveFormValue(e) {
+    const params = e.detail.value
     console.log('saveFormValue')
     this.setData({
       formValue: e.detail.value
@@ -45,7 +47,8 @@ Page({
       formValue,
       userInfo
     } = this.data
-    formValue.idCard = formValue.idCard.toUpperCase()
+    // TODO: 为了测试先注释掉
+    // formValue.idCard = formValue.idCard.toUpperCase()
 
 
     let data = {
@@ -143,24 +146,30 @@ Page({
   },
   onLoad: function (options) {
     this.initValidate()
-    let haveUser = wx.getStorageSync('haveUser')
-    // 判断新老用户
-    if (haveUser) {
-      console.log('老用户，直接进入')
-      // wx.navigateTo({
-      //   url: '/pages/my/userInfo/userInfo'
-      // })
+    let token = wx.getStorageSync('token')
+    if (token) {
       wx.switchTab({
         url: '/pages/my/my/my'
       })
-    } else {
-      // 老用户，跳过登录界面直接进入我的页面，新用户跳转到登录页面
-      console.log('新用户，滚去登陆')
-      // wx.navigateTo({
-      //   url: '/pages/login/index/index'
-      // })
     }
-    console.log('load()-login')
+    // let haveUser = wx.getStorageSync('haveUser')
+    // // 判断新老用户
+    // if (haveUser) {
+    //   console.log('老用户，直接进入')
+    //   // wx.navigateTo({
+    //   //   url: '/pages/my/userInfo/userInfo'
+    //   // })
+    //   wx.switchTab({
+    //     url: '/pages/my/my/my'
+    //   })
+    // } else {
+    //   // 老用户，跳过登录界面直接进入我的页面，新用户跳转到登录页面
+    //   console.log('新用户，滚去登陆')
+    //   // wx.navigateTo({
+    //   //   url: '/pages/login/index/index'
+    //   // })
+    // }
+    // console.log('load()-login')
   },
 
   /**

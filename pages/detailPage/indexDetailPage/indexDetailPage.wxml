@@ -213,7 +213,8 @@
         <block wx:if="{{focus}}">
             <!-- 正在打字留言，键盘弹出 -->
             <view class="operation commenting">
-                <image class="avatar-comment mr20" mode="cover" src="{{detail.userDetail.avatar}}"></image>
+                <open-data class="avatar-comment mr20" type="userAvatarUrl"></open-data>
+                <!-- <image class="avatar-comment mr20" mode="cover" src="{{detail.userDetail.avatar}}"></image> -->
                 <block wx:if="{{commentNickName!==''}}">
                     <textarea disable-default-padding="{{true}}" cursor-spacing="14px" bindfocus="commentFocus"
                         bindblur="commentBluer" show-confirm-bar="{{false}}" focus="{{focus}}"
@@ -280,7 +281,7 @@
             </block>
         </view>
     </block>
-    </block>
+    </wxs>
 
  <!-- 输入时的黑色蒙层 -->
  <view class="blackMC" wx:if="{{focus}}"></view>

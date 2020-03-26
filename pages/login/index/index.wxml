@@ -21,21 +21,21 @@
                 </picker>
             </view> -->
             <view class="section">
-                <view class="section-title">学号</view>
-                <input placeholder-class="input" name="sno" placeholder="请输入学号" type="number" />
+                <view class="section-title">学号 <text class="red-1">*</text></view>
+                <input placeholder-class="input" name="sno" placeholder="请输入学号" />
             </view>
             <view class="section">
-                <view class="section-title">姓名</view>
+                <view class="section-title">姓名 <text class="red-1">*</text></view>
                 <input placeholder-class="input" name="name" placeholder="请输入姓名" />
             </view>
             <view class="section">
-                <view class="section-title">身份证</view>
+                <view class="section-title">身份证 <text class="red-1">*</text></view>
                 <input placeholder-class="input" name="idCard" placeholder="请输入身份证号" maxlength="18" />
             </view>
-            <view class="section">
+            <!-- <view class="section">
                 <view class="section-title">手机号</view>
                 <input placeholder-class="input" name="tel" placeholder="请输入手机号" />
-            </view>
+            </view> -->
             <view class="btn-area">
                 <button type="primary" formType="submit" wx:if="{{canIUse}}" type="primary" open-type="getUserInfo"
                     bindgetuserinfo="bindGetUserInfo"> 登录

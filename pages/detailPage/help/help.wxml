@@ -2,7 +2,9 @@
     <form bindsubmit="submitHelp">
         <view class="info setBorder m10 mb20 twoSideShadow">
             <view class="df justify-between " wx:if="{{helpData.pic.length}}">
-                <image class="pic w200" mode="widthFix" src="{{helpData.pic[0]}}"> </image>
+                <view class="imgWrapper">
+                    <image class="buyAvatar w200" mode="widthFix" src="{{helpData.pic[0]}}"> </image>
+                </view>
                 <view class="df flex-column justify-between">
                     <view class="fwb text-ellipsis-row1">
                         <rich-text nodes="{{helpData.title}}"></rich-text>
