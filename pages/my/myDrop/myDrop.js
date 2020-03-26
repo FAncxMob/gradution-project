@@ -120,6 +120,46 @@ Page({
       }
     })
   },
+
+  delete(e) {
+    let that = this
+    wx.showModal({
+      title: '提示',
+      content: '删除的帖子将不可找回，您确定要删除该帖子吗？',
+      async success(res) {
+        if (res.confirm) {
+          let iid = e.detail.iid
+          let classify = e.detail.classify
+          let index = e.detail.index
+          let dropData = e.currentTarget.dataset.dropdata
+          let dropName = e.currentTarget.dataset.dropname
+
+          console.log(iid, classify)
+
+          let result = await util.request('/delete', {
+            iid,
+            classify
+          })
+
+          if (result.code) {
+            dropData.splice(index, 1)
+            that.setData({
+              [dropName]: dropData
+
+            }, () => {
+              wx.showToast({
+                title: "删除成功",
+                icon: 'success',
+                duration: 2000
+              })
+            })
+          } else {
+            util.showModal(`删除失败了，请重试`)
+          }
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

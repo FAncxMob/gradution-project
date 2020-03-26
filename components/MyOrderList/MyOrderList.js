@@ -34,6 +34,10 @@ Component({
       type: Boolean,
       value: false
     },
+    haveConfirm: {
+      type: Boolean,
+      value: false
+    },
     noDataHeight: String
   },
 
@@ -94,6 +98,17 @@ Component({
       this.triggerEvent('delete', data)
     },
 
+    confirm(e) {
+      let iid = e.currentTarget.dataset.iid
+      let classify = e.currentTarget.dataset.classify
+      let index = e.currentTarget.dataset.index
+      let data = {
+        iid,
+        classify,
+        index
+      }
+      this.triggerEvent('confirm', data)
+    },
     complete(e) {
       let iid = e.currentTarget.dataset.iid
       let classify = e.currentTarget.dataset.classify

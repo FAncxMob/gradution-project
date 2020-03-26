@@ -53,6 +53,14 @@
     justify-content: space-between;
 }
 
+.mt10 {
+    margin-top: 10rpx !important;
+}
+
+.mb10 {
+    margin-bottom: 10rpx !important;
+}
+
 .fz30 {
     font-size: 30rpx !important;
 }
@@ -142,4 +150,8 @@
 
 .shrink-0 {
     flex-shrink: 0 !important;
+}
+
+.red-1 {
+    color: #E64E4E !important;
 }

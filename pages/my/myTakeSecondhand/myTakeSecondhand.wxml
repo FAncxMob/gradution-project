@@ -9,8 +9,10 @@
     </view>
     <block wx:if="{{currentSelect===0}}">
         <view class="myOrderLisBox">
-            <MyOrderList bind:toDetailPage="toDetailPage" data="{{secondHandStatusIs1}}" title="没有待发货的二手交易"
-                noDataHeight="500rpx">
+            <MyOrderList data-dropname="secondHandStatusIs1" data-dropdata="{{secondHandStatusIs1}}"
+                data-completename="secondHandStatusIs2" data-completedata="{{secondHandStatusIs2}}"
+                bind:confirm="confirm" haveConfirm="{{true}}" bind:toDetailPage="toDetailPage"
+                data="{{secondHandStatusIs1}}" title="没有待发货的二手交易" noDataHeight="500rpx">
             </MyOrderList>
         </view>
     </block>

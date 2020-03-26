@@ -52,7 +52,12 @@ Page({
   toDetailPage(e) {
     let iid = e.detail.iid
     let classify = e.detail.classify
-
+    let status = e.detail.status
+    console.log(status)
+    if (status == 6) {
+      util.showModal('该帖子已被发帖人删除！无法查看详情')
+      return
+    }
     if (classify === 4) {
       wx.navigateTo({
         url: `/pages/detailPage/schoolNewsDetailPage/schoolNewsDetailPage?iid=${iid}`

@@ -14,14 +14,26 @@ Page({
     facultyIndex: 0,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: '',
-    formValue: {}
+    formValue: {},
+    basicInfo: {
+      name: '',
+      tel: '',
+      idCard: '',
+      sno: ''
+    },
   },
   async saveFormValue(e) {
     console.log('saveFormValue')
-
     this.setData({
       formValue: e.detail.value
+    }, () => {
+      if (!this.WxValidate.checkForm(params)) {
+        const error = this.WxValidate.errorList[0]
+        this.showModal(error)
+        return false
+      }
     })
+
   },
   async login() {
     console.log('login')
@@ -93,7 +105,44 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  initValidate() {
+    const rules = {
+      tel: {
+        required: false,
+        tel: true
+      },
+      idCard: {
+        required: true,
+        // idcard: true,
+      },
+      name: {
+        required: true
+      },
+      sno: {
+        required: false,
+        // digits: true
+      }
+    };
+    const messages = {
+      tel: {
+        tel: "请输入正确的手机号"
+      },
+      idCard: {
+        required: "请输入身份证号",
+        // idcard: "请输入正确的身份证号",
+      },
+      name: {
+        required: "请输入真实姓名",
+      },
+      sno: {
+        required: "请输入学号",
+        // digits: "请输入正确的学号"
+      }
+    };
+    this.WxValidate = new WxValidate(rules, messages)
+  },
   onLoad: function (options) {
+    this.initValidate()
     let haveUser = wx.getStorageSync('haveUser')
     // 判断新老用户
     if (haveUser) {

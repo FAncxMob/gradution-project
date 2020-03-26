@@ -74,17 +74,20 @@
 				<text class="iconfont icon-yiquxiao3 fz70 mr10 mb10" style="color:#DB693A"></text>
 				已下架的
 			</view>
-			<view bindtap="bindToPage" data-page="../myCancel/myCancel">
+			<view bindtap="bindToPage" data-page="../addressManager/addressManager">
+				<text class="iconfont icon-tubiao201 fz70 mr10 mb10" style="color:#DB693A"></text>
+				地址管理
+			</view>
+			<!-- <view bindtap="bindToPage" data-page="../myCancel/myCancel">
 				<text class="iconfont icon-yiquxiao2 fz70 mr10 mb10" style="color:#DB693A"></text>
 				中止交易
-			</view>
+			</view> -->
 
 		</view>
 	</view>
 
-	<view class="card-horizontal twoSideShadow">
+	<!-- <view class="card-horizontal twoSideShadow">
 		<view class="title">
-			<!-- <text class="iconfont icon-badge- fz40 mr10"></text> -->
 			必备工具
 		</view>
 		<view class="item-container">
@@ -96,14 +99,6 @@
 				<text class="iconfont icon-saoma6 fz70 mr10 mb10" style="color:#D75EB2"></text>
 				扫码核销
 			</view>
-			<!-- <view bindtap="bindToPage" data-page="../comment/comment">
-				<text class="iconfont icon-tubiaozhizuomoban fz70 mr10 mb10" style="color:#D75EB2"></text>
-				设置
-			</view>
-			<view bindtap="bindToPage" data-page="../follow/follow">
-				<text class="iconfont icon-bangzhu1 fz70 mr10 mb10" style="color:#D75EB2"></text>
-				帮助
-			</view> -->
 		</view>
-	</view>
+	</view> -->
 </view>

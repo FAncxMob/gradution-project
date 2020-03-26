@@ -3,8 +3,8 @@
 
 <view id='comment' class="bg-gray-1">
     <view class="searchBox">
-        <Search searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm" bind:searchInput="searchInput"
-            bind:searchClear="searchClear">
+        <Search tipStr="根据评论内容进行搜索..." searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm"
+            bind:searchInput="searchInput" bind:searchClear="searchClear">
         </Search>
     </view>
     <view class="listBox">

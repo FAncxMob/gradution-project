@@ -64,9 +64,11 @@ Component({
     toDetailPage(e) {
       let iid = e.currentTarget.dataset.iid
       let classify = e.currentTarget.dataset.classify
+      let status = e.currentTarget.dataset.status
       this.triggerEvent('toDetailPage', {
         iid,
-        classify
+        classify,
+        status
       })
     }
   }

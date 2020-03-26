@@ -1,5 +1,5 @@
 <view id="userInfo">
-    <view class='userInfo-container'>
+    <view class='userInfo-container setBorder twoSideShadow'>
         <form class="userInfo-form " bindsubmit="formSubmit">
             <!-- <view class="section">
                 <text class="section-title">

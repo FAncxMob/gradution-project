@@ -8,8 +8,9 @@
     <block wx:else>
         <block wx:if="{{isMyPost}}">
             <!-- 显示我的帖子 -->
-            <view bindtap="toDetailPage" data-iid="{{item.iid}}" data-classify="{{item.invitationsDetail.classify}}"
-                class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
+            <view bindtap="toDetailPage" data-status="{{item.invitationsDetail.status||item.status}}"
+                data-iid="{{item.iid}}" data-classify="{{item.invitationsDetail.classify}}" class="list twoSideShadow"
+                wx:for="{{data}}" wx:key="{{index}}">
                 <block wx:if="{{item.invitationsDetail.classify!==4}}">
                     <view class="df align-start mb20">
                         <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
@@ -82,8 +83,8 @@
         </block>
         <block wx:else>
             <!-- 显示全部公共帖子 -->
-            <view bindtap="toDetailPage" data-iid="{{item._id}}" class="list twoSideShadow" wx:for="{{data}}"
-                wx:key="{{index}}">
+            <view bindtap="toDetailPage" data-status="{{item.status||item.invitationsDetail.status}}"
+                data-iid="{{item._id}}" class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
                 <view class="df align-start mb20">
                     <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
                     <view class="df h80 flex-column fx1 justify-between">
@@ -103,7 +104,9 @@
                     </block>
                 </view>
                 <view class="mt20 mb10 black-1" style="position: relative;z-index: 1;">
-                    <text class=" fwb fz30">{{item.title}}</text>
+                    <view class="text-ellipsis-row1">
+                        <rich-text class="fwb fz30" nodes="{{item.title}}"></rich-text>
+                    </view>
                     <view class="{{item.status===0?dn:'status'}}">
                         {{utils.statusToStr(item.status,item.classify)}}</view>
                 </view>

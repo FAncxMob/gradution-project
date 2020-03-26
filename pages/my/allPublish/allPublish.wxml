@@ -21,16 +21,19 @@
         <!-- 已被承接 -->
         <block wx:if="{{currentSelectForLegWork===1}}">
             <view class="MyOrderList-wrapper">
-                <MyOrderList bind:toDetailPage="toDetailPage" data="{{legWorkStatusIs1}}" title="还没有被承接的跑腿订单..."
-                    haveOperation="{{true}}" noDataHeight="500rpx">
+                <MyOrderList data-dropname="legWorkStatusIs1" data-dropdata="{{legWorkStatusIs1}}"
+                    data-completename="legWorkStatusIs2" data-completedata="{{legWorkStatusIs2}}" bind:confirm="confirm"
+                    haveConfirm="{{true}}" bind:toDetailPage="toDetailPage" data="{{legWorkStatusIs1}}"
+                    title="还没有被承接的跑腿订单..." haveOperation="{{true}}" noDataHeight="500rpx">
                 </MyOrderList>
             </view>
         </block>
         <!-- 已完成 -->
         <block wx:if="{{currentSelectForLegWork===2}}">
             <view class="MyOrderList-wrapper">
-                <MyOrderList bind:delete="delete" haveDelete="{{true}}" bind:toDetailPage="toDetailPage"
-                    data="{{legWorkStatusIs2}}" title="还没有已完成的跑腿订单..." haveOperation="{{true}}" noDataHeight="500rpx">
+                <MyOrderList data-dropname="legWorkStatusIs2" data-dropdata="{{legWorkStatusIs2}}" bind:delete="delete"
+                    haveDelete="{{true}}" bind:toDetailPage="toDetailPage" data="{{legWorkStatusIs2}}"
+                    title="还没有已完成的跑腿订单..." haveOperation="{{true}}" noDataHeight="500rpx">
                 </MyOrderList>
             </view>
         </block>
@@ -63,7 +66,8 @@
         <!-- 已完成 -->
         <block wx:if="{{currentSelectForSecondhand===2}}">
             <view class="MyOrderList-wrapper">
-                <MyOrderList bind:delete="delete" haveDelete="{{true}}" bind:toDetailPage="toDetailPage"
+                <MyOrderList data-dropname="secondHandStatusIs2" data-dropdata="{{secondHandStatusIs2}}"
+                    bind:delete="delete" haveDelete="{{true}}" bind:toDetailPage="toDetailPage"
                     data="{{secondHandStatusIs2}}" title="还没有已完成的二手交易帖子..." haveOperation="{{true}}"
                     noDataHeight="500rpx">
                 </MyOrderList>
@@ -93,7 +97,8 @@
         <!-- 已结束 -->
         <block wx:if="{{currentSelectForPartTimeJob===1}}">
             <view class="MyOrderList-wrapper">
-                <MyOrderList bind:delete="delete" haveDelete="{{true}}" bind:toDetailPage="toDetailPage"
+                <MyOrderList data-dropname="partTimeJobStatusIs2" data-dropdata="{{partTimeJobStatusIs2}}"
+                    bind:delete="delete" haveDelete="{{true}}" bind:toDetailPage="toDetailPage"
                     data="{{partTimeJobStatusIs2}}" title="还没有已结束的兼职招聘帖子..." haveOperation="{{true}}"
                     noDataHeight="500rpx">
                 </MyOrderList>
@@ -129,9 +134,9 @@
             <!-- 已结束 -->
             <block wx:if="{{currentSelectForLost===1}}">
                 <view class="MyOrderList-wrapper2">
-                    <MyOrderList bind:delete="delete" haveDelete="{{true}}" bind:toDetailPage="toDetailPage"
-                        data="{{lostStatusIs2}}" title="还没有已结束的寻物启事帖子..." haveOperation="{{true}}"
-                        noDataHeight="500rpx">
+                    <MyOrderList data-dropname="lostStatusIs2" data-dropdata="{{lostStatusIs2}}" bind:delete="delete"
+                        haveDelete="{{true}}" bind:toDetailPage="toDetailPage" data="{{lostStatusIs2}}"
+                        title="还没有已结束的寻物启事帖子..." haveOperation="{{true}}" noDataHeight="500rpx">
                     </MyOrderList>
                 </view>
             </block>
@@ -157,9 +162,9 @@
             <!-- 已结束 -->
             <block wx:if="{{currentSelectForFound===1}}">
                 <view class="MyOrderList-wrapper2">
-                    <MyOrderList bind:delete="delete" haveDelete="{{true}}" bind:toDetailPage="toDetailPage"
-                        data="{{foundStatusIs2}}" title="还没有已结束的失物招领帖子..." haveOperation="{{true}}"
-                        noDataHeight="500rpx">
+                    <MyOrderList data-dropname="foundStatusIs2" data-dropdata="{{foundStatusIs2}}" bind:delete="delete"
+                        haveDelete="{{true}}" bind:toDetailPage="toDetailPage" data="{{foundStatusIs2}}"
+                        title="还没有已结束的失物招领帖子..." haveOperation="{{true}}" noDataHeight="500rpx">
                     </MyOrderList>
                 </view>
             </block>

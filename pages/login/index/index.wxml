@@ -1,5 +1,5 @@
 <view id="loginIndex">
-    <view class='login-container'>
+    <view class='login-container setBorder twoSideShadow'>
         <form class="login-form" bindsubmit="saveFormValue">
             <view class="title">请填写资料</view>
             <view class="section">

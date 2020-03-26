@@ -193,6 +193,49 @@ Page({
       }
     })
   },
+  confirm(e) {
+    let that = this
+
+    let iid = e.detail.iid
+    let classify = e.detail.classify
+    let index = e.detail.index
+    wx.showModal({
+      title: '提示',
+      content: '您确定要确认收货吗？',
+      async success(res) {
+        if (res.confirm) {
+          let dropData = e.currentTarget.dataset.dropdata
+          let dropName = e.currentTarget.dataset.dropname
+          let completeData = e.currentTarget.dataset.completedata
+          let completeName = e.currentTarget.dataset.completename
+
+
+          let result = await util.request('/complete', {
+            iid,
+            classify
+          })
+
+          if (result.code) {
+            dropData[index].status = 2
+            completeData.splice(0, 0, dropData[index])
+            dropData.splice(index, 1)
+            that.setData({
+              [dropName]: dropData,
+              [completeName]: completeData
+            }, () => {
+              wx.showToast({
+                title: `收货成功`,
+                icon: 'success',
+                duration: 2000
+              })
+            })
+          } else {
+            util.showModal(`收货失败了，请重试`)
+          }
+        }
+      }
+    })
+  },
   edit(e) {
 
     let iid = e.detail.iid

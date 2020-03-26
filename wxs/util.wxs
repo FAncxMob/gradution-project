@@ -264,6 +264,9 @@ function statusToStr(status, classify) {
         case 5:
             str = '已中止'
             break;
+        case 6:
+            str = '已删除'
+            break;
         default:
             break;
     }
