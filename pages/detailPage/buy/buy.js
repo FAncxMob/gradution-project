@@ -37,8 +37,8 @@ Page({
       buyerAddressId: addressData._id,
       iid: this.data.buyData._id
     }
-    console.log(value)
     let result = await util.request('/submitBuy', value)
+    console.log('/submitBuy', value)
     if (result.code) {
       if (result.data.code === 1) {
         wx.showToast({
@@ -78,6 +78,9 @@ Page({
     let result = await util.request('/getBuyData', {
       iid
     })
+    console.log('/getBuyData', iid)
+
+
     wx.hideLoading()
     if (result.code) {
       this.setData({

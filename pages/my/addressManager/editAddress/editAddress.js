@@ -13,12 +13,12 @@ Page({
       ...e.detail.value,
       _id: this.data.addressData._id
     }
-    console.log(data)
 
     wx.showLoading({
       title: '保存信息中...',
     })
     let result = await util.request('/editAddress', data)
+    console.log('/editAddress', data)
     wx.hideLoading()
     if (result.code) {
       wx.showToast({
@@ -52,6 +52,9 @@ Page({
   },
   async _load(addressId) {
     let result = await util.request('/getAddressByAddressId', {
+      addressId
+    })
+    console.log('/getAddressByAddressId', {
       addressId
     })
     if (result.code) {

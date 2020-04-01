@@ -41,7 +41,6 @@ Component({
               iid,
               classify
             }
-            console.log(iid, classify)
             // that.triggerEvent('deleteInvitations', data)
             // TODO:删除帖子
           }
@@ -55,7 +54,6 @@ Component({
         iid,
         classify
       }
-      console.log(iid, classify)
       // that.triggerEvent('deleteInvitations', data)
       // TODO:编辑帖子
     },

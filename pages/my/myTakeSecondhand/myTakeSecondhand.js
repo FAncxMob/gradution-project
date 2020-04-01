@@ -13,7 +13,6 @@ Page({
 
   },
   confirm(e) {
-    console.log(e.detail)
     let that = this
 
     let iid = e.detail.iid
@@ -31,6 +30,10 @@ Page({
 
 
           let result = await util.request('/complete', {
+            iid,
+            classify
+          })
+          console.log('/complete', {
             iid,
             classify
           })
@@ -71,6 +74,10 @@ Page({
     })
 
     let result = await util.request('/searchMyBuyer', {
+      searchStr,
+      statusArr: this.data.currentSelect === 0 ? [1] : [2]
+    })
+    console.log('/searchMyBuyer', {
       searchStr,
       statusArr: this.data.currentSelect === 0 ? [1] : [2]
     })
@@ -115,6 +122,7 @@ Page({
 
   async _load() {
     let result = await util.request('/getMyBuyer')
+    console.log('/getMyBuyer')
     if (result.code) {
       this.setData({
         ...result.data

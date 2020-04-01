@@ -1,7 +1,7 @@
 const util = require('../../../utils/util')
 import WxValidate from '../../../utils/WxValidate'
 let app = getApp()
-
+import EventEmitter from '../../../utils/EventEmitter'
 
 Page({
 
@@ -25,7 +25,6 @@ Page({
   },
   async saveFormValue(e) {
     const params = e.detail.value
-    console.log('saveFormValue')
     this.setData({
       formValue: e.detail.value
     }, () => {
@@ -38,7 +37,6 @@ Page({
 
   },
   async login() {
-    console.log('login')
     let {
       schoolArray,
       schoolIndex,
@@ -63,12 +61,12 @@ Page({
       title: '登陆中...',
     })
     let result = await util.request('/login', data)
+    console.log('/login', data)
     wx.hideLoading()
     if (result.code) {
       // 登陆成功之后修改本地的newUser
 
       wx.setStorageSync('haveUser', 1)
-      console.log('修改haveUser为1')
       wx.showToast({
         title: '登陆成功',
         icon: 'success',
@@ -94,7 +92,6 @@ Page({
     })
   },
   async bindGetUserInfo(e) {
-    console.log('bindGetUserInfo')
     let userInfo = e.detail.userInfo
     // console.log(userInfo, 'GetUserInfo')
     await this.setData({
@@ -144,14 +141,36 @@ Page({
     };
     this.WxValidate = new WxValidate(rules, messages)
   },
+  // onStorageOk(data) {
+  //   console.log(data)
+  //   EventEmitter.on('storageOk', (data) => {
+  //     console.log(data)
+
+  //   })
+  // },
+
+
+
   onLoad: function (options) {
     this.initValidate()
     let token = wx.getStorageSync('token')
-    if (token) {
+    let haveUser = wx.getStorageSync('haveUser')
+
+    console.log(haveUser, 'haveUser-login.js')
+    if (haveUser) {
       wx.switchTab({
         url: '/pages/my/my/my'
       })
     }
+
+    EventEmitter.on('storageOk', (haveUser) => {
+      console.log(haveUser)
+      if (haveUser) {
+        wx.switchTab({
+          url: '/pages/my/my/my'
+        })
+      }
+    })
     // let haveUser = wx.getStorageSync('haveUser')
     // // 判断新老用户
     // if (haveUser) {

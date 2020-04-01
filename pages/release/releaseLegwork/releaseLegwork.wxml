@@ -13,7 +13,7 @@
                 </view>
                 <view class="section">
                     <view class="section-title">报酬金额(元) <text class="red-1">*</text></view>
-                    <textarea show-confirm-bar="{{false}}" placeholder-class="input" name="price" auto-height placeholder="请输入报酬金额" />
+                    <input type="number" placeholder-class="input" name="price" auto-height placeholder="请输入报酬金额" />
                 </view>
                 <view class="section">
                     <view class="section-title">期望送达时间 <text class="red-1">*</text></view>

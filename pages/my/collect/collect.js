@@ -28,6 +28,9 @@ Page({
     let result = await util.request('/searchMyCollect', {
       searchStr
     })
+    console.log('/searchMyCollect', {
+      searchStr
+    })
     wx.hideLoading()
     if (result.code) {
       // 
@@ -53,7 +56,6 @@ Page({
     let iid = e.detail.iid
     let classify = e.detail.classify
     let status = e.detail.status
-    console.log(status)
     if (status == 6) {
       util.showModal('该帖子已被发帖人删除！无法查看详情')
       return
@@ -72,12 +74,14 @@ Page({
   },
 
   async cancelCollectPost(e) {
-    console.log(e.detail, '父组件')
     let cancelInvitationsId = e.detail.cancelInvitationsId
     wx.showLoading({
       title: ''
     })
     let result = await util.request('/cancelCollectPost', {
+      iid: cancelInvitationsId
+    })
+    console.log('/cancelCollectPost', {
       iid: cancelInvitationsId
     })
     wx.hideLoading()
@@ -97,6 +101,7 @@ Page({
   async _load() {
 
     let result = await util.request('/getMyCollect')
+    console.log('/getMyCollect')
     if (result.code) {
       console.log('/getMyCollect')
       this.setData({

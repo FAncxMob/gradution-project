@@ -26,6 +26,7 @@ Page({
       title: '保存信息中...',
     })
     let result = await util.request('/addAddress', data)
+    console.log('/getAddress', data)
     wx.hideLoading()
     if (result.code) {
       wx.showToast({

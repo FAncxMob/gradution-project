@@ -48,7 +48,6 @@ Component({
     },
     // 取消
     searchClear() {
-      console.log('searchClear -Search组件')
       this.setData({
         searchFlag: false,
       })

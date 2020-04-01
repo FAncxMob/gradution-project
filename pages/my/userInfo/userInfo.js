@@ -31,6 +31,7 @@ Page({
       title: '保存信息中...',
     })
     let result = await util.request('/updateUserInfo', data)
+    console.log('/updateUserInfo', data)
     wx.hideLoading()
     if (result.code) {
       wx.showToast({
@@ -72,6 +73,7 @@ Page({
     } = this.data
     if (wx.getStorageSync('token') && wx.getStorageSync('haveUser') === 1) {
       let data = await util.request('/getUserInfo')
+      console.log('/getUserInfo')
       if (data.code) {
         console.log('/getUserInfo-userInfo')
         let oldSchoolIndex = schoolArray.findIndex(item => item === data.userInfo.school)

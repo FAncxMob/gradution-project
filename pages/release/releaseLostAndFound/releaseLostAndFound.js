@@ -33,7 +33,6 @@ Page({
   },
   previewImage(e) {
     let index = e.currentTarget.dataset.index;
-    console.log(index)
     this.setData({
       previewImageUrls: this.data.realPath,
       previewCurrent: index,
@@ -48,6 +47,9 @@ Page({
 
     // 删除图片接口
     let result = await util.request('/deletePic', {
+      path: `${realPath[index]}`
+    })
+    console.log('/deletePic', {
       path: `${realPath[index]}`
     })
     if (result.code) {
@@ -73,11 +75,7 @@ Page({
       realPath,
       maxLength,
     } = this.data
-    let res = await wx.chooseImage({
-      count: maxLength,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera']
-    })
+    let res = await this.chooseImg()
 
     // const _tempFilePaths = res.tempFilePaths
     res.tempFilePaths.forEach((val, index) => {
@@ -97,6 +95,25 @@ Page({
       } else {
         console.log(`您最多选择${maxLength}张`)
       }
+    })
+  },
+  chooseImg() {
+    let {
+      realPath,
+      maxLength,
+    } = this.data
+    return new Promise((resolve, reject) => {
+      wx.chooseImage({
+        count: maxLength,
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
+        success(res) {
+          resolve(res)
+        },
+        fail(res) {
+          reject(res)
+        }
+      })
     })
   },
 
@@ -191,8 +208,8 @@ Page({
       pic: realPath,
       classify
     }
-    console.log(values)
     let result = await util.request('/publishLostAndFound', values)
+    console.log('/publishLostAndFound', values)
     if (result.code) {
       wx.showToast({
         title: "发布成功",

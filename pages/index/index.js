@@ -205,6 +205,11 @@ Page({
       classify,
       statusArr
     })
+    console.log('/searchInIndexPage', {
+      searchStr,
+      classify,
+      statusArr
+    })
     wx.hideLoading()
     if (result.code) {
 
@@ -226,7 +231,6 @@ Page({
   },
   // 清空搜索时触发
   searchClear() {
-    console.log('clear')
     this.setData({
       searchStr: ''
     })
@@ -252,6 +256,7 @@ Page({
       title: '一生命悬检索中...'
     })
     let result = await util.request('/getAllPost')
+    console.log('/getAllPost')
     wx.hideLoading()
     if (result.code) {
       this.setData({

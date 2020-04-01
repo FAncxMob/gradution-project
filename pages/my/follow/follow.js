@@ -33,6 +33,9 @@ Page({
           let result = await util.request('/cancelFollowing', {
             cancelOpenId
           })
+          console.log('/cancelFollowing', {
+            cancelOpenId
+          })
           wx.hideLoading()
           if (result.code) {
             that._load()
@@ -47,6 +50,9 @@ Page({
   async followingTa(e) {
     let followId = e.currentTarget.dataset.openid
     let result = await util.request('/followingTa', {
+      followId
+    })
+    console.log('/followingTa', {
       followId
     })
     if (result.code) {
@@ -66,6 +72,7 @@ Page({
   async _load() {
 
     let result = await util.request('/getFollowingAndFollowerByOpenId')
+    console.log('/getFollowingAndFollowerByOpenId')
     if (result.code) {
       this.setData({
         following: result.data.following,

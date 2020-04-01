@@ -85,13 +85,15 @@ Page({
             legWork
           } = that.data
 
-          console.log(iid, classify)
 
           let result = await util.request('/drop', {
             iid,
             classify
           })
-
+          console.log('/drop', {
+            iid,
+            classify
+          })
           if (result.code) {
             dropData.splice(index, 1)
             that.setData({
@@ -119,9 +121,12 @@ Page({
           let dropData = e.currentTarget.dataset.dropdata
           let dropName = e.currentTarget.dataset.dropname
 
-          console.log(iid, classify)
 
           let result = await util.request('/delete', {
+            iid,
+            classify
+          })
+          console.log('/delete', {
             iid,
             classify
           })
@@ -164,13 +169,15 @@ Page({
           let completeData = e.currentTarget.dataset.completedata
           let completeName = e.currentTarget.dataset.completename
 
-          console.log(iid, classify)
 
           let result = await util.request('/complete', {
             iid,
             classify
           })
-
+          console.log('/complete', {
+            iid,
+            classify
+          })
           if (result.code) {
             dropData[index].status = 2
             completeData.splice(0, 0, dropData[index])
@@ -214,6 +221,10 @@ Page({
             iid,
             classify
           })
+          console.log('/complete', {
+            iid,
+            classify
+          })
 
           if (result.code) {
             dropData[index].status = 2
@@ -244,7 +255,6 @@ Page({
 
     let dropData = e.currentTarget.dataset.dropdata
     let dropName = e.currentTarget.dataset.dropname
-    console.log(iid, 'iid')
 
     switch (classify) {
       case 0:
@@ -304,6 +314,7 @@ Page({
   async _load() {
 
     let result = await util.request('/getAllPublish')
+    console.log('/getAllPublish')
     if (result.code) {
       this.setData({
         ...result.data

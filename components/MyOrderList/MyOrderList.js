@@ -128,7 +128,6 @@ Component({
         iid,
         classify
       }
-      console.log(iid, classify)
       this.triggerEvent('edit', data)
     },
     scanCode(e) {
@@ -138,7 +137,6 @@ Component({
         iid,
         classify
       }
-      console.log(iid, classify)
       this.triggerEvent('scanCode', data)
     },
     checkCode(e) {
@@ -148,7 +146,6 @@ Component({
         iid,
         classify
       }
-      console.log(iid, classify)
       this.triggerEvent('checkCode', data)
     },
   }

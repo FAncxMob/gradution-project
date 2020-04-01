@@ -30,6 +30,10 @@ Page({
       searchStr,
       statusArr: this.data.currentSelect === 0 ? [1] : [2]
     })
+    console.log('/searchMyTaker', {
+      searchStr,
+      statusArr: this.data.currentSelect === 0 ? [1] : [2]
+    })
     wx.hideLoading()
     if (result.code) {
       // 
@@ -71,6 +75,7 @@ Page({
 
   async _load() {
     let result = await util.request('/getMyTaker')
+    console.log('/getMyTaker')
     if (result.code) {
       this.setData({
         ...result.data

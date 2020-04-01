@@ -24,7 +24,6 @@ Page({
   },
   previewImage(e) {
     let index = e.currentTarget.dataset.index;
-    console.log(index)
     this.setData({
       previewImageUrls: this.data.realPath,
       previewCurrent: index,
@@ -201,10 +200,9 @@ Page({
       iid: detail._id
     }
 
-    console.log(values)
 
     let result = await util.request('/updateLegWork', values)
-
+    console.log('/updateLegWork', values)
     if (result.code) {
       wx.navigateBack({
         delta: 1,
@@ -245,8 +243,10 @@ Page({
       title: '拼命搜索中'
     })
     // let iid = options.iid
-    console.log(iid, 'iid')
     let result = await util.request('/getPostDetailForUpdate', {
+      iid
+    })
+    console.log('/getPostDetailForUpdate', {
       iid
     })
     wx.hideLoading()

@@ -13,11 +13,11 @@
                 </view>
                 <view class="section">
                     <view class="section-title">出售价格(元) <text class="red-1">*</text></view>
-                    <textarea show-confirm-bar="{{false}}" placeholder-class="input" name="price" auto-height placeholder="请输入出售价格" />
+                    <input type="number" placeholder-class="input" name="price" auto-height placeholder="请输入出售价格" />
                 </view>
                 <view class="section">
                     <view class="section-title">入手原价(元) <text class="red-1">*</text></view>
-                    <textarea show-confirm-bar="{{false}}" placeholder-class="input" name="buyPrice" auto-height placeholder="请输入入手原价" />
+                    <input type="number" placeholder-class="input" name="buyPrice" auto-height placeholder="请输入入手原价" />
                 </view>
                 <view class="section">
                     <view class="section-title">物品类别</view>

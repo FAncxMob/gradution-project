@@ -29,6 +29,10 @@ Page({
       searchStr,
       classify: 4
     })
+    console.log('/searchSchoolNews', {
+      searchStr,
+      classify: 4
+    })
     wx.hideLoading()
     if (result.code) {
       // 
@@ -45,7 +49,6 @@ Page({
   },
   // 清空搜索时触发
   searchClear() {
-    console.log('clear')
     this.setData({
       searchStr: ''
     })
@@ -57,6 +60,7 @@ Page({
   async _load() {
 
     let result = await util.request('/getSchoolNews')
+    console.log('/getSchoolNews')
     if (result.code) {
       this.setData({
         schoolNews: result.data

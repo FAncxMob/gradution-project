@@ -25,6 +25,9 @@ Page({
     let result = await util.request('/searchMyComment', {
       searchStr
     })
+    console.log('/searchMyComment', {
+      searchStr
+    })
     wx.hideLoading()
     if (result.code) {
       // 
@@ -69,6 +72,7 @@ Page({
   async _load() {
 
     let result = await util.request('/getMyCommentReply')
+    console.log('/getMyCommentReply')
     if (result.code) {
       this.setData({
         reply: result.data

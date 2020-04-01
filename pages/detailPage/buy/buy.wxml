@@ -2,9 +2,11 @@
 
 <view id="help">
     <form bindsubmit="submitBuy">
-        <view class="info setBorder m10 mb20 twoSideShadow">
-            <view class="df justify-between " wx:if="{{buyData.pic.length}}">
-                <image class="pic w200" mode="widthFix" src="{{buyData.pic[0]}}"> </image>
+        <view class="info p10 setBorder m10 mb20 twoSideShadow">
+            <view class="df" wx:if="{{buyData.pic.length}}">
+                <view class="imgWrapper">
+                    <image src="{{buyData.pic[0]}}"> </image>
+                </view>
                 <view class="df flex-column justify-between">
                     <view class="fwb text-ellipsis-row1">
                         <rich-text nodes="{{buyData.title}}"></rich-text>
@@ -56,22 +58,24 @@
                 </view>
             </block>
         </view>
-        <view class="takerContact  setBorder p10 m10 mb20 twoSideShadow">
-            <view class="fwb black-1 ">收货地址</view>
-            <view bindtap="chooseAddress" class="pl40 address gray-1 text-ellipsis-row2">
-                <block wx:if="{{addressData._id}}">
-                    <view>姓名：{{addressData.name}}</view>
-                    <view>电话：{{addressData.tel}}</view>
-                    <view class="text-ellipsis-row3">详细地址：{{addressData.location}}</view>
-                </block>
-                <block wx:else>
-                    请选择收货地址
-                </block>
+        <block wx:if="{{item.invitationsDetail.deliveryWay!==1}}">
+            <view class="takerContact  setBorder p10 m10 mb20 twoSideShadow">
+                <view class="fwb black-1 ">收货地址</view>
+                <view bindtap="chooseAddress" class="pl40 address gray-1 text-ellipsis-row2">
+                    <block wx:if="{{addressData._id}}">
+                        <view>姓名：{{addressData.name}}</view>
+                        <view>电话：{{addressData.tel}}</view>
+                        <view class="text-ellipsis-row3">详细地址：{{addressData.location}}</view>
+                    </block>
+                    <block wx:else>
+                        请选择收货地址
+                    </block>
+                </view>
             </view>
-        </view>
-        <view class="p20 fz26 gray-3 pb200">
+        </block>
+        <!-- <view class="p20 fz26 gray-3 pb200">
             <view>点击确认购买后会生成一个核销码， 请在交易完成后通过扫码来核销订单</view>
-        </view>
+        </view> -->
         <view class="operation topShadow fz26 df align-center justify-between gray-1  topBorder">
             <view class="fwb fz40 red-1">￥{{buyData.price}}</view>
             <button formType="submit" class="want-btn mr0">确认购买</button>

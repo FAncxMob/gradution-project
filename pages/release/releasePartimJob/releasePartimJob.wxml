@@ -13,7 +13,7 @@
                 </view>
                 <view class="section">
                     <view class="section-title">薪酬(元) <text class="red-1">*</text></view>
-                    <textarea show-confirm-bar="{{false}}" placeholder-class="input" name="price" auto-height placeholder="请输入数字，具体细节请在详情介绍中描述..." />
+                    <input type="number" placeholder-class="input" name="price" auto-height placeholder="请输入数字，具体细节请在详情介绍中描述..." />
                 </view>
                 <view class="section">
                     <view class="section-title">联系方式  <text class="red-1">*</text></view>

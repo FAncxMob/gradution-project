@@ -24,6 +24,9 @@ Page({
     let result = await util.request('/searchMyHistory', {
       searchStr
     })
+    console.log('/searchMyHistory', {
+      searchStr
+    })
     wx.hideLoading()
     if (result.code) {
       // 
@@ -49,7 +52,6 @@ Page({
     let iid = e.detail.iid
     let classify = e.detail.classify
     let status = e.detail.status
-    console.log(status)
     if (status == 6) {
       util.showModal('该帖子已被发帖人删除！无法查看详情')
       return
@@ -75,6 +77,7 @@ Page({
 
   async _load() {
     let result = await util.request('/getHistory')
+    console.log('/getHistory')
     if (result.code) {
       this.setData({
         history: result.data

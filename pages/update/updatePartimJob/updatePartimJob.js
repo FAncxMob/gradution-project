@@ -27,7 +27,6 @@ Page({
   },
   previewImage(e) {
     let index = e.currentTarget.dataset.index;
-    console.log(index)
     this.setData({
       previewImageUrls: this.data.realPath,
       previewCurrent: index,
@@ -205,8 +204,8 @@ Page({
       classify: 2,
       iid: this.data.detail._id
     }
-    console.log(values)
     let result = await util.request('/updatePartTimeJob', values)
+    console.log('/updatePartTimeJob', values)
     if (result.code) {
       wx.navigateBack({
         delta: 1, // 回退前 delta(默认为1) 页面
@@ -245,8 +244,10 @@ Page({
       title: '拼命搜索中'
     })
     // let iid = options.iid
-    console.log(iid, 'iid')
     let result = await util.request('/getPostDetailForUpdate', {
+      iid
+    })
+    console.log('/getPostDetailForUpdate', {
       iid
     })
     wx.hideLoading()

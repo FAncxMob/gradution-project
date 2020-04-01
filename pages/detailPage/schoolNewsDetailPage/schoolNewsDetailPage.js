@@ -18,6 +18,9 @@ Page({
     let result = await util.request('/cancelLikePost', {
       iid: this.data.detail._id
     })
+    console.log('/cancelLikePost', {
+      iid: this.data.detail._id
+    })
 
     if (result.code) {
       let detail = this.data.detail
@@ -30,6 +33,11 @@ Page({
   },
   async likePost(e) {
     let result = await util.request('/likePost', {
+      iid: this.data.detail._id,
+      postOpenId: this.data.detail.openId,
+    })
+
+    console.log('/likePost', {
       iid: this.data.detail._id,
       postOpenId: this.data.detail.openId,
     })
@@ -46,6 +54,9 @@ Page({
     let result = await util.request('/cancelCollectPost', {
       iid: this.data.detail._id
     })
+    console.log('/cancelCollectPost', {
+      iid: this.data.detail._id
+    })
     if (result.code) {
       let detail = this.data.detail
       detail.collect -= 1
@@ -57,6 +68,10 @@ Page({
   },
   async collectPost(e) {
     let result = await util.request('/collectPost', {
+      iid: this.data.detail._id,
+      postOpenId: this.data.detail.openId,
+    })
+    console.log('/collectPost', {
       iid: this.data.detail._id,
       postOpenId: this.data.detail.openId,
     })
@@ -98,6 +113,9 @@ Page({
       title: '拼命搜索中'
     })
     let result = await util.request('/getPostDetail', {
+      iid
+    })
+    console.log('/getPostDetail', {
       iid
     })
     wx.hideLoading()

@@ -37,7 +37,6 @@ Page({
 
   bindToPage: function (event) {
     let addressData = event.currentTarget.dataset.addressdata
-    console.log(addressData._id)
     wx.navigateTo({
       url: '../addressManager/editAddress/editAddress?addressId=' + addressData._id,
     })
@@ -64,6 +63,7 @@ Page({
   async _load() {
 
     let result = await util.request('/getAddress')
+    console.log('/getAddress')
     if (result.code) {
       this.setData({
         address: result.data

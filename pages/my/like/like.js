@@ -36,6 +36,7 @@ Page({
   async _load() {
 
     let result = await util.request('/getLikeByOpenId')
+    console.log('/getLikeByOpenId')
     if (result.code) {
       this.setData({
         comment: result.data.comment,

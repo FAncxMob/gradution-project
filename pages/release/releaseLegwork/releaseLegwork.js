@@ -31,7 +31,6 @@ Page({
   },
   previewImage(e) {
     let index = e.currentTarget.dataset.index;
-    console.log(index)
     this.setData({
       previewImageUrls: this.data.realPath,
       previewCurrent: index,
@@ -48,6 +47,9 @@ Page({
     let result = await util.request('/deletePic', {
       path: `${realPath[index]}`
     })
+    console.log('/deletePic', {
+      path: `${realPath[index]}`
+    })
     if (result.code) {
       realPath.splice(index, 1);
       this.setData({
@@ -61,7 +63,6 @@ Page({
   },
 
   hide(e) {
-    console.log('delete', e.detail)
     this.setData({
       showPreview: false
     })
@@ -71,11 +72,12 @@ Page({
       realPath,
       maxLength,
     } = this.data
-    let res = await wx.chooseImage({
-      count: maxLength,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera']
-    })
+    // let res = await wx.chooseImage({
+    //   count: maxLength,
+    //   sizeType: ['original', 'compressed'],
+    //   sourceType: ['album', 'camera']
+    // })
+    let res = await this.chooseImg()
 
     // const _tempFilePaths = res.tempFilePaths
     res.tempFilePaths.forEach((val, index) => {
@@ -95,6 +97,25 @@ Page({
       } else {
         console.log(`您最多选择${maxLength}张`)
       }
+    })
+  },
+  chooseImg() {
+    let {
+      realPath,
+      maxLength,
+    } = this.data
+    return new Promise((resolve, reject) => {
+      wx.chooseImage({
+        count: maxLength,
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
+        success(res) {
+          resolve(res)
+        },
+        fail(res) {
+          reject(res)
+        }
+      })
     })
   },
 
@@ -223,9 +244,9 @@ Page({
       classify: 0
     }
 
-    console.log(values)
 
     let result = await util.request('/publishLegWork', values)
+    console.log('/publishLegWork', values)
     if (result.code) {
       wx.showToast({
         title: "发布成功",

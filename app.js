@@ -1,13 +1,14 @@
 const util = require('./utils/util')
+import EventEmitter from './utils/EventEmitter'
+
 
 App({
   onLaunch: async function () {
-    console.log('onLaunch() -app')
-    let haveUser = wx.getStorageSync('haveUser')
+    // let haveUser = wx.getStorageSync('haveUser')
     let token = wx.getStorageSync('token')
+    // console.log(haveUser, token, 'app,js')
     if (!token) {
       // 获取openId
-      console.log('获取openId')
       wx.showLoading({
         title: '加载中...',
       })
@@ -20,14 +21,19 @@ App({
           }
           // 2. 发送code给服务端
           let result = await util.request('/getOpenId', data)
+          console.log('/getOpenId', data)
+          this.globalData.haveUser = result.haveUser
+
           // this.globalData.haveUser = result.haveUser
           // 3. 将自定义登录状态缓存到storage中
-          console.log('保存token和haveUser到本地')
           wx.hideLoading()
           wx.setStorageSync('token', result.token)
           wx.setStorageSync('openId', result.openId)
           wx.setStorageSync('haveUser', result.haveUser)
-          this.onLaunch()
+          console.log('保存token和haveUser到本地')
+          console.log(result.haveUser)
+
+          EventEmitter.emit('storageOk', result.haveUser)
         }
       })
     }

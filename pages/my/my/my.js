@@ -49,7 +49,6 @@ Page({
   },
 
   async onLoad() {
-    console.log('onLoad - my')
     // this._load()
     // console.log(app.globalData.userInfo, 'app.globalData.userInfo')
     // if (app.globalData.userInfo) {
@@ -61,14 +60,13 @@ Page({
   async _load() {
     if (wx.getStorageSync('token')) {
       let data = await util.request('/getUserInfo')
-      console.log('/getUserInfo-my')
+      console.log('/getUserInfo')
       this.setData({
         userInfo: data.userInfo,
       })
     }
   },
   async onShow() {
-    console.log('onShow - my')
     this._load()
   }
 

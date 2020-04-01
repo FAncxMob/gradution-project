@@ -183,6 +183,12 @@ Page({
       replyCommentId,
       parentCommentId
     })
+    console.log('/getHelpData', {
+      content,
+      iid: this.data.detail._id,
+      replyCommentId,
+      parentCommentId
+    })
     wx.hideLoading()
     if (result.code) {
       // 
@@ -252,6 +258,9 @@ Page({
     let result = await util.request('/cancelFollowing', {
       cancelOpenId
     })
+    console.log('/cancelFollowing', {
+      cancelOpenId
+    })
     wx.hideLoading()
     if (result.code) {
       this.setData({
@@ -269,6 +278,9 @@ Page({
     let currentFatherIndex = e.currentTarget.dataset.currentfatherindex
     let currentReplyIndex = e.currentTarget.dataset.currentreplyindex
     let result = await util.request('/cancelCommentLike', {
+      commentId
+    })
+    console.log('/cancelCommentLike', {
       commentId
     })
     if (result.code) {
@@ -292,6 +304,10 @@ Page({
       commentId,
       postOpenId: this.data.detail.openId
     })
+    console.log('/commentLike', {
+      commentId,
+      postOpenId: this.data.detail.openId
+    })
     if (result.code) {
       let _commentDetail = this.data.commentDetail
       _commentDetail[currentFatherIndex].reply[currentReplyIndex].iLikeThis = true
@@ -309,6 +325,10 @@ Page({
     let commentId = e.currentTarget.dataset.commentid
     let currentIndex = e.currentTarget.dataset.currentindex
     let result = await util.request('/commentLike', {
+      commentId,
+      postOpenId: this.data.detail.openId
+    })
+    console.log('/commentLike', {
       commentId,
       postOpenId: this.data.detail.openId
     })
@@ -331,6 +351,9 @@ Page({
     let result = await util.request('/cancelCommentLike', {
       commentId
     })
+    console.log('/cancelCommentLike', {
+      commentId
+    })
     if (result.code) {
       let _commentDetail = this.data.commentDetail
       _commentDetail[currentIndex].iLikeThis = false
@@ -351,6 +374,9 @@ Page({
     let result = await util.request('/followingTa', {
       followId
     })
+    console.log('/followingTa', {
+      followId
+    })
     if (result.code) {
       this.setData({
         isFollowing: true
@@ -365,6 +391,9 @@ Page({
       return
     }
     let result = await util.request('/cancelLikePost', {
+      iid: this.data.detail._id
+    })
+    console.log('/cancelLikePost', {
       iid: this.data.detail._id
     })
     if (result.code) {
@@ -385,6 +414,10 @@ Page({
       iid: this.data.detail._id,
       postOpenId: this.data.detail.openId,
     })
+    console.log('/likePost', {
+      iid: this.data.detail._id,
+      postOpenId: this.data.detail.openId,
+    })
     if (result.code) {
       let detail = this.data.detail
       detail.like += 1
@@ -402,6 +435,9 @@ Page({
     let result = await util.request('/cancelCollectPost', {
       iid: this.data.detail._id
     })
+    console.log('/cancelCollectPost', {
+      iid: this.data.detail._id
+    })
     if (result.code) {
       let detail = this.data.detail
       detail.collect -= 1
@@ -417,6 +453,10 @@ Page({
       return
     }
     let result = await util.request('/collectPost', {
+      iid: this.data.detail._id,
+      postOpenId: this.data.detail.openId,
+    })
+    console.log('/collectPost', {
       iid: this.data.detail._id,
       postOpenId: this.data.detail.openId,
     })
@@ -458,6 +498,9 @@ Page({
       title: '拼命搜索中'
     })
     let result = await util.request('/getPostDetail', {
+      iid
+    })
+    console.log('/getPostDetail', {
       iid
     })
     wx.hideLoading()

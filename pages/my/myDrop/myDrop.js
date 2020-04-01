@@ -50,6 +50,10 @@ Page({
       searchStr,
       classify
     })
+    console.log('/searchMyDrop', {
+      searchStr,
+      classify
+    })
     wx.hideLoading()
     if (result.code) {
       this.setData({
@@ -86,7 +90,6 @@ Page({
   },
 
   putOn(e) {
-    console.log(e.detail)
     let that = this
     wx.showModal({
       title: '提示',
@@ -100,9 +103,12 @@ Page({
           let putOnName = e.currentTarget.dataset.putonname
 
 
-          console.log(iid, classify, putOnData, putOnName)
 
           let result = await util.request('/putOn', {
+            iid,
+            classify
+          })
+          console.log('/putOn', {
             iid,
             classify
           })
@@ -134,9 +140,12 @@ Page({
           let dropData = e.currentTarget.dataset.dropdata
           let dropName = e.currentTarget.dataset.dropname
 
-          console.log(iid, classify)
 
           let result = await util.request('/delete', {
+            iid,
+            classify
+          })
+          console.log('/delete', {
             iid,
             classify
           })
@@ -170,6 +179,7 @@ Page({
 
   async _load() {
     let result = await util.request('/getDrop')
+    console.log('/getDrop')
     if (result.code) {
       this.setData({
         ...result.data

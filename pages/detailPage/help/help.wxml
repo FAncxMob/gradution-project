@@ -1,9 +1,9 @@
 <view id="help">
     <form bindsubmit="submitHelp">
-        <view class="info setBorder m10 mb20 twoSideShadow">
-            <view class="df justify-between " wx:if="{{helpData.pic.length}}">
+        <view class="info p10 setBorder m10 mb20 twoSideShadow">
+            <view class="df" wx:if="{{helpData.pic.length}}">
                 <view class="imgWrapper">
-                    <image class="buyAvatar w200" mode="widthFix" src="{{helpData.pic[0]}}"> </image>
+                    <image class="imgBorder" src="{{helpData.pic[0]}}"> </image>
                 </view>
                 <view class="df flex-column justify-between">
                     <view class="fwb text-ellipsis-row1">
@@ -69,8 +69,8 @@
             </view>
         </view>
         <view class="p20 fz26 gray-3 pb200">
-            <view>1. 请保存好购买的转账记录或发票！ 在核销订单时需要出示转账记录或发票进行线下转账</view>
-            <view>2. 点击确认帮忙后，发帖人那里会生成一个核销码， 请在交易完成后通过扫码来核销订单</view>
+            <view>请保存好购买的转账记录或发票！ 在核销订单时需要出示转账记录或发票进行线下转账</view>
+            <!-- <view>2. 点击确认帮忙后，发帖人那里会生成一个核销码， 请在交易完成后通过扫码来核销订单</view> -->
         </view>
         <view class="operation topShadow fz26 df align-center justify-between gray-1  topBorder">
             <view class="fwb fz40 red-1">￥{{helpData.price}}</view>

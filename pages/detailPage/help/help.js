@@ -20,7 +20,6 @@ Page({
       return false
     }
     const params = e.detail.value
-    console.log(params)
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
       this.showModal(error)
@@ -33,6 +32,7 @@ Page({
 
 
     let result = await util.request('/submitHelp', value)
+    console.log('/submitHelp', value)
     if (result.code) {
       if (result.data.code === 1) {
         wx.showToast({
@@ -95,6 +95,7 @@ Page({
     let result = await util.request('/getHelpData', {
       iid
     })
+    console.log('/getHelpData', iid)
     wx.hideLoading()
     if (result.code) {
       this.setData({
