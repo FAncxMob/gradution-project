@@ -72,14 +72,9 @@ Page({
       realPath,
       maxLength,
     } = this.data
-    // let res = await wx.chooseImage({
-    //   count: maxLength,
-    //   sizeType: ['original', 'compressed'],
-    //   sourceType: ['album', 'camera']
-    // })
+
     let res = await this.chooseImg()
 
-    // const _tempFilePaths = res.tempFilePaths
     res.tempFilePaths.forEach((val, index) => {
       if (realPath.length < maxLength) {
         let picName = ''

@@ -17,7 +17,8 @@
                         <view class="text-ellipsis-row2 fz26 gray-2">{{item.desc}}</view>
                     </view>
                 </view>
-                <view bindtap="cancelFollowing" data-openid="{{item.openId}}" class="small-btn">
+                <view bindtap="cancelFollowing" data-nickname="{{item.nickName}}" data-openid="{{item.openId}}"
+                    class="small-btn">
                     <text class="iconfont icon-Tick fz30"></text>
                     已关注</view>
             </view>
@@ -40,12 +41,14 @@
                 </view>
                 <block wx:if="{{item.isFollowing}}">
 
-                    <view bindtap="cancelFollowing" data-openid="{{item.openId}}" class="small-btn">
+                    <view bindtap="cancelFollowing" data-nickname="{{item.nickName}}" data-openid="{{item.openId}}"
+                        class="small-btn">
                         <text class="iconfont icon-Tick fz30"></text>
                         已互相关注</view>
                 </block>
                 <block wx:else>
-                    <view bindtap="followingTa" data-openid="{{item.openId}}" class="small-btn follow-btn">
+                    <view bindtap="followingTa" data-nickname="{{item.nickName}}" data-openid="{{item.openId}}"
+                        class="small-btn follow-btn">
                         关注ta</view>
                 </block>
             </view>

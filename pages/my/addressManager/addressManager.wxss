@@ -1,6 +1,7 @@
 #addressManager {
     padding: 20rpx;
     padding-bottom: 120rpx;
+    min-height: 90vh;
 }
 
 #addressManager .edit {

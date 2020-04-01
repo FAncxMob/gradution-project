@@ -19,10 +19,11 @@ Page({
   },
 
   cancelFollowing(e) {
+    let nickName = e.currentTarget.dataset.nickname
     let that = this
     wx.showModal({
       title: '提示',
-      content: '确定要取消关注吗？',
+      content: `确定要取消关注 ${nickName} 吗？`,
       async success(res) {
         if (res.confirm) {
 

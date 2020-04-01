@@ -24,17 +24,25 @@ Page({
     },
   },
   async saveFormValue(e) {
+    let that = this
     const params = e.detail.value
-    this.setData({
+    that.setData({
       formValue: e.detail.value
     }, () => {
-      if (!this.WxValidate.checkForm(params)) {
+      if (!that.WxValidate.checkForm(params)) {
         const error = this.WxValidate.errorList[0]
-        this.showModal(error)
+        that.showModal(error)
         return false
       }
     })
 
+  },
+  showModal(error) {
+    wx.showToast({
+      title: error.msg,
+      icon: 'none',
+      duration: 2000
+    })
   },
   async login() {
     let {

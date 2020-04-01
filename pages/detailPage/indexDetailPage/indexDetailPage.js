@@ -161,8 +161,7 @@ Page({
     })
   }, //搜索时触发
   async sendComment(e) {
-
-    // 点击别人的留言 也会触发输入留言   自动加上@昵称    传replyComentId和parentCommentId（点击id评论的_id和detail[index]._id）
+    // 点击别人的留言 也会触发输入留言   如果是楼中楼评论则自动加上@昵称    传replyComentId和parentCommentId（点击id评论的_id和detail[index]._id）
     let {
       commentStr,
       replyCommentId,
@@ -173,7 +172,7 @@ Page({
       title: '正在发送...'
     })
     let content = commentStr
-    if (commentNickName) {
+    if (commentNickName && replyCommentId !== parentCommentId) {
       content = `@${commentNickName} ${commentStr}`
     }
 
@@ -183,7 +182,7 @@ Page({
       replyCommentId,
       parentCommentId
     })
-    console.log('/getHelpData', {
+    console.log('/sendComment', {
       content,
       iid: this.data.detail._id,
       replyCommentId,
@@ -485,15 +484,6 @@ Page({
 
   },
   async _load(iid) {
-    // let {
-    //   fakeData
-    // } = this.data
-    // this.setData({
-    //   detail: fakeData.data.detail,
-    //   commentDetail: fakeData.data.commentDetail,
-    //   isFollowing: fakeData.data.isFollowing,
-    //   openId: fakeData.data.openId,
-    // })
     wx.showLoading({
       title: '拼命搜索中'
     })
