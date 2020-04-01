@@ -1,0 +1,61 @@
+<wxs src="../../../wxs/util.wxs" module="utils"></wxs>
+
+<view id='follow' class="bg-gray-1">
+    <view class="switchTab-wrapper">
+        <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    </view>
+
+    <block wx:if="{{currentSelect===0}}">
+        <block wx:if="{{comment.length===0}}">
+            <NoData height="700rpx" title="评论还没有收到任何赞..." />
+        </block>
+        <block wx:else>
+            <view bindtap="toDetailPage" data-iid="{{item.commentDetail[0].iid}}"  class=" twoSideShadow borderBottom p30 df align-center justify-between" wx:for="{{comment}}"
+                wx:key="{{index}}">
+                <view class="df align-start">
+                    <image class="avatar mr20" src="{{item.userDetail.avatar}}"></image>
+                    <view class="mr20">
+                        <view class="text-ellipsis-row2 fz26  mb10 gray-1"><text
+                                class="fwb ">{{item.userDetail.nickName}}</text> 点赞了我的评论
+                        </view>
+                        <view class="text-ellipsis-row2 fz26 gray-2">
+                            {{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</view>
+                    </view>
+                </view>
+                <view class="text-ellipsis-row4 fz26  gray-1 comment-area">
+                    {{item.content}}
+                </view>
+            </view>
+        </block>
+
+    </block>
+    <block wx:else>
+        <block wx:if="{{post.length===0}}">
+            <NoData height="700rpx" title="帖子还没有收到任何赞..." />
+        </block>
+        <block wx:else>
+            <view bindtap="toDetailPage" data-iid="{{item.iid}}" class="twoSideShadow borderBottom p30 df align-start justify-between" wx:for="{{post}}"
+                wx:key="{{index}}">
+                <view class="df align-start">
+                    <image class="avatar mr20" src="{{item.userDetail.avatar}}"></image>
+                    <view class="mr20">
+                        <view class="text-ellipsis-row2 fz26  mb10 gray-1"><text
+                                class="fwb ">{{item.userDetail.nickName}}</text> 点赞了我的帖子
+                        </view>
+                        <view class="text-ellipsis-row2 fz26 gray-2">
+                            {{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</view>
+                    </view>
+                </view>
+                <view class="df flex-column justify-end">
+                    <view class="text-ellipsis-row1 fz26 fwb  gray-1 comment-area">
+                        {{item.invitationDetail.title}}
+                    </view>
+                    <view class="text-ellipsis-row3 fz26  gray-1 comment-area">
+                        {{item.invitationDetail.desc}}
+                    </view>
+                </view>
+            </view>
+        </block>
+
+    </block>
+</view>

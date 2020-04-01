@@ -1,0 +1,27 @@
+.operation {
+    background: #f5f5f5;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 110rpx;
+    width: 100vw;
+    z-index: 99999;
+    padding: 20rpx 30rpx;
+    box-sizing: border-box;
+}
+
+.want-btn {
+    flex-shrink: 0;
+    display: inline;
+    font-size: 30rpx;
+    /* padding: 14rpx 40rpx 20rpx; */
+    background: linear-gradient(to right, #ff8600, #e64e4e);
+    /* border-radius: 30rpx; */
+    font-weight: bold;
+    color: white;
+    box-shadow: 20rpx 0 20rpx -20rpx #766d8b, -20rpx 0 20rpx -20rpx #766d8b;
+}
+
+.input {
+    color: #5D5D5D;
+}

@@ -1,0 +1,66 @@
+<view id="releaseLegwork">
+    <view class='login-container setBorder twoSideShadow'>
+        <form class="login-form " bindsubmit="submitForm">
+            <view class="{{showPreview?hideForm:''}}">
+                <view class="section">
+                    <view class="section-title">帖子类型 <text class="red-1">*</text></view>
+                    <picker class="borderBottom" bindchange="bindPickerChange" value="{{typeIndex}}"
+                        range="{{typeArray}}">
+                        <view class="picker">
+                            {{typeArray[typeIndex]}}
+                        </view>
+                    </picker>
+                </view>
+                <view class="section">
+                    <view class="section-title">标题 <text class="red-1">*</text></view>
+                    <textarea value="{{detail.title}}" show-confirm-bar="{{false}}" name="title"
+                        placeholder-class="input" auto-height placeholder="请输入标题" />
+                    </view>
+                <view class="section">
+                    <view class="section-title">物品详情描述  <text class="red-1">*</text></view>
+                    <textarea value="{{detail.desc}}" show-confirm-bar="{{false}}"  name="desc" placeholder-class="input" auto-height placeholder="如外观描述，可能的遗失地点等..." />
+                </view>
+                <view class="section">
+                    <view class="section-title">联系方式  <text class="red-1">*</text></view>
+                    <textarea value="{{detail.invitationsDetail.contact}}" show-confirm-bar="{{false}}"  placeholder-class="input" name="contact" auto-height placeholder="如电话，微信号，QQ号等..." />
+                </view>
+            </view>
+             <!-- 为了让图片的高度等于高度，利用padding垂直的百分比是按照父元素的宽度来计算来进行 -->
+            <view class="section imageBx">
+                <view class="section-title">选择图片</view>
+                <text class="mb10 fz26">您最多选择{{maxLength}}张图片!</text>
+                <block wx:if="{{realPath.length}}">
+                    <view  class="choosePicBox" > 
+                        <view class="imgWrapper mb20 por" bindtap="previewImage" data-index="{{index}}" wx:for="{{realPath}}" wx:key="{{index}}">
+                            <image mode="cover"  src="{{item}}">
+                            </image>
+                            <block wx:if="{{realPath[index]}}">
+                                <text class="iconfont  icon-chenggong opa-8 setCenter green-1 fz80 z-index-10"></text>
+                            </block>
+                            <block wx:else>
+                                <text class="iconfont icon-shibai2 opa-8 setCenter red-1 fz80 z-index-10"></text>
+                            </block>
+                            
+                         </view>
+                         <view bindtap="choosePic" class="imgWrapper ">
+                            <image mode="cover"  class="adjust setBorder gray-1 fz30 p30" src="/icon/plus.png"></image>
+                         </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view  bindtap="choosePic" class="picIcon setBorder df align-center justify-center">
+                        <text class=" fwb fz100 iconfont icon-tianjia"></text>
+                    </view>
+                </block>
+                <text class="mb10 fz26">选图片作为主图再发布，更容易被人发现哦~</text>
+            </view>
+            <view class="btn-area">
+                <button type="primary" formType="submit"> 提交修改
+                </button>
+            </view>
+        </form>
+    </view>
+
+    <mp-gallery bind:hide="hide" hide-on-click="{{true}}" show-delete="{{true}}" show="{{showPreview}}"
+    binddelete="deletePic" img-urls="{{previewImageUrls}}" current="{{previewCurrent}}"></mp-gallery>
+</view>

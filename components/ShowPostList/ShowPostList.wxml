@@ -1,0 +1,154 @@
+<wxs src="../../wxs/util.wxs" module="utils"></wxs>
+<!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
+
+<view class='showPostList'>
+    <block wx:if="{{data.length===0}}">
+        <NoData height="{{noDataHeight}}" title="{{title}}" />
+    </block>
+    <block wx:else>
+        <block wx:if="{{isMyPost}}">
+            <!-- 显示我的帖子 -->
+            <view bindtap="toDetailPage" data-status="{{item.invitationsDetail.status||item.status}}"
+                data-iid="{{item.iid}}" data-classify="{{item.invitationsDetail.classify}}" class="list twoSideShadow"
+                wx:for="{{data}}" wx:key="{{index}}">
+                <block wx:if="{{item.invitationsDetail.classify!==4}}">
+                    <view class="df align-start mb20">
+                        <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
+                        <view class="df h80 flex-column fx1 justify-between">
+                            <text class="fwb">{{item.userDetail.nickName}}</text>
+                            <text
+                                class="gray-3 fz22">发布于{{utils.formatTime(item.invitationsDetail.createTime,'yyyy-MM-dd HH:mm')}}</text>
+                        </view>
+                        <block wx:if="{{item.invitationsDetail.price!==''}}">
+                            <view class="red-1 fz30 fwb">
+
+                                <block wx:if="{{utils.haveYuan(item.invitationsDetail.price)!==-1}}">
+                                    {{item.invitationsDetail.price}}
+                                </block>
+                                <block wx:else>
+                                    {{item.invitationsDetail.price}}元
+                                </block>
+                            </view>
+                        </block>
+
+                    </view>
+                </block>
+                <view class="mt20 mb10 black-1 " style="position: relative;z-index: 1;">
+                    <rich-text class="fwb fz30" nodes="{{item.invitationsDetail.title}}"></rich-text>
+                    <view class="{{item.invitationsDetail.status===0?dn:'status'}}">
+                        {{utils.statusToStr(item.invitationsDetail.status,item.invitationsDetail.classify)}}
+                    </view>
+                </view>
+                <block wx:if="{{item.invitationsDetail.pic.length!==0}}">
+                    <view class="pic-box">
+                        <block wx:for="{{item.invitationsDetail.pic}}" wx:key="{{picIndex}}" wx:for-item="picItem"
+                            wx:for-index="picIndex">
+                            <block wx:if="{{picIndex<2}}">
+                                <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image>
+                            </block>
+
+                        </block>
+                    </view>
+                    <view class="mt10 gray-1 text-ellipsis-row1">
+                        <rich-text nodes="{{item.invitationsDetail.desc}}"></rich-text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class=" mt10 gray-1 text-ellipsis-row3">
+                        <rich-text nodes="{{item.invitationsDetail.desc}}"></rich-text>
+                    </view>
+                </block>
+                <view class="justify-end mt10 df fz26 gray-2">
+                    <view class="mr10">点赞:{{item.like}}</view>
+                    <view class="mr10">浏览:{{item.watch}}</view>
+                    <view class="mr10">收藏:{{item.collect}}</view>
+                    <view>留言:{{item.comments}}</view>
+                </view>
+                <view data-invitationsid="{{item.invitationsId}}"
+                    class="gray-2 cancel-collect df mt10 borderTop align-center justify-between">
+                    <block wx:if="{{type=='collect'}}">
+                        <view>收藏于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</view>
+                    </block>
+                    <block wx:if="{{type===''}}">
+                        <view>浏览于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</view>
+                    </block>
+
+                    <block wx:if="{{haveOperation}}">
+                        <text catchtap="tapBtn" data-iid="{{item.iid}}"
+                            class="small-btn pl20">{{btnData.btnText}}</text>
+                    </block>
+
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <!-- 显示全部公共帖子 -->
+            <view bindtap="toDetailPage" data-status="{{item.status||item.invitationsDetail.status}}"
+                data-iid="{{item._id}}" class="list twoSideShadow" wx:for="{{data}}" wx:key="{{index}}">
+                <view class="df align-start mb20">
+                    <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
+                    <view class="df h80 flex-column fx1 justify-between">
+                        <text class="fwb">{{item.userDetail.nickName}}</text>
+                        <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</text>
+                    </view>
+                    <block wx:if="{{item.price!==''}}">
+                        <view class="red-1 fz30 fwb">
+
+                            <block wx:if="{{utils.haveYuan(item.price)!==-1}}">
+                                {{item.price}}
+                            </block>
+                            <block wx:else>
+                                {{item.price}}元
+                            </block>
+                        </view>
+                    </block>
+                </view>
+                <view class="mt20 mb10 black-1" style="position: relative;z-index: 1;">
+                    <view class="text-ellipsis-row1">
+                        <rich-text class="fwb fz30" nodes="{{item.title}}"></rich-text>
+                    </view>
+                    <view class="{{item.status===0?dn:'status'}}">
+                        {{utils.statusToStr(item.status,item.classify)}}</view>
+                </view>
+                <block wx:if="{{item.pic.length!==0}}">
+                    <view class="pic-box">
+                        <block wx:for="{{item.pic}}" wx:key="{{picIndex}}" wx:for-item="picItem"
+                            wx:for-index="picIndex">
+                            <block wx:if="{{picIndex<2}}">
+                                <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image>
+                            </block>
+
+                        </block>
+                    </view>
+                    <view class="mt10 gray-1 text-ellipsis-row1">
+                        <rich-text nodes="{{item.desc}}"></rich-text>
+
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class=" mt10 gray-1 text-ellipsis-row3">
+                        <rich-text nodes=" {{item.desc}}"></rich-text>
+                    </view>
+                </block>
+
+                <view data-invitationsid="{{item.invitationsId}}"
+                    class="gray-2 cancel-collect df mt10 borderTop align-center justify-between">
+                    <view class="justify-end mt10 df fz26 gray-2">
+                        <view class="mr10">点赞:{{item.like}}</view>
+                        <view class="mr10">浏览:{{item.watch}}</view>
+                        <view class="mr10">收藏:{{item.collect}}</view>
+                        <view>留言:{{item.comments}}</view>
+                    </view>
+
+                    <block wx:if="{{haveOperation}}">
+                        <text catchtap="tapBtn" data-iid="{{item.iid}}"
+                            class="small-btn pl20">{{btnData.btnText}}</text>
+                    </block>
+
+                </view>
+
+            </view>
+        </block>
+    </block>
+
+</view>

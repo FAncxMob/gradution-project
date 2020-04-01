@@ -1,0 +1,121 @@
+<wxs src="../../wxs/util.wxs" module="utils"></wxs>
+
+<view class="myOrderList">
+    <block wx:if="{{data.length===0}}">
+        <NoData height="{{noDataHeight}}" title="{{title}}" />
+    </block>
+    <block wx:else>
+        <view bindtap="toDetailPage" data-iid="{{item._id}}" class="list twoSideShadow borderBottom" wx:for="{{data}}"
+            wx:key="{{index}}">
+            <block wx:if="{{item.pic.length!==0}}">
+                <!-- 有图片的排版 -->
+                <view class="df gray-1" style="position: relative;">
+                    <view style="z-index: 100;" class="{{item.status===0?dn:'status'}}">
+                        {{utils.statusToStr(item.status,item.classify)}}</view>
+                    <image class="pic mr20" src="{{item.pic[0]}}" mode="widthFix"></image>
+                    <view class="df flex-column justify-between fz30 gray-1">
+                        <view class=" fwb text-ellipsis-row1">
+                            <rich-text nodes="{{item.title}}"></rich-text>
+
+                        </view>
+                        <view class="text-ellipsis-row3">
+                            <rich-text nodes="{{item.desc}}"></rich-text>
+                        </view>
+                        <block wx:if="{{item.classify===0||item.classify===1||item.classify===2}}">
+                            <view class="fr red-1 fz30 fwb">
+                                {{item.price}} 元
+
+                            </view>
+                        </block>
+                        <view class="df fz26">
+                            <view class="mr10">点赞:{{item.like}}</view>
+                            <view class="mr10">浏览:{{item.watch}}</view>
+                            <view class="mr10">收藏:{{item.collect}}</view>
+                            <view>留言:{{item.comments}}</view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <block wx:else>
+                <!-- 没有图片的排版 -->
+                <view class="gray-1" style="position: relative;z-index: 1;">
+                    <view style="z-index: 100;" class="{{item.status===0?dn:'status'}}">
+                        {{utils.statusToStr(item.status,item.classify)}}</view>
+                    <view class="mb20 text-ellipsis-row1 fwb gray-1">
+                        <rich-text nodes="{{item.title}}"></rich-text>
+                    </view>
+                    <view class="mb20 text-ellipsis-row3">
+                        <rich-text nodes="{{item.desc}}"></rich-text>
+                    </view>
+                    <view class="df justify-between  fz26">
+                        <view class="df">
+                            <view class="mr10">点赞:{{item.like}}</view>
+                            <view class="mr10">浏览:{{item.watch}}</view>
+                            <view class="mr10">收藏:{{item.collect}}</view>
+                        </view>
+                        <block wx:if="{{item.classify===0||item.classify===1||item.classify===2}}">
+                            <view class="red-1 fz30 fwb">
+                                {{item.price}}元
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </block>
+            <view class="bottom-box borderTop   df justify-between align-center">
+                <text class="gray-3 fz22 shrink-0">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</text>
+                <view class="btn-wrap">
+                    <block wx:if="{{haveEdit}}">
+                        <view catchtap="edit" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class=" small-btn">
+                            编辑
+                        </view>
+                    </block>
+                    <block wx:if="{{haveDrop}}">
+                        <view catchtap="drop" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">下架
+                        </view>
+                    </block>
+                    <block wx:if="{{havePutOn}}">
+                        <view catchtap="putOn" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">恢复上架
+                        </view>
+                    </block>
+                    <block wx:if="{{haveComplete&&item.classify==3}}">
+                        <view catchtap="complete" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">已找回
+                        </view>
+                    </block>
+                    <block wx:if="{{haveComplete&&item.classify==5}}">
+                        <view catchtap="complete" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">已归还
+                        </view>
+                    </block>
+                    <block wx:if="{{haveComplete&&item.classify==2}}">
+                        <view catchtap="complete" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">结束
+                        </view>
+                    </block>
+                    <block wx:if="{{haveConfirm}}">
+                        <view catchtap="confirm" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">确认收货
+                        </view>
+                    </block>
+
+                    <block wx:if="{{haveDelete}}">
+                        <view catchtap="delete" data-iid="{{item._id}}" data-index="{{index}}"
+                            data-classify="{{item.classify}}" class="ml10 small-btn">删除
+                        </view>
+                    </block>
+                    <block wx:if="{{haveScanCode}}">
+                        <view catchtap="scanCode" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class=" ml10  small-btn">扫码核销</view>
+                    </block>
+                    <block wx:if="{{haveCheckCode}}">
+                        <view catchtap="checkCode" data-iid="{{item._id}}" data-classify="{{item.classify}}"
+                            class=" ml10  small-btn">查看核销码</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

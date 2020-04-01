@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "NoData": "../../../components/NoData/NoData"
+  },
+  "navigationBarTitleText": "地址管理"
+}

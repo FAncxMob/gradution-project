@@ -1,36 +1,74 @@
 {
   "pages": [
+    "pages/login/index/index",
+    "pages/my/my/my",
     "pages/index/index",
     "pages/news/news",
-    "pages/my/my"
+
+    "pages/my/userInfo/userInfo",
+
+    "pages/my/history/history",
+    "pages/my/like/like",
+    "pages/my/comment/comment",
+    "pages/my/follow/follow",
+
+    "pages/my/collect/collect",
+    "pages/my/allPublish/allPublish",
+    "pages/my/myTakeLegwork/myTakeLegwork",
+    "pages/my/myTakeSecondhand/myTakeSecondhand",
+    "pages/my/myDrop/myDrop",
+    "pages/my/myCancel/myCancel",
+    
+    "pages/my/addressManager/addressManager",
+    "pages/my/addressManager/addAddress/addAddress",
+    "pages/my/addressManager/editAddress/editAddress",
+
+    "pages/detailPage/schoolNewsDetailPage/schoolNewsDetailPage",
+    "pages/detailPage/indexDetailPage/indexDetailPage",
+    "pages/detailPage/help/help",
+    "pages/detailPage/buy/buy",
+
+    "pages/release/releaseSecondhand/releaseSecondhand",
+    "pages/release/releaseLegwork/releaseLegwork",
+    "pages/release/releasePartimJob/releasePartimJob",
+    "pages/release/releaseLostAndFound/releaseLostAndFound",
+    
+    "pages/update/updateLegwork/updateLegwork",
+    "pages/update/updateSecondhand/updateSecondhand",
+    "pages/update/updatePartimJob/updatePartimJob",
+    "pages/update/updateLostAndFound/updateLostAndFound"
+
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#0094ff",
+    "navigationBarBackgroundColor": "#000000",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#bfbfbf",
     "selectedColor": "#4585F5",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "icon/index.png",
-      "selectedIconPath": "icon/index-selected.png"
-    },
-    {
-      "pagePath": "pages/news/news",
-      "text": "校园热点",
-      "iconPath": "icon/new.png",
-      "selectedIconPath": "icon/new-selected.png"
-    },
-    {
-      "pagePath": "pages/my/my",
-      "text": "我的",
-      "iconPath": "icon/my.png",
-      "selectedIconPath": "icon/my-selected.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "icon/index.png",
+        "selectedIconPath": "icon/index-selected.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "校园热点",
+        "iconPath": "icon/new.png",
+        "selectedIconPath": "icon/new-selected.png"
+      },
+      {
+        "pagePath": "pages/my/my/my",
+        "text": "个人中心",
+        "iconPath": "icon/my.png",
+        "selectedIconPath": "icon/my-selected.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

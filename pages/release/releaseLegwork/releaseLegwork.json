@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "pickerYMDHM": "/components/pickerYMDHM/pickerYMDHM",
+    "mp-gallery": "/weui-miniprogram/gallery/gallery"
+  },
+  "navigationBarTitleText": "发布跑腿帖子"
+}

@@ -4,16 +4,26 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
-		"es6": true,
+		"urlCheck": false,
+		"es6": false,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
-		"coverView": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.1",
+	"libVersion": "2.10.3",
 	"appid": "wx4d5f694ed6ddf688",
 	"projectname": "%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1",
 	"debugOptions": {
@@ -48,8 +58,254 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
+					"name": "pages/my/my/my",
+					"pathName": "pages/my/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/history/history",
+					"pathName": "pages/my/history/history",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/follow/follow",
+					"pathName": "pages/my/follow/follow",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/index/index",
+					"pathName": "pages/login/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/userInfo/userInfo",
+					"pathName": "pages/my/userInfo/userInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/follow/follow",
+					"pathName": "pages/my/follow/follow",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/like/like",
+					"pathName": "pages/my/like/like",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/comment/comment",
+					"pathName": "pages/my/comment/comment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/collect/collect",
+					"pathName": "pages/my/collect/collect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地址管理",
+					"pathName": "pages/my/addressManager/addressManager",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加新地址",
+					"pathName": "pages/my/addressManager/addAddress/addAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "编辑地址",
+					"pathName": "pages/my/addressManager/editAddress/editAddress",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allPublish/allPublish",
+					"pathName": "pages/my/allPublish/allPublish",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allTaking/allTaking",
+					"pathName": "pages/my/allTaking/allTaking",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allFinished/allFinished",
+					"pathName": "pages/my/allFinished/allFinished",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allOngoing/allOngoing",
+					"pathName": "pages/my/allOngoing/allOngoing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/allCancel/allCancel",
+					"pathName": "pages/my/allCancel/allCancel",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/news/news",
+					"pathName": "pages/news/news",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 19,
+					"name": "pages/detailPage/indexDetailPage/indexDetailPage",
+					"pathName": "pages/detailPage/indexDetailPage/indexDetailPage",
+					"query": "iid=5e67824f8d6d8077c0ffd415",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/release/releaseLegwork/releaseLegwork",
+					"pathName": "pages/release/releaseLegwork/releaseLegwork",
+					"query": "iid=5e67824f8d6d8077c0ffd415",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/release/releaseSecondhand/releaseSecondhand",
+					"pathName": "pages/release/releaseSecondhand/releaseSecondhand",
+					"query": "iid=5e67824f8d6d8077c0ffd415",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/release/releasePartimJob/releasePartimJob",
+					"pathName": "pages/release/releasePartimJob/releasePartimJob",
+					"query": "iid=5e67824f8d6d8077c0ffd415",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/release/releaseLostAndFound/releaseLostAndFound",
+					"pathName": "pages/release/releaseLostAndFound/releaseLostAndFound",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "pages/detailPage/help/help",
+					"pathName": "pages/detailPage/help/help",
+					"query": "iid=5e79ea1eabe2c40970c8506c",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/detailPage/buy/buy",
+					"pathName": "pages/detailPage/buy/buy",
+					"query": "iid=5e79d99117422f14ac84c71a",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myReleaseLegwork/myReleaseLegwork",
+					"pathName": "pages/my/myReleaseLegwork/myReleaseLegwork",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myDrop/myDrop",
+					"pathName": "pages/my/myDrop/myDrop",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/update/updateLegwork/updateLegwork",
+					"pathName": "pages/update/updateLegwork/updateLegwork",
+					"query": "iid=5e78e872111fed251cedc54f",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/update/updateSecondhand/updateSecondhand",
+					"pathName": "pages/update/updateSecondhand/updateSecondhand",
+					"query": "iid=5e79bd2982dbba25086ad45b",
+					"scene": null
+				},
+				{
+					"id": 30,
+					"name": "pages/update/updatePartimJob/updatePartimJob",
+					"pathName": "pages/update/updatePartimJob/updatePartimJob",
+					"query": "iid=5e7b750fb645d445103d033f",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/update/updateLostAndFound/updateLostAndFound",
+					"pathName": "pages/update/updateLostAndFound/updateLostAndFound",
+					"query": "iid=5e7b7559b645d445103d0341",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/detailPage/indexDetailPage/indexDetailPage",
+					"pathName": "pages/detailPage/indexDetailPage/indexDetailPage",
+					"query": "iid=5e7b99980d2bc5392ca8dac0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myTakeLegwork/myTakeLegwork",
+					"pathName": "pages/my/myTakeLegwork/myTakeLegwork",
+					"query": "iid=5e7b99980d2bc5392ca8dac0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/myTakeSecondhand/myTakeSecondhand",
+					"pathName": "pages/my/myTakeSecondhand/myTakeSecondhand",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 35,
+					"name": "体验版",
+					"pathName": "pages/login/index/index",
+					"query": "sno=admin&idCard=admin&name=admin",
 					"scene": null
 				}
 			]

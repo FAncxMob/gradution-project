@@ -1,0 +1,33 @@
+<wxs src="../../../wxs/util.wxs" module="utils"></wxs>
+<!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
+
+<view id="addressManager">
+
+    <block wx:if="{{address.length===0}}">
+        <NoData height="500rpx" title="还未添加地址，快去添加吧~" />
+        <button catchtap="addAddress" type="primary" class="addAddress">添加新地址</button>
+    </block>
+    <block wx:else>
+        <view class="pb50 setBorder df align-center justify-between p20 mb20 twoSideShadow" wx:for="{{address}}"
+            wx:key="{{index}}">
+            <view bindtap="chooseAddress" data-currentindex="{{index}}" class="mr20">
+                <view class="df align-center mb10">
+                    <view>{{item.name}}</view>
+                    <view class="ml20 mr20 fz26 gray-2">{{item.tel}}</view>
+                    <block wx:if="{{item.status===1}}">
+                        <text class="tag-orange mr20 twoSideShadow">默认</text>
+                    </block>
+                </view>
+                <view class="df flex-column align-start">
+                    <text class="tag-gray mb10 twoSideShadow">{{item.tag}}</text>
+                    <text class="gray-1  mr50 text-ellipsis-row2">{{item.location}}</text>
+                </view>
+            </view>
+            <!-- <block wx:if="{{type!=='choose'}}"> -->
+            <text catchtap="bindToPage" data-addressdata="{{item}}" class="edit gray-2">编辑</text>
+            <!-- </block> -->
+        </view>
+        <button catchtap="addAddress" type="primary" class="addAddress">添加新地址</button>
+    </block>
+
+</view>

@@ -1,0 +1,70 @@
+<wxs src="../../../wxs/util.wxs" module="utils"></wxs>
+
+<view class="indexDetailPage twoSideShadow">
+    <block wx:if="{{detail._id}}">
+        <view class="detailInfo setBorder twoSideShadow p20 ">
+            <view class="postInfo mb20  pb10 bottomBorder">
+                <!-- 标题 -->
+                <view class="black-1 mb20 fwb">
+                    <view class=" tag-orange mr20" wx:if="{{detail.invitationsDetail.tag}}">
+                        {{detail.invitationsDetail.tag}}
+                    </view>
+                    <text> {{detail.title}}</text>
+                </view>
+                <view class="mb20 gray-1">发布者：{{detail.invitationsDetail.posterDept}}</view>
+                <!-- 内容描述 -->
+                <view>
+                    <rich-text class="mb20 gray-1 " nodes="{{detail.desc}}"></rich-text>
+                </view>
+                <block wx:if="{{detail.pic.length!==0}}">
+                    <view class="pic-box mb20">
+                        <block wx:for="{{detail.pic}}" wx:key="{{picIndex}}" wx:for-item="picItem"
+                            wx:for-index="picIndex">
+                            <image class="pic-detail twoSideShadow-2 " src="{{picItem}}" mode="widthFix"></image>
+                        </block>
+                    </view>
+                </block>
+            </view>
+            <view class="reaction">
+                <view class="justify-end mt10 df fz26 gray-2">
+                    <view class="mr10">点赞:{{detail.like}}</view>
+                    <view class="mr10">浏览:{{detail.watch}}</view>
+                    <view class="mr10">收藏:{{detail.collect}}</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="operation fz26 df align-center justify-between gray-1  topBorder">
+            <view class="df align-center">
+                <block wx:if="{{isLike}}">
+                    <view bindtap="cancelLikePost" class="red-1 df mr40 flex-column align-center">
+                        <text class="fwb iconfont icon-dianzan3  fz40 "></text>
+                        <text>已赞</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view bindtap="likePost" class="gray-1 df mr40 flex-column align-center">
+                        <text class="fwb iconfont icon-dianzan3  fz40 "></text>
+                        <text>超赞</text>
+                    </view>
+                </block>
+                <block wx:if="{{isCollect}}">
+                    <view bindtap="cancelCollectPost" class="red-1 df flex-column align-center">
+                        <text class="fwb iconfont icon-xinbaniconshangchuan-   fz40"></text>
+                        <text>已收藏</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view bindtap="collectPost" class="gray-1 df mr40 flex-column align-center">
+                        <text class="fwb iconfont icon-xinbaniconshangchuan-   fz40"></text>
+                        <text style="white-space: pre;"> 收藏 </text>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </block>
+
+    <!-- 输入时的黑色蒙层 -->
+    <view class="blackMC" wx:if="{{focus}}"></view>
+
+</view>

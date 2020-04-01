@@ -1,0 +1,315 @@
+/**
+ * yyyy-MM-dd HH:mm:ss 24小时制
+ * yyyy-MM-dd hh:mm:ss 12小时制
+ *
+ */
+function formatTime(time, format) {
+    var dateTime = getDate(time)
+    var year = dateTime.getFullYear()
+    var month = dateTime.getMonth() + 1
+    var date = dateTime.getDate()
+    var hour = dateTime.getHours()
+    var minute = dateTime.getMinutes()
+    var second = dateTime.getSeconds()
+
+    var formatTimeStr = format.replace(getRegExp('Y', 'g'), 'y').replace(getRegExp('D', 'g'), 'd')
+
+    if (second < 10) second = '0' + second
+    formatTimeStr = formatTimeStr.replace('ss', second + '')
+    if (minute < 10) minute = '0' + minute
+    formatTimeStr = formatTimeStr.replace('mm', minute + '')
+    if (format.indexOf('HH') >= 0) {
+        if (hour < 10) hour = '0' + hour
+        formatTimeStr = formatTimeStr.replace('HH', hour + '')
+    }
+
+    if (format.indexOf('hh') >= 0) {
+        if (hour >= 12) hour -= 12
+        if (hour < 10) hour = '0' + hour
+        formatTimeStr = formatTimeStr.replace('hh', hour + '')
+    }
+
+    if (date < 10) date = '0' + date
+    formatTimeStr = formatTimeStr.replace('dd', date + '')
+
+    if (month < 10) month = '0' + month
+    formatTimeStr = formatTimeStr.replace('MM', month + '')
+
+    if (year < 10) year = '0' + year
+    formatTimeStr = formatTimeStr.replace('yyyy', year + '')
+
+    return formatTimeStr
+}
+
+function equalDate(date1, date2) {
+    if (date1.getFullYear() != date2.getFullYear()) return false
+    if (date1.getMonth() != date2.getMonth()) return false
+    if (date1.getDate() != date2.getDate()) return false
+    return true
+}
+
+function showTime(time) {
+    var dateTime = getDate(time)
+    var now = getDate()
+
+    if (dateTime.getFullYear() == now.getFullYear() &&
+        dateTime.getMonth() == now.getMonth() &&
+        dateTime.getDate() == now.getDate()) {
+        return '今天'
+    }
+
+    if (equalDate(getDate(dateTime.getFullYear(), dateTime.getMonth(), dateTime.getDate() - dateTime.getDay()),
+            getDate(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay()))) {
+        return '本周'
+    }
+
+    if (equalDate(getDate(dateTime.getFullYear(), dateTime.getMonth(), dateTime.getDate() - dateTime.getDay() + 7),
+            getDate(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay()))) {
+        return '上周'
+    }
+
+    return formatTime(time, 'yyyy-MM-dd')
+}
+
+// toFixed 修复
+function toFixed(num, s) {
+    var times = Math.pow(10, s)
+    var des = num * times + 0.5
+    des = parseInt(des, 10) / times
+    return des + ''
+}
+
+function getPriceTxt(skuItems, format, getMin) {
+    if (!skuItems || !skuItems[0]) return false
+    var min = skuItems[0].price
+    var max = skuItems[0].price
+
+    for (var i = 0; i < skuItems.length; i++) {
+        min = Math.min(min, skuItems[i].price).toFixed(2)
+        max = Math.max(max, skuItems[i].price).toFixed(2)
+    }
+    if (format) {
+        min = formatPrice(min)
+        max = formatPrice(max)
+    }
+    if (getMin) {
+        return min
+    }
+    if (min === max) {
+        return min
+    } else {
+        return min + '-' + max
+    }
+}
+
+function getMarketPrice(skuItems) {
+    if (!skuItems || !skuItems[0]) return false
+    var min = -1
+    var max = -1
+
+    for (var i = 0; i < skuItems.length; i++) {
+        if (!skuItems[i].marketPrice) continue
+        if (min === -1) {
+            min = skuItems[i].marketPrice
+            max = skuItems[i].marketPrice
+        } else {
+            min = Math.min(min, skuItems[i].marketPrice)
+            max = Math.max(max, skuItems[i].marketPrice)
+        }
+    }
+
+    if (min < 0) return ''
+
+    if (min == max) {
+        return max.toFixed(2)
+    } else {
+        return min.toFixed(2) + '-' + max.toFixed(2)
+    }
+}
+
+function hasMarketPrice(skuItems) {
+    if (!skuItems || !skuItems[0]) return false
+
+    for (var i = 0; i < skuItems.length; i++) {
+        if (skuItems[i].marketPrice > 0) {
+            return true
+        }
+    }
+
+    return false
+}
+
+function nowrapEllipsis(txt, limit) {
+    if (txt.length > limit) {
+        return txt.substring(0, limit) + '...'
+    } else {
+        return txt
+    }
+}
+
+function parseBoolean(val) {
+    if (val === null || val === undefined) return false
+    if (typeof val === 'string') return val === 'true' || val === '1'
+    if (typeof val === 'string') {
+        if (val === 'null') return false
+        if (val === 'undefined') return false
+        if (val === '0') return false
+        if (val === 'false') return false
+    }
+    return !!val
+}
+
+function formatPrice(val, prefix, options = {}) {
+    if (!val) return
+    prefix = prefix || ''
+    var limit = options.limit || 10000
+    var units = options.units || 'w'
+    if (val >= limit) {
+        var price = (val / limit).toFixed(2) + ''
+        price = price.substring(0, price.indexOf('.'))
+        return price + units
+    }
+    return prefix + val
+}
+
+function formatPrice2KorW(val, prefix) {
+    var options = {}
+    if (val >= 1000 && val < 10000) {
+        options = {
+            limit: 1000,
+            units: 'k'
+        }
+    }
+    return formatPrice(val, prefix, options)
+}
+
+function formatPriceNew(val, prefix) {
+    if (!val) return
+    prefix = prefix || ''
+    var oriPrice = val + ''
+    var oriPriceList = oriPrice.split('.')
+    if (oriPriceList[0].length < 5) {
+        return prefix + val
+    } else {
+        var newPrice = oriPriceList[0] / 10000 + ''
+        newPrice = newPrice.substring(0, (newPrice.indexOf('.') + 5))
+        return prefix + newPrice + 'w'
+    }
+}
+
+function getPackName(items, nameText) {
+    var name = ''
+    for (var i = 0; i < items.length; i++) {
+        if (i === items.length - 1) {
+            name += items[i][nameText]
+        } else {
+            name += items[i][nameText] + ','
+        }
+    }
+    return name
+}
+
+function getPackLength(items, countText) {
+    console.log(items.length, '………………………………………………………………………………………………………………………………………………………………………………')
+    var length = 0
+    for (var i = 0; i < items.length; i++) {
+        length += Number(items[i][countText])
+    }
+    return length
+}
+
+function getLength(value = '', max) {
+    var l = value.toString().length
+    if (max) {
+        l = l > max ? max : l
+    }
+    return l
+}
+
+function skuShowStock(skuItems = [], stockConfig, current = 0) {
+    var items = skuItems[current]
+    return skuItems.length <= 1 && (!stockConfig || (items && items.stock <= stockConfig))
+}
+
+function haveYuan(price) {
+    price = price + ''
+    return price.indexOf('元')
+}
+
+function statusToStr(status, classify) {
+    status = +status
+    classify = +classify
+    var str = ''
+    switch (status) {
+        case 1:
+            classify === 0 ? str = '已被承接' : str = "已被购买"
+            break;
+        case 2:
+            if (classify === 0 || classify === 1) {
+                str = '已完成'
+            } else if (classify == 2) {
+                str = "已结束"
+            } else if (classify == 3) {
+                str = "已找回"
+            } else if (classify == 5) {
+                str = "已归还"
+            }
+            break;
+        case 3:
+            str = '已下架'
+            break;
+        case 4:
+            str = '待中止'
+            break;
+        case 5:
+            str = '已中止'
+            break;
+        case 6:
+            str = '已删除'
+            break;
+        default:
+            break;
+    }
+    return str
+}
+
+function deliveryWayToStr(deliveryWay) {
+    deliveryWay = +deliveryWay
+    var str = ''
+    switch (deliveryWay) {
+        case 0:
+            str = '自提和送货上门都可以'
+            break;
+        case 1:
+            str = '仅支持自提'
+            break;
+        case 2:
+            str = '仅支持送货上门'
+            break;
+        default:
+            break;
+    }
+    return str
+}
+
+module.exports = {
+    formatTime: formatTime,
+    equalDate: equalDate,
+    showTime: showTime,
+    toFixed: toFixed,
+    getPriceTxt: getPriceTxt,
+    nowrapEllipsis: nowrapEllipsis,
+    parseBoolean: parseBoolean,
+    formatPrice: formatPrice,
+    getPackName: getPackName,
+    getPackLength: getPackLength,
+    hasMarketPrice: hasMarketPrice,
+    getMarketPrice: getMarketPrice,
+    getLength: getLength,
+    formatPrice2KorW: formatPrice2KorW,
+    formatPriceNew: formatPriceNew,
+    skuShowStock: skuShowStock,
+    haveYuan: haveYuan,
+    statusToStr: statusToStr,
+    deliveryWayToStr: deliveryWayToStr
+}

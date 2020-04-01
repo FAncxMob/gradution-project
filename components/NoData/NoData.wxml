@@ -1,0 +1,4 @@
+<view class="noData" style="height:500rpx">
+    <image src="../../icon/box.png" class="boxIcon"></image>
+    <view class="title">{{title}}</view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "ShowPostList": "../../../components/ShowPostList/ShowPostList",
+    "Search": "../../components/Search/Search"
+
+  },
+  "navigationBarTitleText": "我的收藏"
+}

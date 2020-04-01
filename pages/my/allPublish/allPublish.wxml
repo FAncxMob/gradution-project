@@ -1,0 +1,175 @@
+<view id='allPublish' class="bg-gray-1">
+    <view class="switchTab-wrapper">
+        <SwitchTab currentSelect="{{currentSelect}}" arr="{{tabArr}}" bindhandleSelect="handleSelect" />
+    </view>
+    <!-- 跑腿 -->
+    <block wx:if="{{currentSelect===0}}">
+        <view class="switchTab-wrapper2">
+            <SwitchTab size="small" currentSelect="{{currentSelectForLegWork}}" arr="{{tabForLegWork}}"
+                bindhandleSelect="handleSelectForLegWork" />
+        </view>
+        <!-- 未被承接 -->
+        <block wx:if="{{currentSelectForLegWork===0}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:delete="delete" haveDelete="{{true}}" data-dropname="legWorkStatusIs0"
+                    data-dropdata="{{legWorkStatusIs0}}" bind:drop="drop" haveDrop="{{true}}" bind:edit="edit"
+                    haveEdit="{{true}}" bind:toDetailPage="toDetailPage" data="{{legWorkStatusIs0}}"
+                    title="没有未被承接的跑腿订单..." haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <!-- 已被承接 -->
+        <block wx:if="{{currentSelectForLegWork===1}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList data-dropname="legWorkStatusIs1" data-dropdata="{{legWorkStatusIs1}}"
+                    data-completename="legWorkStatusIs2" data-completedata="{{legWorkStatusIs2}}" bind:confirm="confirm"
+                    haveConfirm="{{true}}" bind:toDetailPage="toDetailPage" data="{{legWorkStatusIs1}}"
+                    title="还没有被承接的跑腿订单..." haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <!-- 已完成 -->
+        <block wx:if="{{currentSelectForLegWork===2}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList data-dropname="legWorkStatusIs2" data-dropdata="{{legWorkStatusIs2}}" bind:delete="delete"
+                    haveDelete="{{true}}" bind:toDetailPage="toDetailPage" data="{{legWorkStatusIs2}}"
+                    title="还没有已完成的跑腿订单..." haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+    </block>
+
+    <!-- 二手 -->
+    <block wx:if="{{currentSelect===1}}">
+        <view class="switchTab-wrapper2">
+            <SwitchTab size="small" currentSelect="{{currentSelectForSecondhand}}" arr="{{tabForSecondhand}}"
+                bindhandleSelect="handleSelectForSecondhand" />
+        </view>
+        <!-- 未被购买 -->
+        <block wx:if="{{currentSelectForSecondhand===0}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:edit="edit" haveEdit="{{true}}" bind:delete="delete" haveDelete="{{true}}"
+                    data-dropname="secondHandStatusIs0" data-dropdata="{{secondHandStatusIs0}}" bind:drop="drop"
+                    haveDrop="{{true}}" bind:toDetailPage="toDetailPage" data="{{secondHandStatusIs0}}"
+                    title="还没有未被购买的二手交易帖子..." haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <!-- 已被购买 -->
+        <block wx:if="{{currentSelectForSecondhand===1}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:toDetailPage="toDetailPage" data="{{secondHandStatusIs1}}" title="还没有已被购买的二手交易帖子..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <!-- 已完成 -->
+        <block wx:if="{{currentSelectForSecondhand===2}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList data-dropname="secondHandStatusIs2" data-dropdata="{{secondHandStatusIs2}}"
+                    bind:delete="delete" haveDelete="{{true}}" bind:toDetailPage="toDetailPage"
+                    data="{{secondHandStatusIs2}}" title="还没有已完成的二手交易帖子..." haveOperation="{{true}}"
+                    noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+    </block>
+
+
+    <!-- 兼职招聘 -->
+    <block wx:if="{{currentSelect===2}}">
+        <view class="switchTab-wrapper2">
+            <SwitchTab size="small" currentSelect="{{currentSelectForPartTimeJob}}" arr="{{tabForPartTimeJob}}"
+                bindhandleSelect="handleSelectForPartTimeJob" />
+        </view>
+        <!-- 招募中 -->
+        <block wx:if="{{currentSelectForPartTimeJob===0}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList bind:edit="edit" haveEdit="{{true}}" bind:complete="complete" haveComplete="{{true}}"
+                    data-completename="partTimeJobStatusIs2" data-completedata="{{partTimeJobStatusIs2}}"
+                    bind:delete="delete" haveDelete="{{true}}" data-dropname="partTimeJobStatusIs0"
+                    data-dropdata="{{partTimeJobStatusIs0}}" bind:drop="drop" haveDrop="{{true}}"
+                    bind:toDetailPage="toDetailPage" data="{{partTimeJobStatusIs0}}" title="还没有招募中的兼职招聘帖子..."
+                    haveOperation="{{true}}" noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+        <!-- 已结束 -->
+        <block wx:if="{{currentSelectForPartTimeJob===1}}">
+            <view class="MyOrderList-wrapper">
+                <MyOrderList data-dropname="partTimeJobStatusIs2" data-dropdata="{{partTimeJobStatusIs2}}"
+                    bind:delete="delete" haveDelete="{{true}}" bind:toDetailPage="toDetailPage"
+                    data="{{partTimeJobStatusIs2}}" title="还没有已结束的兼职招聘帖子..." haveOperation="{{true}}"
+                    noDataHeight="500rpx">
+                </MyOrderList>
+            </view>
+        </block>
+    </block>
+
+    <!-- 失物招领 -->
+    <block wx:if="{{currentSelect===3}}">
+
+        <view class="switchTab-wrapper2">
+            <SwitchTab currentSelect="{{currentSelectForLostAndFound}}" arr="{{tabForLostAndFound}}"
+                bindhandleSelect="handleSelectForLostAndFound" />
+        </view>
+        <!-- 丢东西 -->
+        <block wx:if="{{currentSelectForLostAndFound===0}}">
+            <view class="switchTab-wrapper3">
+                <SwitchTab size="small" currentSelect="{{currentSelectForLost}}" arr="{{tabForLost}}"
+                    bindhandleSelect="handleSelectForLost" />
+            </view>
+            <!-- 寻找中 -->
+            <block wx:if="{{currentSelectForLost===0}}">
+                <view class="MyOrderList-wrapper2">
+                    <MyOrderList bind:edit="edit" haveEdit="{{true}}" bind:complete="complete"
+                        data-completename="lostStatusIs2" data-completedata="{{lostStatusIs2}}" haveComplete="{{true}}"
+                        bind:delete="delete" haveDelete="{{true}}" data-dropname="lostStatusIs0"
+                        data-dropdata="{{lostStatusIs0}}" bind:drop="drop" haveDrop="{{true}}"
+                        bind:toDetailPage="toDetailPage" data="{{lostStatusIs0}}" title="还没有寻找中的寻物启事帖子..."
+                        haveOperation="{{true}}" noDataHeight="500rpx">
+                    </MyOrderList>
+                </view>
+            </block>
+            <!-- 已结束 -->
+            <block wx:if="{{currentSelectForLost===1}}">
+                <view class="MyOrderList-wrapper2">
+                    <MyOrderList data-dropname="lostStatusIs2" data-dropdata="{{lostStatusIs2}}" bind:delete="delete"
+                        haveDelete="{{true}}" bind:toDetailPage="toDetailPage" data="{{lostStatusIs2}}"
+                        title="还没有已结束的寻物启事帖子..." haveOperation="{{true}}" noDataHeight="500rpx">
+                    </MyOrderList>
+                </view>
+            </block>
+        </block>
+        <!-- 捡到东西 -->
+        <block wx:if="{{currentSelectForLostAndFound===1}}">
+            <view class="switchTab-wrapper3">
+                <SwitchTab size="small" currentSelect="{{currentSelectForFound}}" arr="{{tabForFound}}"
+                    bindhandleSelect="handleSelectForFound" />
+            </view>
+            <!-- 寻找中 -->
+            <block wx:if="{{currentSelectForFound===0}}">
+                <view class="MyOrderList-wrapper2">
+                    <MyOrderList bind:edit="edit" haveEdit="{{true}}" bind:complete="complete"
+                        data-completename="foundStatusIs2" data-completedata="{{foundStatusIs2}}"
+                        haveComplete="{{true}}" bind:delete="delete" haveDelete="{{true}}"
+                        data-dropname="foundStatusIs0" data-dropdata="{{foundStatusIs0}}" bind:drop="drop"
+                        haveDrop="{{true}}" bind:toDetailPage="toDetailPage" data="{{foundStatusIs0}}"
+                        title="还没有已完成的失物招领帖子..." haveOperation="{{true}}" noDataHeight="500rpx">
+                    </MyOrderList>
+                </view>
+            </block>
+            <!-- 已结束 -->
+            <block wx:if="{{currentSelectForFound===1}}">
+                <view class="MyOrderList-wrapper2">
+                    <MyOrderList data-dropname="foundStatusIs2" data-dropdata="{{foundStatusIs2}}" bind:delete="delete"
+                        haveDelete="{{true}}" bind:toDetailPage="toDetailPage" data="{{foundStatusIs2}}"
+                        title="还没有已结束的失物招领帖子..." haveOperation="{{true}}" noDataHeight="500rpx">
+                    </MyOrderList>
+                </view>
+            </block>
+
+        </block>
+
+    </block>
+</view>

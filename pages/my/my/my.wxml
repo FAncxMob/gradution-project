@@ -1,0 +1,104 @@
+<view id="person-container">
+	<view class="header-bg"></view>
+	<view class="header twoSideShadow">
+		<view class="mb20 df align-center justify-between">
+			<view bindtap="moreUserInfo" class="df align-center">
+				<image class="hbue" src="../../../icon/hbue.png" mode="cover" />
+				<text class="school">{{userInfo.school}}</text>
+			</view>
+			<view bindtap="moreUserInfo" class="moreInfo">更多资料 <text class="iconfont icon-youjiantou1 fz30"></text>
+			</view>
+		</view>
+		<view class="df align-center">
+			<view class="image">
+				<open-data type="userAvatarUrl"></open-data>
+			</view>
+			<view class="df flex-column">
+				<!-- <view class="nickname text-ellipsis-row1">这个用户很懒什么也没写这个用户很懒</view> -->
+				<open-data bindtap="moreUserInfo" class="nickname" type="userNickName"></open-data>
+				<text class="hint">{{userInfo.desc}}</text>
+			</view>
+		</view>
+	</view>
+	<view class="card-horizontal twoSideShadow">
+		<view class="title">
+			<!-- <text class="iconfont icon-badge- fz40 mr10"></text> -->
+			我的互动
+			<!-- <view bindtap="bindToPage" data-page="../allOrder/allOrder" class="moreInfo">
+				全部帖子
+				<text class="iconfont icon-youjiantou1 fz30"></text>
+			</view> -->
+		</view>
+		<view class="item-container">
+			<view bindtap="bindToPage" data-page="../history/history">
+				<text class="iconfont icon-bianzu fz70 mr10 mb10" style="color:#4585F5"></text>
+				历史记录
+			</view>
+			<view bindtap="bindToPage" data-page="../like/like">
+				<text class="iconfont icon-dianzan1 fz70 mr10 mb10" style="color:#4585F5"></text>
+				收到的赞
+			</view>
+			<view bindtap="bindToPage" data-page="../comment/comment">
+				<text class="iconfont icon-icon_huifu-xian fz70 mr10 mb10" style="color:#4585F5"></text>
+				回复我的
+			</view>
+			<view bindtap="bindToPage" data-page="../follow/follow">
+				<text class="iconfont icon-guanzhu1 fz70 mr10 mb10" style="color:#4585F5"></text>
+				我关注的
+			</view>
+		</view>
+	</view>
+	<view class="card-horizontal twoSideShadow">
+		<view class="title df justify-between">
+			<!-- <text class="iconfont icon-badge- fz40 mr10"></text> -->
+			我的帖子
+		</view>
+		<view class="item-container">
+			<view bindtap="bindToPage" data-page="../allPublish/allPublish">
+				<text class="iconfont icon-fabu1 fz70 mr10 mb10" style="color:#DB693A"></text>
+				我发布的
+			</view>
+			<view bindtap="bindToPage" data-page="../myTakeLegwork/myTakeLegwork">
+				<text class="iconfont icon-yijiedan fz70 mr10 mb10" style="color:#DB693A"></text>
+				我承接的
+			</view>
+			<view bindtap="bindToPage" data-page="../myTakeSecondhand/myTakeSecondhand">
+				<text class="iconfont icon-yiwancheng3 fz70 mr10 mb10" style="color:#DB693A"></text>
+				我购买的
+			</view>
+			<view bindtap="bindToPage" data-page="../collect/collect">
+				<text class="iconfont icon-tiezishoucang fz70 mr10 mb10" style="color:#DB693A"></text>
+				我收藏的
+			</view>
+			<view bindtap="bindToPage" data-page="../myDrop/myDrop">
+				<text class="iconfont icon-yiquxiao3 fz70 mr10 mb10" style="color:#DB693A"></text>
+				已下架的
+			</view>
+			<view bindtap="bindToPage" data-page="../addressManager/addressManager">
+				<text class="iconfont icon-tubiao201 fz70 mr10 mb10" style="color:#DB693A"></text>
+				地址管理
+			</view>
+			<!-- <view bindtap="bindToPage" data-page="../myCancel/myCancel">
+				<text class="iconfont icon-yiquxiao2 fz70 mr10 mb10" style="color:#DB693A"></text>
+				中止交易
+			</view> -->
+
+		</view>
+	</view>
+
+	<!-- <view class="card-horizontal twoSideShadow">
+		<view class="title">
+			必备工具
+		</view>
+		<view class="item-container">
+			<view bindtap="bindToPage" data-page="../addressManager/addressManager">
+				<text class="iconfont icon-tubiao201 fz70 mr10 mb10" style="color:#D75EB2"></text>
+				地址管理
+			</view>
+			<view bindtap="bindToPage" data-page="../comment/comment">
+				<text class="iconfont icon-saoma6 fz70 mr10 mb10" style="color:#D75EB2"></text>
+				扫码核销
+			</view>
+		</view>
+	</view> -->
+</view>

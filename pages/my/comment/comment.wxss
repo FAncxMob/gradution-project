@@ -1,0 +1,22 @@
+#comment {
+    /* margin-top: 80rpx; */
+    margin: 0 10rpx;
+    padding-bottom: 100rpx;
+}
+
+#comment .comment-area {
+    width: 20vw;
+}
+
+.listBox {
+    padding-top: 100rpx;
+}
+
+.searchBox {
+    position: fixed;
+    top: 0rpx;
+    left: 0;
+    right: 0;
+    height: 100rpx;
+    z-index: 10;
+}
