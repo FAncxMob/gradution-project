@@ -2,7 +2,8 @@
   "usingComponents": {
     "SwitchTab": "../../../components/SwitchTab/SwitchTab",
     "MyOrderList": "../../../components/MyOrderList/MyOrderList",
-    "Search": "../../../components/Search/Search"
+    "Search": "../../../components/Search/Search",
+    "ShowPostList": "../../../components/ShowPostList/ShowPostList"
   },
   "navigationBarTitleText": "我承接的"
 }

@@ -3,7 +3,7 @@ import EventEmitter from './utils/EventEmitter'
 
 
 App({
-  onLaunch: async function () {
+  async onLaunch() {
     // let haveUser = wx.getStorageSync('haveUser')
     let token = wx.getStorageSync('token')
     // console.log(haveUser, token, 'app,js')
@@ -31,7 +31,6 @@ App({
           wx.setStorageSync('openId', result.openId)
           wx.setStorageSync('haveUser', result.haveUser)
           console.log('保存token和haveUser到本地')
-          console.log(result.haveUser)
 
           EventEmitter.emit('storageOk', result.haveUser)
         }

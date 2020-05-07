@@ -1,7 +1,3 @@
-<!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
-
-<!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
-
 <view>
     <view class="searchBox">
         <Search searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm" bind:searchInput="searchInput"

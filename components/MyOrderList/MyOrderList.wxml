@@ -7,12 +7,37 @@
     <block wx:else>
         <view bindtap="toDetailPage" data-iid="{{item._id}}" class="list twoSideShadow borderBottom" wx:for="{{data}}"
             wx:key="{{index}}">
+            <view wx:if="{{haveUserDetail}}">
+                <view class="df align-start mb20">
+                    <image class="avatar avatar-small bdr0 mr20" src="{{item.userDetail.avatar}}"></image>
+                    <view class="df h80 flex-column fx1 justify-between">
+                        <text class="fwb">{{item.userDetail.nickName}}</text>
+                        <text class="gray-3 fz22">发布于{{utils.formatTime(item.createTime,'yyyy-MM-dd HH:mm')}}</text>
+                    </view>
+                    <block wx:if="{{item.price!==''}}">
+                        <view class="red-1 fz30 fwb">
+
+                            <block wx:if="{{utils.haveYuan(item.price)!==-1}}">
+                                {{item.price}}
+                            </block>
+                            <block wx:else>
+                                {{item.price}}元
+                            </block>
+                        </view>
+                    </block>
+                </view>
+            </view>
+
             <block wx:if="{{item.pic.length!==0}}">
                 <!-- 有图片的排版 -->
                 <view class="df gray-1" style="position: relative;">
                     <view style="z-index: 100;" class="{{item.status===0?dn:'status'}}">
                         {{utils.statusToStr(item.status,item.classify)}}</view>
-                    <image class="pic mr20" src="{{item.pic[0]}}" mode="widthFix"></image>
+                    <view class="imgWrapper mb20 por" wx:key="{{index}}">
+                        <image mode="cover" src="{{item.pic[0]}}">
+                        </image>
+                    </view>
+                    <!-- <image class="pic mr20" src="{{item.pic[0]}}" mode="widthFix"></image> -->
                     <view class="df flex-column justify-between fz30 gray-1">
                         <view class=" fwb text-ellipsis-row1">
                             <rich-text nodes="{{item.title}}"></rich-text>

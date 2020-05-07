@@ -7,6 +7,7 @@
             bind:searchInput="searchInput" bind:searchClear="searchClear">
         </Search>
     </view>
+
     <view class="listBox">
         <block wx:if="{{reply.length===0}}">
             <NoData height="100vh" title="还没有收到任何回复..." />

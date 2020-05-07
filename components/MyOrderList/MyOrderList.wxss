@@ -9,9 +9,23 @@
     margin-bottom: 20rpx;
 }
 
+
 .myOrderList .bottom-box {
     margin: 10rpx -20rpx -5px;
     padding: 20rpx 20rpx 10rpx;
+}
+
+.avatar {
+    flex-shrink: 0;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    border: 4rpx solid #e0cfbb;
+}
+
+.avatar-small {
+    width: 80rpx;
+    height: 80rpx;
 }
 
 .twoSideShadow {
@@ -47,6 +61,10 @@
 
 .align-center {
     align-items: center;
+}
+
+.align-start {
+    align-items: flex-start !important;
 }
 
 .justify-between {
@@ -95,6 +113,56 @@
 
 .mb20 {
     margin-bottom: 20rpx !important;
+}
+
+.bdr0 {
+    border-radius: 0rpx !important;
+}
+
+.mr20 {
+    margin-right: 20rpx !important;
+}
+
+.h80 {
+    height: 80rpx !important;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.imgWrapper {
+    flex-shrink: 0;
+    width: 40%;
+    height: 0;
+    position: relative;
+    padding-bottom: 40%;
+    margin-right: 20rpx;
+    margin-bottom: 10rpx;
+
+}
+
+.imgWrapper image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 4rpx solid #e0cfbb;
+}
+
+.fx1 {
+    flex: 1 !important;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.fwb {
+    font-weight: bold;
+}
+
+.gray-3 {
+    color: #ACA27D;
 }
 
 .borderTop {

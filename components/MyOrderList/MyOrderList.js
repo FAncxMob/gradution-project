@@ -6,6 +6,10 @@ Component({
   properties: {
     data: Array,
     title: String,
+    haveUserDetail: {
+      type: Boolean,
+      value: false
+    },
     haveDrop: {
       type: Boolean,
       value: false

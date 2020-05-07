@@ -3,7 +3,7 @@
         <form class="login-form" bindsubmit="saveFormValue">
             <view class="title">请填写资料</view>
             <view class="section">
-                <view class="section-title">学校</view>
+                <view class="section-title">学校 <text class="red-1">*</text></view>
                 <picker bindchange="bindPickerChange" data-picker="school" value="{{schoolIndex}}"
                     range="{{schoolArray}}">
                     <view class="picker">

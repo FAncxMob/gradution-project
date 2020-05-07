@@ -7,17 +7,24 @@
             bind:searchClear="searchClear">
         </Search>
     </view>
+
     <block wx:if="{{currentSelect===0}}">
         <view class="myOrderLisBox">
+            <!-- <ShowPostList bind:toDetailPage="toDetailPage" type="collect" data="{{legWorkStatusIs1}}" title="没有已承接的校园跑腿"
+                noDataHeight="500rpx" isMyPost="{{false}}">
+            </ShowPostList> -->
             <MyOrderList bind:toDetailPage="toDetailPage" data="{{legWorkStatusIs1}}" title="没有已承接的校园跑腿"
-                noDataHeight="500rpx">
+                noDataHeight="500rpx" haveUserDetail="{{true}}">
             </MyOrderList>
         </view>
     </block>
     <block wx:if="{{currentSelect===1}}">
         <view class="myOrderLisBox">
+            <!-- <ShowPostList bind:toDetailPage="toDetailPage" type="collect" data="{{legWorkStatusIs2}}" title="没有已完成的校园跑腿"
+                noDataHeight="500rpx" isMyPost="{{false}}">
+            </ShowPostList> -->
             <MyOrderList bind:toDetailPage="toDetailPage" data="{{legWorkStatusIs2}}" title="没有已完成的校园跑腿"
-                noDataHeight="500rpx">
+                noDataHeight="500rpx" haveUserDetail="{{true}}">
             </MyOrderList>
         </view>
     </block>

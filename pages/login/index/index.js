@@ -3,13 +3,17 @@ import WxValidate from '../../../utils/WxValidate'
 let app = getApp()
 import EventEmitter from '../../../utils/EventEmitter'
 
+// 点击登录按钮会 有授权获取用户信息的弹窗，只有授权后（获得了用户的头像和昵称）才会发送登录请求
+// 如果没授权，则不会发送登录请求  
+//TODO: 用户进入系统后，在个人中心的修改个人资料中  增加 头像和昵称的 显示， 后增加 获取最新用户头像|昵称 这里再做确认授权操作
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    schoolArray: ['湖北经济学院'],
+    schoolArray: ['湖北经济学院', '武汉音乐学院', '武汉大学'],
     schoolIndex: 0,
     facultyArray: ['经济与贸易学院', '金融学院', '财政与公共管理学院', '工商管理学院', '会计学院', '旅游与酒店管理学院', '信息管理与统计学院', '法学院', '艺术设计学院', '新闻与传播学院', '外国语学院', '信息与通信工程学院', '体育经济与管理学院', '低碳经济学院', '财经高等研究院', '继续教育学院'],
     facultyIndex: 0,
@@ -17,10 +21,10 @@ Page({
     userInfo: '',
     formValue: {},
     basicInfo: {
+      sno: '',
       name: '',
-      tel: '',
       idCard: '',
-      sno: ''
+      tel: ''
     },
   },
   async saveFormValue(e) {
@@ -106,7 +110,13 @@ Page({
       userInfo
     })
     if (userInfo) {
-      this.login()
+      if (!this.WxValidate.checkForm(this.data.formValue)) {
+        const error = this.WxValidate.errorList[0]
+        this.showModal(error)
+        return false
+      } else {
+        this.login()
+      }
     }
   },
 
@@ -119,50 +129,57 @@ Page({
         required: false,
         tel: true
       },
-      idCard: {
+      sno: {
         required: true,
-        // idcard: true,
+        // digits: true
       },
       name: {
         required: true
       },
-      sno: {
-        required: false,
-        // digits: true
+      idCard: {
+        required: true,
+        // idcard: true,
       }
     };
     const messages = {
       tel: {
         tel: "请输入正确的手机号"
       },
-      idCard: {
-        required: "请输入身份证号",
-        // idcard: "请输入正确的身份证号",
+      sno: {
+        required: "请输入学号",
+        // digits: "请输入正确的学号"
       },
       name: {
         required: "请输入真实姓名",
       },
-      sno: {
-        required: "请输入学号",
-        // digits: "请输入正确的学号"
-      }
+      idCard: {
+        required: "请输入身份证号",
+        // idcard: "请输入正确的身份证号",
+      },
     };
     this.WxValidate = new WxValidate(rules, messages)
   },
-  // onStorageOk(data) {
-  //   console.log(data)
-  //   EventEmitter.on('storageOk', (data) => {
-  //     console.log(data)
-
-  //   })
-  // },
-
-
 
   onLoad: function (options) {
     this.initValidate()
     let token = wx.getStorageSync('token')
     let haveUser = wx.getStorageSync('haveUser')
+
+    // // 查看是否授权
+    // wx.getSetting({
+    //   success: function (res) {
+    //     console.log(res, 'res')
+    //     if (res.authSetting['scope.userInfo']) {
+    //       console.log(res.authSetting, 'authSetting')
+    //       wx.getUserInfo({
+    //         success: function (res) {
+    //           //从数据库获取用户信息
+    //           console.log(res, 'getUserInfo')
+    //         }
+    //       });
+    //     }
+    //   }
+    // })
 
     console.log(haveUser, 'haveUser-login.js')
     if (haveUser) {
@@ -179,24 +196,6 @@ Page({
         })
       }
     })
-    // let haveUser = wx.getStorageSync('haveUser')
-    // // 判断新老用户
-    // if (haveUser) {
-    //   console.log('老用户，直接进入')
-    //   // wx.navigateTo({
-    //   //   url: '/pages/my/userInfo/userInfo'
-    //   // })
-    //   wx.switchTab({
-    //     url: '/pages/my/my/my'
-    //   })
-    // } else {
-    //   // 老用户，跳过登录界面直接进入我的页面，新用户跳转到登录页面
-    //   console.log('新用户，滚去登陆')
-    //   // wx.navigateTo({
-    //   //   url: '/pages/login/index/index'
-    //   // })
-    // }
-    // console.log('load()-login')
   },
 
   /**

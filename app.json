@@ -18,7 +18,7 @@
     "pages/my/myTakeSecondhand/myTakeSecondhand",
     "pages/my/myDrop/myDrop",
     "pages/my/myCancel/myCancel",
-    
+
     "pages/my/addressManager/addressManager",
     "pages/my/addressManager/addAddress/addAddress",
     "pages/my/addressManager/editAddress/editAddress",
@@ -32,13 +32,13 @@
     "pages/release/releaseLegwork/releaseLegwork",
     "pages/release/releasePartimJob/releasePartimJob",
     "pages/release/releaseLostAndFound/releaseLostAndFound",
-    
+
     "pages/update/updateLegwork/updateLegwork",
     "pages/update/updateSecondhand/updateSecondhand",
     "pages/update/updatePartimJob/updatePartimJob",
     "pages/update/updateLostAndFound/updateLostAndFound"
 
-    
+
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -49,8 +49,7 @@
   "tabBar": {
     "color": "#bfbfbf",
     "selectedColor": "#4585F5",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "icon/index.png",

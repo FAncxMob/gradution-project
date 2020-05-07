@@ -1,5 +1,4 @@
 <wxs src="../../wxs/util.wxs" module="utils"></wxs>
-<!-- TODO:后台也传入了父级评论的内容，后续看是否可以改成楼中楼评论的样式 -->
 
 <view class='showPostList'>
     <block wx:if="{{data.length===0}}">
@@ -44,7 +43,11 @@
                         <block wx:for="{{item.invitationsDetail.pic}}" wx:key="{{picIndex}}" wx:for-item="picItem"
                             wx:for-index="picIndex">
                             <block wx:if="{{picIndex<2}}">
-                                <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image>
+                                <view class="imgWrapper mb20 por" wx:key="{{index}}">
+                                    <image mode="cover" src="{{picItem}}">
+                                    </image>
+                                </view>
+                                <!-- <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image> -->
                             </block>
 
                         </block>
@@ -115,7 +118,11 @@
                         <block wx:for="{{item.pic}}" wx:key="{{picIndex}}" wx:for-item="picItem"
                             wx:for-index="picIndex">
                             <block wx:if="{{picIndex<2}}">
-                                <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image>
+                                <view class="imgWrapper mb20 por" wx:key="{{index}}">
+                                    <image mode="cover" src="{{picItem}}">
+                                    </image>
+                                </view>
+                                <!-- <image class="pic mr20" src="{{picItem}}" mode="widthFix"></image> -->
                             </block>
 
                         </block>

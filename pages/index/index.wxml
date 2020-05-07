@@ -6,7 +6,7 @@
 		<view class="searchBox2">
 			<Search searchStr="{{searchStr}}" bind:searchConfirm="searchConfirm" bind:searchInput="searchInput"
 				bind:searchClear="searchClear" tipStr="根据标题或内容进行搜索">
-			</Search>s
+			</Search>
 		</view>
 	</block>
 	<block wx:else>

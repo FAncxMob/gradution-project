@@ -2,21 +2,24 @@
 	<view class="header-bg"></view>
 	<view class="header twoSideShadow">
 		<view class="mb20 df align-center justify-between">
-			<view bindtap="moreUserInfo" class="df align-center">
+			<view bindtap="bindToPage" data-page="/pages/my/userInfo/userInfo" class="df align-center">
 				<image class="hbue" src="../../../icon/hbue.png" mode="cover" />
 				<text class="school">{{userInfo.school}}</text>
 			</view>
-			<view bindtap="moreUserInfo" class="moreInfo">更多资料 <text class="iconfont icon-youjiantou1 fz30"></text>
+			<view bindtap="bindToPage" data-page="/pages/my/userInfo/userInfo" class="moreInfo">更多资料 <text
+					class="iconfont icon-youjiantou1 fz30"></text>
 			</view>
 		</view>
 		<view class="df align-center">
-			<view class="image">
-				<open-data type="userAvatarUrl"></open-data>
+			<view class="image" bindtap="bindToPage" data-page="/pages/my/userInfo/userInfo">
+				<image class="w100p h100p" src="{{userInfo.avatar}}" mode="cover" />
+				<!-- <open-data type="userAvatarUrl"></open-data> -->
 			</view>
 			<view class="df flex-column">
-				<!-- <view class="nickname text-ellipsis-row1">这个用户很懒什么也没写这个用户很懒</view> -->
-				<open-data bindtap="moreUserInfo" class="nickname" type="userNickName"></open-data>
-				<text class="hint">{{userInfo.desc}}</text>
+				<text class="nickname" bindtap="bindToPage"
+					data-page="/pages/my/userInfo/userInfo">{{userInfo.nickName}}</text>
+				<!-- <open-data bindtap="moreUserInfo" class="nickname" type="userNickName"></open-data> -->
+				<text class="hint" bindtap="bindToPage" data-page="/pages/my/userInfo/userInfo">{{userInfo.desc}}</text>
 			</view>
 		</view>
 	</view>

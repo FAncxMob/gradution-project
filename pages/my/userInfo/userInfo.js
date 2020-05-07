@@ -11,18 +11,42 @@ Page({
     schoolIndex: 0,
     facultyArray: ['经济与贸易学院', '金融学院', '财政与公共管理学院', '工商管理学院', '会计学院', '旅游与酒店管理学院', '信息管理与统计学院', '法学院', '艺术设计学院', '新闻与传播学院', '外国语学院', '信息与通信工程学院', '体育经济与管理学院', '低碳经济学院', '财经高等研究院', '继续教育学院'],
     facultyIndex: 0,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    avatar: '',
+    nickName: '',
+    isNew: false
+  },
+  async bindGetUserInfo(e) {
+    wx.showLoading({
+      title: '更新中...'
+    })
+    let {
+      avatarUrl,
+      nickName
+    } = e.detail.userInfo
+    await this.setData({
+      avatar: avatarUrl,
+      nickName,
+      isNew: true
+    })
+    wx.hideLoading()
+
   },
   async formSubmit(e) {
     let {
       schoolArray,
       schoolIndex,
       facultyArray,
-      facultyIndex
+      facultyIndex,
+      avatar,
+      nickName
     } = this.data
 
 
     let data = {
       ...e.detail.value,
+      avatar,
+      nickName,
       school: schoolArray[schoolIndex],
       faculty: facultyArray[facultyIndex]
     }
@@ -81,7 +105,9 @@ Page({
         this.setData({
           userInfo: data.userInfo,
           schoolIndex: oldSchoolIndex,
-          facultyIndex: oldFacultyIndex
+          facultyIndex: oldFacultyIndex,
+          avatar: data.userInfo.avatar,
+          nickName: data.userInfo.nickName
         })
       }
     }
