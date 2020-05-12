@@ -6,6 +6,7 @@
   justify-content: center;
   background: #2E2E2E;
 }
+
 #userInfo .userInfo-container {
   width: 90vw;
   background: #4C4C4C;
@@ -13,29 +14,35 @@
   border-radius: 10px;
   padding: 60rpx 0;
 }
+
 #userInfo .userInfo-container .userInfo-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 #userInfo .userInfo-container .userInfo-form .section {
   color: #cccccc;
   margin-bottom: 30rpx;
   padding-bottom: 5rpx;
   border-bottom: 2rpx solid #cccccc;
 }
+
 #userInfo .userInfo-container .userInfo-form .section .input {
   color: #cccccc;
 }
+
 #userInfo .userInfo-container .userInfo-form .section .section-title {
   color: #f5f5f5;
   font-size: 30rpx;
   font-weight: bold;
   margin-bottom: 10rpx;
 }
+
 #userInfo .userInfo-container .userInfo-form .btn-area {
   margin: 50rpx 0 0;
 }
+
 #userInfo .userInfo-container .userInfo-form .title {
   margin: 30rpx 0;
   color: #F6E662;
